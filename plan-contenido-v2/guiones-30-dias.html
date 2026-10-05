@@ -1,0 +1,488 @@
+<title>BajaTuLuz Guiones de Rodaje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Figtree:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: guiones de rodaje a dos columnas (imagen | voz), un vídeo por página al imprimir.
+   Mismo sistema que el plan: blanco y los dos verdes del logo. Un solo tema claro a propósito. */
+:root {
+  --paper: #ffffff; --ink: #1f2a17; --ink-2: #3a4630; --muted: #637058; --rule: #dde5d2;
+  --olive: #5c762e; --olive-dark: #435a21; --lime: #bede5d; --lime-wash: #f1f7dd; --soft: #f7f9f2;
+  --f-head: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.doc { max-width: 860px; margin: 0 auto; padding-inline: 20px; padding-block: 32px 48px; }
+h1, h2, h3 { font-family: var(--f-head); color: var(--ink); margin: 0; text-wrap: balance; line-height: 1.2; }
+h1 { font-size: clamp(2rem, 6vw, 2.6rem); font-weight: 800; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; font-weight: 800; }
+h3 { font-size: 1rem; font-weight: 700; }
+p { margin: 0; }
+.logo { width: 210px; max-width: 60%; height: auto; display: block; margin-bottom: 14px; }
+.kicker { font-size: 0.875rem; font-weight: 600; color: var(--olive); }
+.cover { display: grid; gap: 12px; padding-bottom: 24px; }
+.lead { color: var(--ink-2); font-size: 1.0625rem; max-width: 64ch; }
+.howto { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; background: var(--soft); border-radius: 4px; padding: 16px 18px; font-size: 0.9375rem; }
+.howto > * { min-width: 0; }
+@media (max-width: 640px) { .howto { grid-template-columns: 1fr; } }
+.ph { background: var(--lime-wash); color: var(--olive-dark); font-weight: 600; padding: 0 3px; border-radius: 2px; }
+em.dir { font-style: italic; color: var(--muted); }
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+th { text-align: left; font-size: 0.8125rem; font-weight: 700; color: var(--olive-dark); background: var(--lime-wash); padding: 8px 10px; }
+td { padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.index td.n { font-weight: 700; color: var(--olive); width: 30px; font-variant-numeric: tabular-nums; }
+.index td.nowrap { white-space: nowrap; }
+.index td.fmtc { color: var(--olive-dark); font-weight: 700; white-space: nowrap; }
+.index { min-width: 600px; }
+section.block { border-top: 1px solid var(--rule); padding-block: 24px; display: grid; gap: 14px; }
+.sp { border-top: 1px solid var(--rule); padding-block: 28px; display: grid; gap: 12px; }
+.sp-meta { font-size: 0.8125rem; font-weight: 700; color: var(--olive); }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 0.9375rem; color: var(--ink-2); }
+.need { display: grid; gap: 6px; }
+.check { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.check li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 8px; font-size: 0.9375rem; }
+.check li::before { content: ""; width: 12px; height: 12px; border: 1.5px solid var(--ink-2); border-radius: 2px; margin-top: 5px; }
+.beats { min-width: 620px; }
+.beats td.t { white-space: nowrap; font-weight: 700; color: var(--olive-dark); width: 72px; font-variant-numeric: tabular-nums; }
+.beats td.img { width: 40%; color: var(--ink-2); }
+.beats td.voz { font-weight: 500; }
+.scr { display: block; margin-top: 4px; font-weight: 700; color: var(--ink); }
+.caption { background: var(--soft); border-radius: 4px; padding: 12px 14px; display: grid; gap: 4px; font-size: 0.9375rem; }
+.note { font-size: 0.875rem; color: var(--muted); }
+.carrs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.carrs > * { min-width: 0; }
+@media (max-width: 640px) { .carrs { grid-template-columns: 1fr; } }
+.carr { border: 1px solid var(--rule); border-radius: 4px; padding: 14px 16px; display: grid; gap: 6px; align-content: start; }
+.carr ol { margin: 0; padding-left: 1.3em; display: grid; gap: 3px; font-size: 0.9375rem; color: var(--ink-2); }
+@page { size: A4; margin: 14mm 15mm 16mm; }
+@media print {
+  body { font-size: 9.8pt; }
+  .doc { max-width: none; padding: 0; }
+  h1 { font-size: 28pt; }
+  h2 { font-size: 16pt; }
+  h3 { font-size: 10.5pt; }
+  .sp { break-before: page; border-top: 0; padding-top: 0; padding-bottom: 0; }
+  section.block.np { break-before: page; border-top: 0; padding-top: 0; }
+  .table-scroll { overflow: visible; }
+  .beats, .index { min-width: 0; }
+  table { font-size: 9.4pt; }
+  .index { font-size: 8.8pt; }
+  .index td { padding: 4px 8px; }
+  tr, .carr, .caption, .need { break-inside: avoid; }
+}
+</style>
+
+<main class="doc">
+  <header class="cover">
+    <img class="logo" src="assets/logo-bajatuluz.png" alt="BajaTuLuz">
+    <p class="kicker">Guiones de rodaje · Plan de contenido de 30 días</p>
+    <h1>Guiones completos</h1>
+    <p class="lead">Los 22 reels del calendario, del 19 de octubre al 17 de noviembre de 2026, y el texto de los 4 carruseles. Cada guion ocupa una página para poder imprimirlo y llevarlo al rodaje.</p>
+    <div class="howto">
+      <p><b>Imagen y texto en pantalla:</b> lo que se ve y los rótulos.</p>
+      <p><b>Voz:</b> lo que se dice. Es una guía; el jefe lo dice con sus palabras.</p>
+      <p><span class="ph">[X €]</span> <b>Huecos:</b> se rellenan con datos reales antes de grabar.</p>
+      <p><em class="dir">En cursiva:</em> indicaciones que no se dicen.</p>
+      <p><b>Todos acaban igual:</b> «Comenta FUGA» y el clic del interruptor.</p>
+      <p><b>Subtítulos:</b> grandes, dos líneas como máximo.</p>
+    </div>
+  </header>
+
+  <section class="block np">
+    <h2>Índice</h2>
+    <div class="table-scroll">
+      <table class="index">
+        <thead><tr><th>#</th><th>Día</th><th>Formato</th><th>Gancho</th></tr></thead>
+        <tbody>
+<tr><td class="n">1</td><td class="nowrap">Lunes 19 de octubre</td><td class="fmtc">Ahorrómetro</td><td>Tengo 23 años y este año he ahorrado <span class="ph">[X €]</span> a empresas</td></tr>
+<tr><td class="n">2</td><td class="nowrap">Martes 20 de octubre</td><td class="fmtc">Curiosidad</td><td>Cada vatio que nunca apagas te cuesta 1 o 2 € al año</td></tr>
+<tr><td class="n">3</td><td class="nowrap">Miércoles 21 de octubre</td><td class="fmtc">Noticias</td><td>Este domingo cambia la hora</td></tr>
+<tr><td class="n">4</td><td class="nowrap">Jueves 22 de octubre</td><td class="fmtc">Dinero tirado</td><td>Cerraste en agosto. Tu factura no.</td></tr>
+<tr><td class="n">5</td><td class="nowrap">Viernes 23 de octubre</td><td class="fmtc">Día a día</td><td>Así suena la oficina cuando una empresa paga menos</td></tr>
+<tr><td class="n">6</td><td class="nowrap">Lunes 26 de octubre</td><td class="fmtc">Ahorrómetro</td><td>Este bar tiraba <span class="ph">[X €]</span> al año</td></tr>
+<tr><td class="n">7</td><td class="nowrap">Martes 27 de octubre</td><td class="fmtc">Curiosidad</td><td>En España ha habido horas en las que la luz valía menos que cero</td></tr>
+<tr><td class="n">8</td><td class="nowrap">Miércoles 28 de octubre</td><td class="fmtc">Noticias</td><td>El apagón de 2025 todavía se paga en la factura de la luz</td></tr>
+<tr><td class="n">9</td><td class="nowrap">Jueves 29 de octubre</td><td class="fmtc">Dinero tirado</td><td>Tu negocio paga por una energía que no usa</td></tr>
+<tr><td class="n">10</td><td class="nowrap">Viernes 30 de octubre</td><td class="fmtc">Reto: factura al paredón</td><td>Factura al paredón #1 · edición Halloween</td></tr>
+<tr><td class="n">11</td><td class="nowrap">Lunes 2 de noviembre</td><td class="fmtc">Ahorrómetro</td><td>Lo que este restaurante pagaba de más le daba para un camarero <span class="ph">[N]</span> meses</td></tr>
+<tr><td class="n">12</td><td class="nowrap">Martes 3 de noviembre</td><td class="fmtc">Curiosidad: lo medimos</td><td>¿Qué gasta más en una peluquería: el secador o el termo?</td></tr>
+<tr><td class="n">13</td><td class="nowrap">Miércoles 4 de noviembre</td><td class="fmtc">Noticias</td><td>Así ha cerrado octubre el precio de la luz</td></tr>
+<tr><td class="n">14</td><td class="nowrap">Jueves 5 de noviembre</td><td class="fmtc">Dinero tirado</td><td>Pagas potencia de Ferrari y conduces un Panda</td></tr>
+<tr><td class="n">15</td><td class="nowrap">Viernes 6 de noviembre</td><td class="fmtc">Reto: 60 segundos</td><td>60 segundos para encontrar ahorro. Si no lo encuentro, invito al café.</td></tr>
+<tr><td class="n">16</td><td class="nowrap">Lunes 9 de noviembre</td><td class="fmtc">Ahorrómetro</td><td>Le dije a un cliente que no cambiara</td></tr>
+<tr><td class="n">17</td><td class="nowrap">Martes 10 de noviembre</td><td class="fmtc">Curiosidad</td><td>¿Cuánto cuesta encender las luces de Navidad de una ciudad?</td></tr>
+<tr><td class="n">18</td><td class="nowrap">Miércoles 11 de noviembre</td><td class="fmtc">Noticias</td><td>La noticia de la semana (o: llega el frío)</td></tr>
+<tr><td class="n">19</td><td class="nowrap">Jueves 12 de noviembre</td><td class="fmtc">Dinero tirado</td><td>Si tu contrato de luz es más viejo que tu móvil, tenemos un problema</td></tr>
+<tr><td class="n">20</td><td class="nowrap">Viernes 13 de noviembre</td><td class="fmtc">Día a día</td><td>Un día conmigo: 23 años, <span class="ph">[N]</span> empresas y cero corbatas</td></tr>
+<tr><td class="n">21</td><td class="nowrap">Lunes 16 de noviembre</td><td class="fmtc">Ahorrómetro del mes</td><td><span class="ph">[X €]</span> en 30 días. Estas son las tres empresas que más ahorraron.</td></tr>
+<tr><td class="n">22</td><td class="nowrap">Martes 17 de noviembre</td><td class="fmtc">Cierre</td><td>Me mandas una foto de tu factura y en <span class="ph">[plazo]</span> sabes cuánto estás tirando</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <article class="sp" id="v1">
+    <p class="sp-meta">Vídeo 1 de 22 · Lunes 19 de octubre</p>
+    <h2>Tengo 23 años y este año he ahorrado <span class="ph">[X €]</span> a empresas</h2>
+    <p class="facts"><span><b>Formato:</b> Ahorrómetro</span><span><b>Duración:</b> 35–40 s</span><span><b>Dónde:</b> Plató</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Total ahorrado a empresas en 2026 (CRM).</span></li><li><span>El caso con más ahorro: actividad, ciudad, ahorro al año y qué se cambió.</span></li><li><span>Una carpeta gruesa para el golpe inicial.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Plano medio. Deja caer una carpeta gruesa sobre la mesa: golpe seco.<span class="scr">En pantalla: «23 AÑOS · <span class="ph">[X €]</span> AHORRADOS»</span></td><td class="voz">Tengo 23 años y este año he ahorrado <span class="ph">[X €]</span> a empresas.</td></tr><tr><td class="t">3–12 s</td><td class="img">Plano corto, mirando a cámara.</td><td class="voz">No vendo placas ni bombillas. Miro lo que paga tu negocio de luz y gas, encuentro lo que sobra y lo quito.</td></tr><tr><td class="t">12–24 s</td><td class="img">El estudio de ese cliente en pantalla, con los datos tapados.<span class="scr">En pantalla: «<span class="ph">[Actividad]</span> · <span class="ph">[ciudad]</span> · <span class="ph">[X €]</span> menos al año»</span></td><td class="voz">El que más ha ahorrado este año es un <span class="ph">[actividad]</span> de <span class="ph">[ciudad]</span>: <span class="ph">[X €]</span> al año. Y no ha tenido que cambiar ni una máquina.</td></tr><tr><td class="t">24–32 s</td><td class="img">Plano corto.</td><td class="voz">¿Y cuánto te cuesta a ti? Nada. Nos paga la compañía, no tú. Y si no hay ahorro, te lo digo a la cara.</td></tr><tr><td class="t">32–37 s</td><td class="img">Señala hacia abajo. Clic del interruptor y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">Comenta FUGA y busco la de tu negocio.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Tengo 23 años y me dedico a buscar el dinero que las empresas tiran en luz y gas. Este año van <span class="ph">[X €]</span>. El estudio es gratis porque nos paga la compañía, no tú. Y si no hay ahorro, te lo decimos. Comenta FUGA y miramos tu negocio.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Se fija en el perfil. La frase «sin cambiar ni una máquina» solo si es verdad en ese caso.</p>
+  </article>
+  <article class="sp" id="v2">
+    <p class="sp-meta">Vídeo 2 de 22 · Martes 20 de octubre</p>
+    <h2>Cada vatio que nunca apagas te cuesta 1 o 2 € al año</h2>
+    <p class="facts"><span><b>Formato:</b> Curiosidad</span><span><b>Duración:</b> 35–40 s</span><span><b>Dónde:</b> Un bar (cliente) + efecto Higgsfield</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Medidor de enchufe.</span></li><li><span>Medir la cafetera en espera (o la nevera de bebidas) en el bar.</span></li><li><span>Precio medio €/kWh de vuestros clientes para la cuenta.</span></li><li><span>Clip de Higgsfield: enchufe que suelta monedas.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Higgsfield: un enchufe del bar suelta monedas de euro sin parar.<span class="scr">En pantalla: «1 VATIO = 1 o 2 € AL AÑO»</span></td><td class="voz">Cada vatio que tienes encendido todo el año te cuesta entre uno y dos euros.</td></tr><tr><td class="t">3–10 s</td><td class="img">El jefe, apoyado en la barra.<span class="scr">En pantalla: «1 W × 8.760 h = 8,76 kWh»</span></td><td class="voz">Un vatio encendido las 24 horas, los 365 días, son casi 9 kilovatios hora.</td></tr><tr><td class="t">10–22 s</td><td class="img">Planos rápidos: nevera de bebidas, cafetera, cartel, router, tele.</td><td class="voz">Ahora mira tu bar. La nevera de bebidas, la cafetera en espera, el cartel, el router, la tele. Todo lo que nunca se apaga suma, hora tras hora.</td></tr><tr><td class="t">22–30 s</td><td class="img">Plano macro del medidor enchufado a la cafetera.<span class="scr">En pantalla: «Cafetera en espera: <span class="ph">[N]</span> W = <span class="ph">[X €]</span> al año»</span></td><td class="voz">Esta cafetera, solo en espera, gasta <span class="ph">[N]</span> vatios. Son <span class="ph">[X €]</span> al año sin hacer un solo café.</td></tr><tr><td class="t">30–38 s</td><td class="img">El jefe a cámara. Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">Pero esto es calderilla al lado de lo que se va por el contrato. Si quieres saber cuánto, comenta FUGA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Un vatio encendido todo el año te cuesta entre 1 y 2 €. Haz la cuenta con todo lo que tienes enchufado las 24 horas. Aun así, lo que de verdad pesa está en el contrato. Comenta FUGA y lo miramos.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Cuenta del ejemplo: <span class="ph">[X €]</span> = vatios × 8,76 × precio en €/kWh. A 0,15–0,20 €/kWh, cada vatio sale entre 1,3 y 1,8 € al año.</p>
+  </article>
+  <article class="sp" id="v3">
+    <p class="sp-meta">Vídeo 3 de 22 · Miércoles 21 de octubre</p>
+    <h2>Este domingo cambia la hora</h2>
+    <p class="facts"><span><b>Formato:</b> Noticias</span><span><b>Duración:</b> 35–40 s</span><span><b>Dónde:</b> Plató</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Un reloj de pared (o el efecto en edición).</span></li><li><span>Un programador antiguo de rueda, de enchufe o de cuadro.</span></li><li><span>Captura o rótulo del BOE como fuente.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Reloj de pared: las agujas retroceden de las 3 a las 2.<span class="scr">En pantalla: «DOMINGO 25: CAMBIO DE HORA»</span></td><td class="voz">Este domingo cambia la hora. Y es el último cambio que aparece en el BOE.</td></tr><tr><td class="t">3–12 s</td><td class="img">El jefe a cámara.<span class="scr">En pantalla: «Fuente: BOE»</span></td><td class="voz">El domingo a las tres serán las dos. Es el último cambio del calendario oficial, pero la Unión Europea todavía no ha decidido si se acaba. Lo que pase en marzo lo decidirá Europa.</td></tr><tr><td class="t">12–26 s</td><td class="img">Plano detalle de un programador de rueda.</td><td class="voz">Lo que sí le afecta a tu negocio: los programadores antiguos no cambian solos. Si tu contrato tiene precios por horas, el termo o el cartel pueden encenderse una hora antes, en un tramo más caro.</td></tr><tr><td class="t">26–34 s</td><td class="img">El jefe gira la rueda del programador una hora.<span class="scr">En pantalla: «Revisa: termo · cartel · escaparate · calefacción»</span></td><td class="voz">Así que este fin de semana revisa la hora del termo, del cartel, del escaparate y de la calefacción.</td></tr><tr><td class="t">34–40 s</td><td class="img">A cámara. Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">Y si quieres que miremos si tu contrato tiene sentido, comenta FUGA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Este domingo, a las 3 serán las 2. Es el último cambio de hora que aparece en el BOE; si se vuelve a cambiar en marzo lo decidirá Europa. Para tu negocio, lo importante: los programadores antiguos no cambian solos. Revísalos este fin de semana.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Grabar el lunes 19 o el martes 20. Comprobar ese día si hay novedades de la Unión Europea sobre el cambio de hora.</p>
+  </article>
+  <article class="sp" id="v4">
+    <p class="sp-meta">Vídeo 4 de 22 · Jueves 22 de octubre</p>
+    <h2>Cerraste en agosto. Tu factura no.</h2>
+    <p class="facts"><span><b>Formato:</b> Dinero tirado</span><span><b>Duración:</b> 35–40 s</span><span><b>Dónde:</b> Exterior (persiana) + plató</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Persiana de un cliente, con permiso.</span></li><li><span>Cartel de «Cerrado por vacaciones».</span></li><li><span>Una factura real con los datos tapados donde se vea el término de potencia.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Exterior. La persiana baja de golpe y deja ver el cartel. Cámara fija, a cámara lenta.<span class="scr">En pantalla: «CERRASTE EN AGOSTO. TU FACTURA NO.»</span></td><td class="voz">Cerraste en agosto. Tu factura no.</td></tr><tr><td class="t">3–14 s</td><td class="img">Plano cenital de la factura. Un círculo marca la línea de potencia.<span class="scr">En pantalla: «Término de potencia»</span></td><td class="voz">En tu factura hay una parte que pagas aunque no enciendas ni una bombilla: la potencia contratada. Se paga por días, abras o cierres.</td></tr><tr><td class="t">14–24 s</td><td class="img">El jefe a cámara.<span class="scr">En pantalla: «Más potencia de la que usas = pagas de más los 12 meses»</span></td><td class="voz">Es como pagar plaza de parking para un camión cuando vas en bici. Si tienes más potencia de la que usas, la pagas de más todo el año.</td></tr><tr><td class="t">24–32 s</td><td class="img">Plano corto.</td><td class="voz">Ahora, cuidado: bajarla a ojo puede salir caro, con cortes o con recargos. Se mira con tu consumo real.</td></tr><tr><td class="t">32–37 s</td><td class="img">A cámara. Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">Comenta FUGA y vemos si te sobra potencia.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>La potencia contratada se paga todos los días, abras o no. Si tienes más de la que usas, llevas tiempo pagando de más. Eso sí, no la bajes a ojo: se mira con tu consumo real. Comenta FUGA y lo revisamos.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Se publica junto al carrusel «7 fugas de dinero en la factura de tu negocio».</p>
+  </article>
+  <article class="sp" id="v5">
+    <p class="sp-meta">Vídeo 5 de 22 · Viernes 23 de octubre</p>
+    <h2>Así suena la oficina cuando una empresa paga menos</h2>
+    <p class="facts"><span><b>Formato:</b> Día a día</span><span><b>Duración:</b> 30–35 s</span><span><b>Dónde:</b> Oficina, durante la semana real</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>La campana, colgada en un sitio visible.</span></li><li><span>Cámara ligera o gimbal durante la semana.</span></li><li><span>Las firmas reales de la semana: cuántas y la más grande.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Plano macro de la campana sonando, a cámara lenta.<span class="scr">En pantalla: «ESTO SUENA CADA VEZ QUE UNA EMPRESA PAGA MENOS»</span></td><td class="voz"><em class="dir">Solo el sonido de la campana.</em></td></tr><tr><td class="t">3–12 s</td><td class="img">Montaje rápido: teléfono, un estudio en pantalla con datos tapados, un compañero escribiendo.</td><td class="voz"><em class="dir">Voz en off</em> En la oficina tenemos una norma. Cada vez que una empresa firma un ahorro, suena la campana.</td></tr><tr><td class="t">12–24 s</td><td class="img">Un compañero levanta los brazos. El jefe toca la campana.<span class="scr">En pantalla: «Esta semana: <span class="ph">[N]</span> veces»</span></td><td class="voz">Esta semana ha sonado <span class="ph">[N]</span> veces. La más gorda, un <span class="ph">[actividad]</span> de <span class="ph">[ciudad]</span>: <span class="ph">[X €]</span> al año.</td></tr><tr><td class="t">24–30 s</td><td class="img">El jefe a cámara, al lado de la campana.</td><td class="voz">La semana que viene quiero que suene más.</td></tr><tr><td class="t">30–34 s</td><td class="img">Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">¿Quieres que suene por tu negocio? Comenta FUGA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>En la oficina tenemos una norma: cada vez que una empresa firma un ahorro, suena la campana. Esta semana, <span class="ph">[N]</span> veces. ¿Quieres que la próxima sea por tu negocio? Comenta FUGA.</p></div>
+    <p class="note"><b>Antes de grabar:</b> No se finge nada. Si esta semana ha sonado una vez, se dice una vez.</p>
+  </article>
+  <article class="sp" id="v6">
+    <p class="sp-meta">Vídeo 6 de 22 · Lunes 26 de octubre</p>
+    <h2>Este bar tiraba <span class="ph">[X €]</span> al año</h2>
+    <p class="facts"><span><b>Formato:</b> Ahorrómetro</span><span><b>Duración:</b> 35–40 s</span><span><b>Dónde:</b> Plató + el bar del cliente si acepta</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Caso real de un bar: cuánto pagaba, cuánto paga, qué se cambió y desde cuándo no se revisaba.</span></li><li><span>Permiso por escrito del dueño.</span></li><li><span>Si acepta salir: 10 segundos suyos en el bar.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Una factura, con los datos tapados, se rompe por la mitad.<span class="scr">En pantalla: «<span class="ph">[X €]</span> AL AÑO, TIRADOS»</span></td><td class="voz">Este bar tiraba <span class="ph">[X €]</span> al año. Y no era por dejarse las luces encendidas.</td></tr><tr><td class="t">3–15 s</td><td class="img">El jefe a cámara. Recursos del bar.</td><td class="voz">Tenía <span class="ph">[la fuga real: más potencia de la que necesitaba, un precio que firmó hace años o un servicio que nunca pidió]</span>. Nadie lo había revisado desde <span class="ph">[año]</span>.</td></tr><tr><td class="t">15–25 s</td><td class="img">Gráfico sencillo: antes y después.<span class="scr">En pantalla: «Antes: <span class="ph">[Z €]</span>/mes · Ahora: <span class="ph">[Y €]</span>/mes»</span></td><td class="voz">Cambiamos <span class="ph">[qué se cambió]</span> y ha pasado de pagar <span class="ph">[Z €]</span> al mes a pagar <span class="ph">[Y €]</span>.</td></tr><tr><td class="t">25–33 s</td><td class="img">El dueño, en su bar (si acepta).</td><td class="voz"><em class="dir">Dueño</em> <span class="ph">[Su frase, sin guion: qué pensaba antes y qué piensa ahora.]</span> <em class="dir">Si no sale, el jefe:</em> El dueño no ha tocado nada del bar. Ni una bombilla.</td></tr><tr><td class="t">33–40 s</td><td class="img">El Ahorrómetro sube en pantalla. Clic y negro.<span class="scr">En pantalla: «AHORRÓMETRO: <span class="ph">[total]</span>»</span></td><td class="voz">El Ahorrómetro va por <span class="ph">[total]</span>. ¿Sumamos el tuyo? Comenta FUGA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Este bar de <span class="ph">[ciudad]</span> pagaba <span class="ph">[Z €]</span> al mes de luz. Ahora paga <span class="ph">[Y €]</span>. No ha cambiado ni una bombilla: el problema estaba en <span class="ph">[la fuga]</span>. ¿Cuánto tira el tuyo? Comenta FUGA.</p></div>
+    
+  </article>
+  <article class="sp" id="v7">
+    <p class="sp-meta">Vídeo 7 de 22 · Martes 27 de octubre</p>
+    <h2>En España ha habido horas en las que la luz valía menos que cero</h2>
+    <p class="facts"><span><b>Formato:</b> Curiosidad</span><span><b>Duración:</b> 35–40 s</span><span><b>Dónde:</b> Plató + efecto Higgsfield</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Clip de Higgsfield: panel con el precio en negativo.</span></li><li><span>Recursos de placas solares y molinos.</span></li><li><span>Fuente en pantalla: OMIE.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Higgsfield: un panel gigante de noche con «-0,01 €/MWh».<span class="scr">En pantalla: «LA LUZ A MENOS DE CERO»</span></td><td class="voz">En España ha habido horas en las que la luz valía menos que cero.</td></tr><tr><td class="t">3–14 s</td><td class="img">El jefe a cámara.<span class="scr">En pantalla: «Desde abril de 2024 · Fuente: OMIE»</span></td><td class="voz">Pasó por primera vez en abril de 2024 y se ha repetido muchas veces. Mucho sol, mucho viento y poca demanda: sobra energía y el precio del mercado baja de cero.</td></tr><tr><td class="t">14–26 s</td><td class="img">Recursos de placas y molinos.<span class="scr">En pantalla: «Energía + peajes + cargos + impuestos»</span></td><td class="voz">¿Eso quiere decir que te pagaban por gastar luz? No. En tu factura, además de la energía, pagas peajes, cargos e impuestos. Y si tienes precio fijo, pagas lo que firmaste, valga lo que valga el mercado.</td></tr><tr><td class="t">26–34 s</td><td class="img">Plano corto.</td><td class="voz">Por eso lo importante es otra cosa: si tu tipo de contrato encaja con las horas en las que gasta tu negocio.</td></tr><tr><td class="t">34–39 s</td><td class="img">Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">¿Lo sabes? Si no, comenta FUGA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Hay horas en las que el precio de la luz en el mercado baja de cero. No, nadie te paga por consumir: en la factura también hay peajes, cargos e impuestos. Lo que importa es si tu contrato encaja con cómo gasta tu negocio. Comenta FUGA.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Comprobar antes de grabar el dato más reciente de precios negativos en OMIE.</p>
+  </article>
+  <article class="sp" id="v8">
+    <p class="sp-meta">Vídeo 8 de 22 · Miércoles 28 de octubre</p>
+    <h2>El apagón de 2025 todavía se paga en la factura de la luz</h2>
+    <p class="facts"><span><b>Formato:</b> Noticias</span><span><b>Duración:</b> 35–42 s</span><span><b>Dónde:</b> Plató</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Cifras actualizadas del coste de la operación reforzada (prensa económica de esa semana).</span></li><li><span>Nombre del medio y fecha para ponerlos en pantalla.</span></li><li><span>Un contrato o factura con los datos tapados.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Imagen de una ciudad a oscuras que se vuelve a encender.<span class="scr">En pantalla: «EL APAGÓN TODAVÍA SE PAGA»</span></td><td class="voz">El apagón de abril de 2025 todavía se paga en la factura de la luz.</td></tr><tr><td class="t">3–15 s</td><td class="img">El jefe a cámara.<span class="scr">En pantalla: «Fuente: <span class="ph">[medio · fecha]</span>»</span></td><td class="voz">Desde aquel día, Red Eléctrica trabaja en lo que llama «operación reforzada»: usa más centrales que dan estabilidad a la red para que no vuelva a pasar. Y eso cuesta dinero.</td></tr><tr><td class="t">15–26 s</td><td class="img">Gráfico sencillo con el dato actualizado.<span class="scr">En pantalla: «<span class="ph">[dato actualizado]</span>»</span></td><td class="voz">Ese coste acaba en las facturas. Las asociaciones de empresas llevan todo 2026 quejándose. Según <span class="ph">[fuente]</span>, ya son <span class="ph">[dato]</span>.</td></tr><tr><td class="t">26–36 s</td><td class="img">Plano cenital de un contrato.<span class="scr">En pantalla: «Indexado: ya lo pagas · Fijo: mira las cláusulas»</span></td><td class="voz">¿Qué puedes hacer? Mirar tu contrato. Si tienes precio indexado, lo normal es que ya lo estés pagando. Si tienes precio fijo, mira si hay alguna cláusula que te lo cobre aparte.</td></tr><tr><td class="t">36–41 s</td><td class="img">Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">Si no sabes dónde mirarlo, comenta FUGA y lo vemos.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Desde el apagón de abril de 2025, mantener la red estable cuesta más, y ese coste llega a las facturas. Si tienes precio fijo, revisa si tu contrato te lo cobra aparte. Comenta FUGA y te ayudamos a mirarlo.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Actualizar las cifras la misma semana y citar la fuente en pantalla.</p>
+  </article>
+  <article class="sp" id="v9">
+    <p class="sp-meta">Vídeo 9 de 22 · Jueves 29 de octubre</p>
+    <h2>Tu negocio paga por una energía que no usa</h2>
+    <p class="facts"><span><b>Formato:</b> Dinero tirado</span><span><b>Duración:</b> 35–40 s</span><span><b>Dónde:</b> Taller o cocina de un cliente + efecto Higgsfield</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Clip de Higgsfield: energía fantasma que sale del cuadro eléctrico.</span></li><li><span>Factura real de más de 15 kW con la línea de energía reactiva, datos tapados.</span></li><li><span>Si hay un cliente con batería de condensadores, un plano de ella.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Higgsfield: una energía fantasma sale del cuadro eléctrico llevándose billetes.<span class="scr">En pantalla: «PAGAS UNA ENERGÍA QUE NO USAS»</span></td><td class="voz">Hay empresas que pagan cada mes por una energía que no usan. Y es completamente legal.</td></tr><tr><td class="t">3–15 s</td><td class="img">El jefe en el taller o junto a una cámara frigorífica.<span class="scr">En pantalla: «Solo contratos de más de 15 kW»</span></td><td class="voz">Se llama energía reactiva. La generan los motores, los compresores y las cámaras de frío. No hace ningún trabajo útil, pero circula por la red. Y si pasas de cierto límite, te la cobran como penalización.</td></tr><tr><td class="t">15–25 s</td><td class="img">Plano cenital de la factura con la línea marcada.<span class="scr">En pantalla: «Busca: «energía reactiva»»</span></td><td class="voz">Sale en la factura con ese nombre: energía reactiva. Solo en contratos de más de 15 kilovatios. Búscala en la tuya.</td></tr><tr><td class="t">25–35 s</td><td class="img">Plano de una batería de condensadores.</td><td class="voz">Muchas veces se corrige con una batería de condensadores, que suele amortizarse rápido. Pero primero hay que ver cuánto te está costando al año.</td></tr><tr><td class="t">35–40 s</td><td class="img">Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">¿Te sale esa línea? Comenta FUGA y te decimos cuánto es al año.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Si tu negocio tiene más de 15 kW contratados, busca en la factura la línea «energía reactiva». Es una penalización y muchas veces se puede corregir. Comenta FUGA y te decimos cuánto te cuesta al año.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Se publica junto al carrusel «6 formas de ahorrar hoy sin gastar un euro». No recomendar ningún equipo concreto en el vídeo.</p>
+  </article>
+  <article class="sp" id="v10">
+    <p class="sp-meta">Vídeo 10 de 22 · Viernes 30 de octubre</p>
+    <h2>Factura al paredón #1 · edición Halloween</h2>
+    <p class="facts"><span><b>Formato:</b> Reto: factura al paredón</span><span><b>Duración:</b> 40–46 s</span><span><b>Dónde:</b> Plató con luz de vela</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Factura de un seguidor, con permiso por escrito y datos tapados (nombre, dirección, NIF y CUPS).</span></li><li><span>El análisis hecho antes de grabar.</span></li><li><span>Mazo, chincheta y dos sellos: CULPABLE e INOCENTE.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Luz de vela. La factura clavada en la pared. Golpe de mazo.<span class="scr">En pantalla: «FACTURA AL PAREDÓN #1 · EDICIÓN HALLOWEEN»</span></td><td class="voz">Esta es la factura más terrorífica que nos habéis mandado. Vamos a juzgarla.</td></tr><tr><td class="t">3–8 s</td><td class="img">Plano general del jefe junto a la pared.<span class="scr">En pantalla: «<span class="ph">[Tipo de negocio]</span> · <span class="ph">[ciudad]</span>»</span></td><td class="voz">Nos la manda <span class="ph">[nombre o tipo de negocio]</span> de <span class="ph">[ciudad]</span>.</td></tr><tr><td class="t">8–16 s</td><td class="img">Plano cenital. Círculo en la potencia.<span class="scr">En pantalla: «CARGO 1: POTENCIA»</span></td><td class="voz">Cargo uno: la potencia. <span class="ph">[Veredicto. Por ejemplo: «Tiene contratados X kilovatios y nunca pasa de Y. Culpable.»]</span></td></tr><tr><td class="t">16–24 s</td><td class="img">Círculo en el precio de la energía.<span class="scr">En pantalla: «CARGO 2: PRECIO»</span></td><td class="voz">Cargo dos: el precio de la energía. <span class="ph">[Veredicto.]</span></td></tr><tr><td class="t">24–32 s</td><td class="img">Círculo en los otros conceptos.<span class="scr">En pantalla: «CARGO 3: EXTRAS»</span></td><td class="voz">Cargo tres: los extras. <span class="ph">[Veredicto. Por ejemplo: «Paga un servicio de mantenimiento de X € al mes que no sabía que tenía.»]</span></td></tr><tr><td class="t">32–40 s</td><td class="img">El sello cae sobre la factura.<span class="scr">En pantalla: «CULPABLE: <span class="ph">[X €]</span> AL AÑO · o · INOCENTE»</span></td><td class="voz">Veredicto: culpable. <span class="ph">[X €]</span> al año. <em class="dir">O bien:</em> Veredicto: inocente. Esta factura está bien y no te voy a vender nada.</td></tr><tr><td class="t">40–46 s</td><td class="img">A cámara. Clic y negro.<span class="scr">En pantalla: «Mándala por privado: PAREDÓN»</span></td><td class="voz">¿Quieres que juzguemos la tuya? Mándala por privado con la palabra PAREDÓN.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Factura al paredón #1, edición Halloween. Nos la mandó <span class="ph">[tipo de negocio]</span> de <span class="ph">[ciudad]</span> y la hemos juzgado en tres cargos: potencia, precio y extras. Veredicto: <span class="ph">[resultado]</span>. ¿Quieres que juzguemos la tuya? Mándala por privado con la palabra PAREDÓN.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Las facturas se piden en historias el fin de semana del 24 y 25 de octubre.</p>
+  </article>
+  <article class="sp" id="v11">
+    <p class="sp-meta">Vídeo 11 de 22 · Lunes 2 de noviembre</p>
+    <h2>Lo que este restaurante pagaba de más le daba para un camarero <span class="ph">[N]</span> meses</h2>
+    <p class="facts"><span><b>Formato:</b> Ahorrómetro</span><span><b>Duración:</b> 35–38 s</span><span><b>Dónde:</b> El restaurante del cliente + plató</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Caso real de un restaurante: antes, después y qué se cambió.</span></li><li><span>Coste mensual real de un camarero para la empresa (pedirlo al cliente).</span></li><li><span>Permiso por escrito. Si acepta, unos segundos del dueño.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Un camarero sirviendo en el restaurante del cliente.<span class="scr">En pantalla: «<span class="ph">[X €]</span> AL AÑO = UN CAMARERO <span class="ph">[N]</span> MESES»</span></td><td class="voz">Lo que este restaurante pagaba de más le daba para pagar a un camarero <span class="ph">[N]</span> meses.</td></tr><tr><td class="t">3–14 s</td><td class="img">El jefe en el restaurante.</td><td class="voz">Es un restaurante de <span class="ph">[ciudad]</span> con <span class="ph">[un detalle real: cocina, cámaras, horario]</span>. Pagaba <span class="ph">[Z €]</span> al mes de luz. Lo revisamos y encontramos <span class="ph">[la fuga real]</span>.</td></tr><tr><td class="t">14–24 s</td><td class="img">Gráfico: antes y después.<span class="scr">En pantalla: «Antes: <span class="ph">[Z €]</span>/mes · Ahora: <span class="ph">[Y €]</span>/mes»</span></td><td class="voz">Ahora paga <span class="ph">[Y €]</span>. Son <span class="ph">[X €]</span> menos al año. Con eso, en hostelería, pagas un sueldo durante <span class="ph">[N]</span> meses.</td></tr><tr><td class="t">24–32 s</td><td class="img">El dueño (si acepta) o el jefe.</td><td class="voz"><em class="dir">Dueño</em> <span class="ph">[Su frase real.]</span> <em class="dir">Si no sale, el jefe:</em> Y el dueño no ha cambiado ni la carta ni los fogones.</td></tr><tr><td class="t">32–38 s</td><td class="img">El Ahorrómetro sube. Clic y negro.<span class="scr">En pantalla: «AHORRÓMETRO: <span class="ph">[total]</span>»</span></td><td class="voz">Llevamos <span class="ph">[total]</span> ahorrados a empresas. ¿El siguiente es el tuyo? Comenta FUGA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Este restaurante de <span class="ph">[ciudad]</span> pagaba <span class="ph">[X €]</span> al año de más en luz. Con ese dinero se paga un camarero durante <span class="ph">[N]</span> meses. Lo encontramos en <span class="ph">[la fuga]</span>. Comenta FUGA y buscamos la del tuyo.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Cuenta: <span class="ph">[N]</span> = ahorro al año ÷ coste mensual de un camarero para la empresa.</p>
+  </article>
+  <article class="sp" id="v12">
+    <p class="sp-meta">Vídeo 12 de 22 · Martes 3 de noviembre</p>
+    <h2>¿Qué gasta más en una peluquería: el secador o el termo?</h2>
+    <p class="facts"><span><b>Formato:</b> Curiosidad: lo medimos</span><span><b>Duración:</b> 40–45 s</span><span><b>Dónde:</b> Peluquería colaboradora</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Peluquería colaboradora y permiso para grabar.</span></li><li><span>Medidor de enchufe. Si el termo va conectado al cuadro, un electricista que lo mida.</span></li><li><span>Horas de uso reales de cada aparato, según la dueña.</span></li><li><span>Precio €/kWh de su factura.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Plano macro del medidor, con los números subiendo.<span class="scr">En pantalla: «¿QUÉ GASTA MÁS: EL SECADOR O EL TERMO?»</span></td><td class="voz">¿Qué gasta más en una peluquería: el secador o el termo? Hemos venido a medirlo.</td></tr><tr><td class="t">3–8 s</td><td class="img">Plano general con la dueña.<span class="scr">En pantalla: «<span class="ph">[Peluquería]</span> · <span class="ph">[ciudad]</span>»</span></td><td class="voz">Estamos en <span class="ph">[peluquería]</span> con <span class="ph">[nombre]</span>. ¿Tú qué apuestas? <em class="dir">La dueña responde.</em></td></tr><tr><td class="t">8–18 s</td><td class="img">El medidor conectado al secador.<span class="scr">En pantalla: «SECADOR: <span class="ph">[N]</span> W · <span class="ph">[H]</span> h al día»</span></td><td class="voz">El secador: <span class="ph">[N]</span> vatios. Lo usan unas <span class="ph">[H]</span> horas al día.</td></tr><tr><td class="t">18–28 s</td><td class="img">El electricista mide el termo.<span class="scr">En pantalla: «TERMO: <span class="ph">[N]</span> W · <span class="ph">[H]</span> h al día»</span></td><td class="voz">El termo: <span class="ph">[N]</span> vatios. Y está calentando <span class="ph">[H]</span> horas al día.</td></tr><tr><td class="t">28–38 s</td><td class="img">Ranking en pantalla en euros al mes.<span class="scr">En pantalla: «1. <span class="ph">[aparato]</span> <span class="ph">[X €]</span>/mes · 2. <span class="ph">[aparato]</span> <span class="ph">[X €]</span>/mes»</span></td><td class="voz">Pasado a euros al mes: <span class="ph">[resultado real]</span>. <span class="ph">[Comentario del resultado, sin preparar.]</span></td></tr><tr><td class="t">38–45 s</td><td class="img">El jefe con la dueña. Clic y negro.<span class="scr">En pantalla: «¿Qué medimos la semana que viene?»</span></td><td class="voz">¿Qué negocio quieres que midamos la próxima vez? Te leo en comentarios.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Hemos ido a <span class="ph">[peluquería]</span> a medir qué aparato se come la factura: el secador o el termo. Resultado: <span class="ph">[resultado]</span>. ¿Qué negocio quieres que midamos la próxima vez?</p></div>
+    <p class="note"><b>Antes de grabar:</b> Cuenta: € al mes = vatios × horas al día × días abiertos al mes ÷ 1.000 × precio €/kWh. Sin electricista no se abre ni se toca el cuadro.</p>
+  </article>
+  <article class="sp" id="v13">
+    <p class="sp-meta">Vídeo 13 de 22 · Miércoles 4 de noviembre</p>
+    <h2>Así ha cerrado octubre el precio de la luz</h2>
+    <p class="facts"><span><b>Formato:</b> Noticias</span><span><b>Duración:</b> 35–40 s</span><span><b>Dónde:</b> Plató</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Precio medio mensual del mercado (OMIE) de octubre 2026, septiembre 2026 y octubre 2025.</span></li><li><span>Gráfico de barras sencillo con los tres datos.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Gráfico de barras: septiembre y octubre.<span class="scr">En pantalla: «OCTUBRE: <span class="ph">[X]</span> €/MWh»</span></td><td class="voz">Así ha cerrado octubre el precio de la luz en el mercado: <span class="ph">[X]</span> euros el megavatio hora.</td></tr><tr><td class="t">3–14 s</td><td class="img">El jefe a cámara.<span class="scr">En pantalla: «Fuente: OMIE»</span></td><td class="voz">Es un <span class="ph">[N]</span> % <span class="ph">[más/menos]</span> que en septiembre, y un <span class="ph">[N]</span> % <span class="ph">[más/menos]</span> que en octubre del año pasado.</td></tr><tr><td class="t">14–26 s</td><td class="img">Rótulos: «indexado» y «fijo».<span class="scr">En pantalla: «Indexado: lo notas ya · Fijo: al renovar»</span></td><td class="voz">¿Lo vas a notar? Depende de tu contrato. Con precio indexado, lo notas ya, en la factura de este mes. Con precio fijo, lo notarás cuando te toque renovar.</td></tr><tr><td class="t">26–34 s</td><td class="img">Plano corto.</td><td class="voz">Por eso conviene saber cuándo vence tu contrato y qué precio te van a poner después.</td></tr><tr><td class="t">34–39 s</td><td class="img">Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">Si no lo sabes, comenta FUGA y te lo miramos.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>El precio de la luz en el mercado cerró octubre en <span class="ph">[X]</span> €/MWh, un <span class="ph">[N]</span> % <span class="ph">[más/menos]</span> que en septiembre. Con precio indexado lo notas ya; con precio fijo, al renovar. ¿Sabes cuándo vence tu contrato? Comenta FUGA.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Grabar el lunes 2 o el martes 3, con el dato ya publicado por OMIE.</p>
+  </article>
+  <article class="sp" id="v14">
+    <p class="sp-meta">Vídeo 14 de 22 · Jueves 5 de noviembre</p>
+    <h2>Pagas potencia de Ferrari y conduces un Panda</h2>
+    <p class="facts"><span><b>Formato:</b> Dinero tirado</span><span><b>Duración:</b> 35–40 s</span><span><b>Dónde:</b> Plató</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Un Ferrari y un Panda de juguete (o sus llaves).</span></li><li><span>Factura real con datos tapados donde se vean la potencia contratada y el maxímetro.</span></li><li><span>Captura de la web de Datadis o de la distribuidora, sin datos personales.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Sobre la mesa, un Ferrari y un Panda de juguete. El jefe los coloca.<span class="scr">En pantalla: «POTENCIA DE FERRARI, USO DE PANDA»</span></td><td class="voz">Pagas potencia de Ferrari y conduces un Panda.</td></tr><tr><td class="t">3–12 s</td><td class="img">El jefe a cámara.</td><td class="voz">Hace dos semanas os conté que la potencia se paga aunque cierres. Hoy, cómo saber si te sobra.</td></tr><tr><td class="t">12–24 s</td><td class="img">Plano cenital: factura y web de Datadis.<span class="scr">En pantalla: «1. Potencia contratada · 2. Potencia máxima que usas»</span></td><td class="voz">Necesitas dos números. Uno: la potencia contratada, que viene en la factura. Dos: la máxima que de verdad usas. En contratos grandes sale en la factura como maxímetro. Si no, la ves en Datadis o en la web de tu distribuidora.</td></tr><tr><td class="t">24–32 s</td><td class="img">El jefe con los dos coches.</td><td class="voz">Si el segundo número está muy por debajo del primero todo el año, estás pagando un Ferrari para ir a por el pan.</td></tr><tr><td class="t">32–38 s</td><td class="img">Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">Eso sí, no la bajes a ojo. Comenta FUGA y te decimos cuánta necesitas de verdad.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Para saber si te sobra potencia necesitas dos números: la potencia contratada y la máxima que usas de verdad (maxímetro, Datadis o la web de tu distribuidora). Si están muy lejos, pagas de más. Comenta FUGA y lo calculamos.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Se publica junto al carrusel «¿Cuánto paga de luz? 5 negocios: adivina antes de pasar».</p>
+  </article>
+  <article class="sp" id="v15">
+    <p class="sp-meta">Vídeo 15 de 22 · Viernes 6 de noviembre</p>
+    <h2>60 segundos para encontrar ahorro. Si no lo encuentro, invito al café.</h2>
+    <p class="facts"><span><b>Formato:</b> Reto: 60 segundos</span><span><b>Duración:</b> 60–68 s</span><span><b>Dónde:</b> Plató</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Factura real de un seguidor o cliente, con permiso y datos tapados.</span></li><li><span>Un cronómetro de cocina grande, de verdad, sobre la mesa.</span></li><li><span>El jefe no ve la factura antes de grabar.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">El jefe pulsa el cronómetro. Pitido.<span class="scr">En pantalla: «60 SEGUNDOS · AHORRO O CAFÉ»</span></td><td class="voz">Tengo 60 segundos para encontrar ahorro en esta factura. Si no lo encuentro, invito a su dueño a un café.</td></tr><tr><td class="t">3–50 s</td><td class="img">Plano cenital de la factura con el cronómetro en una esquina. Círculos y flechas en pantalla.<span class="scr">En pantalla: «Cuenta atrás en pantalla»</span></td><td class="voz"><em class="dir">Improvisado, pensando en voz alta. Guía:</em> Vale, potencia... <span class="ph">[lo que vea]</span>. Precio de la energía... <span class="ph">[lo que vea]</span>. Aquí hay un servicio de... <span class="ph">[lo que vea]</span>.</td></tr><tr><td class="t">50–60 s</td><td class="img">Pitido final.<span class="scr">En pantalla: «<span class="ph">[X €]</span> AL AÑO EN <span class="ph">[N]</span> SEGUNDOS · o · CAFÉ PAGADO»</span></td><td class="voz"><span class="ph">[X €]</span> al año en <span class="ph">[N]</span> segundos. <em class="dir">O bien:</em> Se acabó. Esta factura está bien hecha. Café pagado.</td></tr><tr><td class="t">60–68 s</td><td class="img">Si toca café, un plano del café con el dueño. Luego a cámara. Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">¿Te atreves con la tuya? Comenta FUGA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>60 segundos para encontrar ahorro en una factura. Si no lo encuentro, invito al café. Resultado: <span class="ph">[resultado]</span>. ¿Te atreves con la tuya? Comenta FUGA.</p></div>
+    <p class="note"><b>Antes de grabar:</b> La cifra que se dice en el vídeo es una primera estimación. Se confirma con el estudio antes de publicar y, si cambia, se corrige en el texto de la publicación.</p>
+  </article>
+  <article class="sp" id="v16">
+    <p class="sp-meta">Vídeo 16 de 22 · Lunes 9 de noviembre</p>
+    <h2>Le dije a un cliente que no cambiara</h2>
+    <p class="facts"><span><b>Formato:</b> Ahorrómetro</span><span><b>Duración:</b> 35–38 s</span><span><b>Dónde:</b> Plató</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Un caso real en el que recomendasteis no cambiar: actividad, ciudad, cuánto le ahorraba y qué permanencia tenía la oferta.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Plano muy cerrado. El jefe, serio.<span class="scr">En pantalla: «LE DIJE QUE NO CAMBIARA»</span></td><td class="voz">Le dije a un cliente que no cambiara de compañía. Perdí la comisión. Y lo volvería a hacer.</td></tr><tr><td class="t">3–15 s</td><td class="img">Plano medio.</td><td class="voz">Era un <span class="ph">[actividad]</span> de <span class="ph">[ciudad]</span>. Revisamos su factura y tenía un precio bueno, bien ajustado a su consumo. Cambiar le ahorraba <span class="ph">[X €]</span> al año y le metía una permanencia de <span class="ph">[N]</span> meses.</td></tr><tr><td class="t">15–25 s</td><td class="img">Plano corto.</td><td class="voz">Así no compensa. Le dije la verdad: quédate como estás. Yo no cobré nada.</td></tr><tr><td class="t">25–33 s</td><td class="img">A cámara.</td><td class="voz">Mi trabajo no es moverte de compañía. Es que pagues lo justo. Y a veces lo justo es lo que ya tienes.</td></tr><tr><td class="t">33–38 s</td><td class="img">Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">Si quieres que alguien te diga la verdad sobre tu factura, aunque sea que está bien, comenta FUGA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>A veces nuestro trabajo es decirte que no cambies. Este cliente tenía un buen precio y cambiar no le compensaba, así que se lo dijimos. Comenta FUGA si quieres saber la verdad sobre tu factura.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Solo si el caso es real.</p>
+  </article>
+  <article class="sp" id="v17">
+    <p class="sp-meta">Vídeo 17 de 22 · Martes 10 de noviembre</p>
+    <h2>¿Cuánto cuesta encender las luces de Navidad de una ciudad?</h2>
+    <p class="facts"><span><b>Formato:</b> Curiosidad</span><span><b>Duración:</b> 35–37 s</span><span><b>Dónde:</b> Plató + una tienda con escaparate</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Dato público del contrato municipal de alumbrado navideño de una ciudad (por ejemplo, Valencia).</span></li><li><span>Si es público, el consumo o el coste eléctrico estimado.</span></li><li><span>Recursos de calles iluminadas (propios o Higgsfield).</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Una calle con luces de Navidad que se encienden.<span class="scr">En pantalla: «¿CUÁNTO CUESTA ENCENDER LA NAVIDAD?»</span></td><td class="voz">¿Cuánto cuesta encender las luces de Navidad de una ciudad?</td></tr><tr><td class="t">3–14 s</td><td class="img">El jefe a cámara.<span class="scr">En pantalla: «<span class="ph">[Ciudad]</span> · Fuente: contrato municipal»</span></td><td class="voz">En <span class="ph">[ciudad]</span>, el contrato de este año es de <span class="ph">[X €]</span>. Eso incluye montar, mantener y quitar las luces.</td></tr><tr><td class="t">14–24 s</td><td class="img">Recursos de las luces.<span class="scr">En pantalla: «<span class="ph">[dato de consumo, si es público]</span>»</span></td><td class="voz">La electricidad es solo una parte: <span class="ph">[dato]</span>. Y desde que casi todo es LED, el consumo es mucho menor que hace unos años.</td></tr><tr><td class="t">24–32 s</td><td class="img">El jefe en una tienda con el escaparate iluminado.<span class="scr">En pantalla: «Escaparate: programador y apagado al cerrar»</span></td><td class="voz">¿Y en tu negocio? Si pones luces en el escaparate, ponles un programador y que se apaguen al cerrar. Encendidas toda la noche no las ve nadie.</td></tr><tr><td class="t">32–37 s</td><td class="img">Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">Y si quieres saber cuánto se te va en lo que no se ve, comenta FUGA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>¿Cuánto cuesta encender la Navidad de <span class="ph">[ciudad]</span>? El contrato de este año es de <span class="ph">[X €]</span>. Y un consejo para tu negocio: si pones luces en el escaparate, que se apaguen al cerrar. Comenta FUGA.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Usar solo cifras publicadas por el ayuntamiento o la prensa, con la fuente en pantalla.</p>
+  </article>
+  <article class="sp" id="v18">
+    <p class="sp-meta">Vídeo 18 de 22 · Miércoles 11 de noviembre</p>
+    <h2>La noticia de la semana (o: llega el frío)</h2>
+    <p class="facts"><span><b>Formato:</b> Noticias</span><span><b>Duración:</b> 35–40 s</span><span><b>Dónde:</b> Plató</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Elegir la noticia el lunes 9. Si no hay ninguna que afecte a negocios, se graba la versión de abajo sobre el gas.</span></li><li><span>Factura de gas real con datos tapados.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">Plantilla</td><td class="img">Para cualquier noticia de la semana.<span class="scr">En pantalla: «Titular + fecha + fuente»</span></td><td class="voz">Qué ha pasado, en una frase. Qué significa para un negocio, en euros o en algo práctico. Qué hacer. Cierre con FUGA.</td></tr><tr><td class="t">0–3 s</td><td class="img">Una caldera o una estufa de terraza que se enciende.<span class="scr">En pantalla: «LLEGA EL FRÍO: 3 COSAS DE TU CONTRATO DE GAS»</span></td><td class="voz">Llega el frío. Antes de encender la calefacción del negocio, mira tres cosas de tu contrato de gas.</td></tr><tr><td class="t">3–13 s</td><td class="img">Plano cenital de la factura de gas.<span class="scr">En pantalla: «1. Precio del kWh»</span></td><td class="voz">Uno: el precio del kilovatio hora. Compáralo con lo que pagabas hace un año.</td></tr><tr><td class="t">13–23 s</td><td class="img">Círculo en el término fijo.<span class="scr">En pantalla: «2. Término fijo»</span></td><td class="voz">Dos: el término fijo. Lo pagas cada día, aunque en verano no gastes nada. Hay negocios con un fijo muy alto para lo poco que consumen.</td></tr><tr><td class="t">23–32 s</td><td class="img">Círculo en la fecha del contrato.<span class="scr">En pantalla: «3. Fecha de renovación»</span></td><td class="voz">Tres: cuándo se renueva. Si vence este invierno, que no se renueve con un precio peor sin que lo mires.</td></tr><tr><td class="t">32–38 s</td><td class="img">Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">¿No lo tienes claro? Comenta FUGA y te lo miramos.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Llega el frío. Antes de encender la calefacción del negocio, mira tres cosas de tu contrato de gas: el precio del kWh, el término fijo y la fecha de renovación. Comenta FUGA y te lo revisamos.</p></div>
+    
+  </article>
+  <article class="sp" id="v19">
+    <p class="sp-meta">Vídeo 19 de 22 · Jueves 12 de noviembre</p>
+    <h2>Si tu contrato de luz es más viejo que tu móvil, tenemos un problema</h2>
+    <p class="facts"><span><b>Formato:</b> Dinero tirado</span><span><b>Duración:</b> 35–38 s</span><span><b>Dónde:</b> Plató + efecto Higgsfield</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Un móvil antiguo de teclas.</span></li><li><span>Un contrato impreso (puede ser de ejemplo, rotulado como tal).</span></li><li><span>Clip de Higgsfield: el contrato envejece y se deshace.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">El jefe levanta el móvil de teclas junto al contrato.<span class="scr">En pantalla: «¿TU CONTRATO ES MÁS VIEJO QUE TU MÓVIL?»</span></td><td class="voz">Si tu contrato de luz es más viejo que tu móvil, tenemos un problema.</td></tr><tr><td class="t">3–16 s</td><td class="img">Higgsfield: el contrato amarillea y se deshace. Vuelve al jefe.<span class="scr">En pantalla: «2021: tarifas nuevas · 2022: precios disparados»</span></td><td class="voz">Desde 2021 ha cambiado todo: tarifas nuevas para todos, precios que se dispararon en 2022 y bajaron después, y ofertas nuevas cada año.</td></tr><tr><td class="t">16–26 s</td><td class="img">El jefe a cámara.</td><td class="voz">Si tu negocio sigue con el precio que firmó hace años, nadie ha comprobado si sigue siendo bueno. Puede que lo sea. Pero tu compañía no tiene ningún motivo para llamarte y decírtelo.</td></tr><tr><td class="t">26–33 s</td><td class="img">Plano cenital: un dedo señala la fecha del contrato.<span class="scr">En pantalla: «Busca la fecha de tu contrato»</span></td><td class="voz">Haz una cosa: busca la fecha de tu contrato. Si no la encuentras, peor.</td></tr><tr><td class="t">33–38 s</td><td class="img">Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">Comenta FUGA y lo revisamos gratis.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Desde 2021 el mercado de la luz ha cambiado por completo. Si tu negocio sigue con un contrato de hace años, nadie ha comprobado si sigue siendo bueno. Busca la fecha y comenta FUGA.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Se publica junto al carrusel «5 preguntas antes de firmar con el comercial que llama a tu puerta».</p>
+  </article>
+  <article class="sp" id="v20">
+    <p class="sp-meta">Vídeo 20 de 22 · Viernes 13 de noviembre</p>
+    <h2>Un día conmigo: 23 años, <span class="ph">[N]</span> empresas y cero corbatas</h2>
+    <p class="facts"><span><b>Formato:</b> Día a día</span><span><b>Duración:</b> 38–40 s</span><span><b>Dónde:</b> Un día de trabajo real</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Grabar un día real con cámara ligera, de la mañana a la noche.</span></li><li><span>Una visita real a un negocio (con permiso).</span></li><li><span>Número real de empresas que lleváis.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Llaves en la puerta de la oficina, temprano.<span class="scr">En pantalla: «UN DÍA CONMIGO · 23 AÑOS · <span class="ph">[N]</span> EMPRESAS»</span></td><td class="voz">Un día conmigo: 23 años, <span class="ph">[N]</span> empresas y cero corbatas.</td></tr><tr><td class="t">3–12 s</td><td class="img">Montaje: café, ordenador, lista de llamadas.<span class="scr">En pantalla: «<span class="ph">[hora real]</span>»</span></td><td class="voz"><em class="dir">Voz en off</em> Empiezo a las <span class="ph">[hora]</span>. Lo primero, las facturas que han llegado por la noche.</td></tr><tr><td class="t">12–22 s</td><td class="img">En el coche y llegando a un negocio, sin datos privados.<span class="scr">En pantalla: «<span class="ph">[hora]</span> · Visita a un <span class="ph">[actividad]</span>»</span></td><td class="voz">A media mañana, visita. Hoy, un <span class="ph">[actividad]</span> que <span class="ph">[lo que sea verdad de ese caso]</span>.</td></tr><tr><td class="t">22–32 s</td><td class="img">Oficina: llamadas, un compañero, la campana.</td><td class="voz">Por la tarde, estudios y llamadas. Algunos me cuelgan. Otros firman. Y cuando firman, suena la campana.</td></tr><tr><td class="t">32–40 s</td><td class="img">Al final del día, el jefe apaga la luz de la oficina. Negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">Mañana, más. Si quieres que el siguiente sea tu negocio, comenta FUGA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Un día cualquiera en BajaTuLuz: facturas por la mañana, visitas a media mañana, estudios y llamadas por la tarde. Y la campana, cuando alguien firma. Comenta FUGA.</p></div>
+    <p class="note"><b>Antes de grabar:</b> El clic final esta vez es real: el jefe apaga la luz de la oficina.</p>
+  </article>
+  <article class="sp" id="v21">
+    <p class="sp-meta">Vídeo 21 de 22 · Lunes 16 de noviembre</p>
+    <h2><span class="ph">[X €]</span> en 30 días. Estas son las tres empresas que más ahorraron.</h2>
+    <p class="facts"><span><b>Formato:</b> Ahorrómetro del mes</span><span><b>Duración:</b> 40–43 s</span><span><b>Dónde:</b> Plató</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>Total ahorrado en los 30 días (CRM).</span></li><li><span>Los tres casos con más ahorro del mes: actividad, ciudad, ahorro al año y qué se cambió, con permiso.</span></li><li><span>Número de veces que ha sonado la campana.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">El Ahorrómetro gira hasta el total del mes.<span class="scr">En pantalla: «<span class="ph">[X €]</span> EN 30 DÍAS»</span></td><td class="voz"><span class="ph">[X €]</span> en 30 días. Es lo que hemos ahorrado a empresas este mes.</td></tr><tr><td class="t">3–12 s</td><td class="img">El jefe a cámara.</td><td class="voz">Y estas son las tres que más han ahorrado.</td></tr><tr><td class="t">12–30 s</td><td class="img">Tres tarjetas en pantalla, una por caso.<span class="scr">En pantalla: «3.º <span class="ph">[actividad]</span> · 2.º <span class="ph">[actividad]</span> · 1.º <span class="ph">[actividad]</span>»</span></td><td class="voz">Tercera: un <span class="ph">[actividad]</span> de <span class="ph">[ciudad]</span>, <span class="ph">[X €]</span> al año. Segunda: un <span class="ph">[actividad]</span>, <span class="ph">[X €]</span>. Y la primera: un <span class="ph">[actividad]</span> de <span class="ph">[ciudad]</span>, <span class="ph">[X €]</span> al año, por <span class="ph">[qué se cambió]</span>.</td></tr><tr><td class="t">30–38 s</td><td class="img">El jefe junto a la campana. La toca.<span class="scr">En pantalla: «La campana: <span class="ph">[N]</span> veces»</span></td><td class="voz">Este mes la campana ha sonado <span class="ph">[N]</span> veces. El mes que viene quiero más.</td></tr><tr><td class="t">38–43 s</td><td class="img">Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">¿Te apuntas? Comenta FUGA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Balance del mes: <span class="ph">[X €]</span> ahorrados a empresas en 30 días. Las tres que más: <span class="ph">[actividad 1]</span>, <span class="ph">[actividad 2]</span> y <span class="ph">[actividad 3]</span>. ¿El mes que viene, tu negocio? Comenta FUGA.</p></div>
+    <p class="note"><b>Antes de grabar:</b> Se fija en el perfil en lugar del vídeo del 19 de octubre.</p>
+  </article>
+  <article class="sp" id="v22">
+    <p class="sp-meta">Vídeo 22 de 22 · Martes 17 de noviembre</p>
+    <h2>Me mandas una foto de tu factura y en <span class="ph">[plazo]</span> sabes cuánto estás tirando</h2>
+    <p class="facts"><span><b>Formato:</b> Cierre</span><span><b>Duración:</b> 35–38 s</span><span><b>Dónde:</b> Plató</span></p>
+    <div class="need"><h3>Qué hace falta</h3><ul class="check"><li><span>El plazo real en el que entregáis un estudio.</span></li><li><span>Grabación de pantalla del mensaje automático de FUGA.</span></li></ul></div>
+    <div class="table-scroll">
+      <table class="beats">
+        <thead><tr><th>Tiempo</th><th>Imagen y texto en pantalla</th><th>Voz (lo que se dice)</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0–3 s</td><td class="img">Una mano hace una foto a una factura con el móvil.<span class="scr">En pantalla: «UNA FOTO · <span class="ph">[PLAZO]</span> · TU AHORRO»</span></td><td class="voz">Me mandas una foto de tu factura y en <span class="ph">[plazo]</span> sabes cuánto estás tirando.</td></tr><tr><td class="t">3–12 s</td><td class="img">Pantalla del móvil: el comentario FUGA y el mensaje automático.<span class="scr">En pantalla: «1. Comenta FUGA»</span></td><td class="voz">Así funciona. Uno: comentas FUGA o me escribes. Te llega un mensaje y te pedimos lo básico: qué negocio tienes y una foto de la última factura.</td></tr><tr><td class="t">12–22 s</td><td class="img">El equipo trabajando en un estudio.<span class="scr">En pantalla: «2. Estudio gratis»</span></td><td class="voz">Dos: hacemos el estudio. Gratis. Si hace falta más información, te la pedimos.</td></tr><tr><td class="t">22–32 s</td><td class="img">El jefe explicando un estudio a un cliente.<span class="scr">En pantalla: «3. Te lo explicamos»</span></td><td class="voz">Tres: te explicamos lo que hemos encontrado. Si hay ahorro, te lo tramitamos. Si no lo hay, te lo decimos y no te molestamos más.</td></tr><tr><td class="t">32–38 s</td><td class="img">A cámara. Clic y negro.<span class="scr">En pantalla: «Comenta FUGA»</span></td><td class="voz">Así de simple. Comenta FUGA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caption"><h3>Texto de la publicación</h3><p>Así funciona: comentas FUGA, nos mandas una foto de tu factura y en <span class="ph">[plazo]</span> te decimos cuánto estás tirando. El estudio es gratis. Y si no hay ahorro, te lo decimos.</p></div>
+    
+  </article>
+
+  <section class="block np">
+    <p class="sp-meta">Carruseles</p>
+    <h2>Texto de los 4 carruseles</h2>
+    <p class="lead">Una idea por diapositiva y la cifra siempre más grande que el texto. Se publican los jueves, junto al reel de «Dinero tirado».</p>
+    <div class="carrs">
+      <div class="carr"><p class="sp-meta">Jueves 22 de octubre</p><h3>7 fugas de dinero en la factura de tu negocio</h3><ol><li>Portada: «Tu negocio tiene una fuga. Estas son las 7 más comunes.»</li><li>Potencia que te sobra: la pagas todos los días, abras o no.</li><li>Energía reactiva: en contratos de más de 15 kW. Busca esa línea en tu factura.</li><li>Un precio que firmaste hace años y nadie ha revisado.</li><li>Servicios añadidos que nunca pediste.</li><li>Excesos de potencia: un recargo que se puede evitar.</li><li>Alquiler de equipos de medida: mira cuánto pagas al año.</li><li>Lo que sigue encendido con la persiana bajada.</li><li>Cierre: «¿Cuántas tiene la tuya? Comenta FUGA y te mandamos la lista.»</li></ol><p class="note">Es también el PDF que se envía por mensaje a quien comenta FUGA.</p></div><div class="carr"><p class="sp-meta">Jueves 29 de octubre</p><h3>6 formas de ahorrar hoy sin gastar un euro</h3><ol><li>Portada: «Ahorro gratis. Hoy. Sin llamar a nadie.»</li><li>Busca en la factura líneas de «servicio» y pregunta qué son.</li><li>Mira la fecha de tu contrato y si tiene permanencia.</li><li>Si tu contrato tiene precios por horas, mueve a la noche lo que puedas: termo, lavavajillas.</li><li>Revisa la temperatura y las gomas de cámaras y neveras.</li><li>Haz una lista de lo que se apaga al cerrar: cartel, cafetera, pantallas.</li><li>Pide un estudio gratis: nos paga la comercializadora, no tú.</li><li>Cierre: «Guárdalo y comenta FUGA.»</li></ol></div><div class="carr"><p class="sp-meta">Jueves 5 de noviembre</p><h3>¿Cuánto paga de luz? 5 negocios: adivina antes de pasar</h3><ol><li>Portada: «5 negocios, 5 facturas. Adivina antes de pasar.»</li><li>Un bar: ¿cuánto paga al mes? A, B o C.</li><li>Respuesta: <span class="ph">[X €]</span> al mes. Lo que le ahorramos: <span class="ph">[X €]</span> al año.</li><li>Una peluquería: A, B o C.</li><li>Respuesta y ahorro.</li><li>Un gimnasio: A, B o C.</li><li>Respuesta y ahorro.</li><li>Una panadería: A, B o C.</li><li>Respuesta y ahorro.</li><li>Una oficina: A, B o C.</li><li>Respuesta y ahorro.</li><li>Cierre: «¿Cuántas has acertado? Y si quieres saber cuánto podrías pagar tú, comenta FUGA.»</li></ol><p class="note">Solo cifras reales de clientes que acepten. Se puede anonimizar: «un bar de Valencia».</p></div><div class="carr"><p class="sp-meta">Jueves 12 de noviembre</p><h3>5 preguntas antes de firmar con el comercial que llama a tu puerta</h3><ol><li>Portada: «Antes de firmar, haz estas 5 preguntas.»</li><li>¿El descuento es sobre qué: la energía, la potencia o el total?</li><li>¿Cuánto dura ese precio y qué pasa después?</li><li>¿Hay permanencia? ¿Cuánto cuesta irse?</li><li>¿Me cobráis algún servicio añadido?</li><li>¿Con qué consumo habéis calculado el ahorro?</li><li>Cierre: «Si no te lo da por escrito, no firmes. Te lo revisamos gratis: comenta FUGA.»</li></ol></div>
+    </div>
+  </section>
+</main>
