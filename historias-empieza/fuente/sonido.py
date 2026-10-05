@@ -176,7 +176,7 @@ def click(v=1):
     out = np.zeros(int(d * SR))
 
     def hit(at, amp):
-        s = filt(noise(0.04), lo=1500) * decay(0.04, 0.0025)
+        s = filt(noise(0.04), 1500, 7500) * decay(0.04, 0.0025)
         s += 0.6 * np.sin(2 * np.pi * 2400 * t_axis(0.04)) * decay(0.04, 0.005)
         s += 0.5 * np.sin(2 * np.pi * 950 * t_axis(0.04)) * decay(0.04, 0.01)
         i = int(at * SR)
@@ -185,7 +185,8 @@ def click(v=1):
     hit(0.0, 1.0)
     hit(0.013, 0.45)
     out += 0.35 * np.sin(2 * np.pi * 110 * t_axis(d)) * decay(d, 0.03)
-    return 0.55 * v * out
+    out[: int(0.0015 * SR)] *= np.linspace(0, 1, int(0.0015 * SR))
+    return 0.4 * v * out
 
 
 FX = {
