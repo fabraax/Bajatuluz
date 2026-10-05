@@ -1,1003 +1,521 @@
-<title>BajaTuLuz Plan de Contenido v2</title>
+<title>BajaTuLuz Plan de Contenido</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Figtree:wght@400;500;600;700;800&display=swap">
 <style>
-/* Layout: dossier de una columna (máx. 900px). Banda verde de marca arriba, secciones numeradas como el plan v1,
-   tablas tipo hoja de producción y las cifras en un display de contador eléctrico (mono + lima). */
+/* Layout: documento de trabajo en una columna, blanco, con los dos verdes del logo.
+   Diseño de un solo tema (claro) a propósito: es un documento para imprimir y enseñar. */
 :root {
-  --paper: #f4f6ee;
-  --card: #fbfcf7;
-  --ink: #0f241d;
-  --ink-soft: #34483f;
-  --muted: #66766d;
-  --rule: #d4dccd;
-  --forest: #143a2f;
-  --forest-2: #1d4a3d;
-  --on-forest: #e9f2de;
-  --on-forest-muted: #a9c0b0;
-  --lime: #c8f24f;
-  --lime-text: #3f6a00;
-  --lime-wash: #ecf8c9;
-  --alarm: #b8391f;
-  --alarm-wash: #fbe6df;
-  --seg-3: #6f9c2c;
-  --seg-4: #9db8a8;
-  --seg-5: #dfe7d4;
-
-  --f-display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --f-body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-
-  --fs-xs: 0.75rem;
-  --fs-sm: 0.875rem;
-  --fs-body: 1rem;
-  --fs-lead: 1.1875rem;
-  --fs-h3: 1.3125rem;
-  --fs-h2: clamp(1.75rem, 4.2vw, 2.5rem);
-  --fs-h1: clamp(2.4rem, 7.4vw, 4.4rem);
+  --paper: #ffffff;
+  --ink: #1f2a17;
+  --ink-2: #3a4630;
+  --muted: #637058;
+  --rule: #dde5d2;
+  --olive: #5c762e;
+  --olive-dark: #435a21;
+  --lime: #bede5d;
+  --lime-wash: #f1f7dd;
+  --soft: #f7f9f2;
+  --f-head: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0c1c17; --card: #112620; --ink: #e7eee1; --ink-soft: #c3d0c4; --muted: #8fa196;
-    --rule: #243f37; --forest: #163f34; --forest-2: #1f5244; --on-forest: #eef6e4; --on-forest-muted: #a8c2b2;
-    --lime: #c8f24f; --lime-text: #c8f24f; --lime-wash: #24371a; --alarm: #ff8a6b; --alarm-wash: #3a1d15;
-    --seg-3: #7fae36; --seg-4: #5f7c6d; --seg-5: #34493f;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #0c1c17; --card: #112620; --ink: #e7eee1; --ink-soft: #c3d0c4; --muted: #8fa196;
-  --rule: #243f37; --forest: #163f34; --forest-2: #1f5244; --on-forest: #eef6e4; --on-forest-muted: #a8c2b2;
-  --lime: #c8f24f; --lime-text: #c8f24f; --lime-wash: #24371a; --alarm: #ff8a6b; --alarm-wash: #3a1d15;
-  --seg-3: #7fae36; --seg-4: #5f7c6d; --seg-5: #34493f;
-  color-scheme: dark;
-}
-
 * { box-sizing: border-box; }
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--f-body);
-  font-size: var(--fs-body);
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.5;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
-.wrap { max-width: 900px; margin: 0 auto; padding-inline: 20px; }
-h1, h2, h3, h4 { font-family: var(--f-display); text-wrap: balance; margin: 0; color: var(--ink); word-spacing: 0.06em; }
+.doc { max-width: 820px; margin: 0 auto; padding-inline: 20px; padding-block: 32px 48px; }
+h1, h2, h3 { font-family: var(--f-head); color: var(--ink); margin: 0; text-wrap: balance; line-height: 1.15; }
+h1 { font-size: clamp(2rem, 6vw, 2.75rem); font-weight: 800; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; font-weight: 800; display: flex; gap: 12px; align-items: baseline; }
+h2 .num { color: var(--olive); font-weight: 800; }
+h3 { font-size: 1.0625rem; font-weight: 700; }
 p { margin: 0; }
 b, strong { font-weight: 700; }
-a { color: var(--lime-text); }
-:focus-visible { outline: 3px solid var(--lime); outline-offset: 2px; }
+.muted { color: var(--muted); }
+.small { font-size: 0.875rem; }
 
-/* Masthead */
-.mast { background: var(--forest); color: var(--on-forest); }
-.mast .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center; padding-block: 18px; }
-.wordmark { font-family: var(--f-display); font-weight: 900; font-stretch: 112%; letter-spacing: 0.02em; color: var(--lime); font-size: 1.25rem; }
-.mast-label { font-family: var(--f-mono); font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-forest-muted); }
-
-/* Hero */
-.hero { padding-block: 56px 40px; display: grid; gap: 22px; }
-.eyebrow { font-family: var(--f-mono); font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lime-text); }
-.hero h1 { font-size: var(--fs-h1); font-weight: 900; font-stretch: 110%; line-height: 0.98; letter-spacing: -0.01em; }
-.hl { background: var(--lime); color: #0f241d; padding: 0 0.12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-.lead { font-size: var(--fs-lead); color: var(--ink-soft); max-width: 62ch; }
-
-/* Contador */
-.meter { background: var(--forest); border-radius: 6px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: hidden; }
-.meter div { padding: 16px 14px 14px; border-right: 1px solid var(--forest-2); display: grid; gap: 4px; }
-.meter div:last-child { border-right: 0; }
-.meter b { font-family: var(--f-mono); font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.2rem); color: var(--lime); line-height: 1; font-variant-numeric: tabular-nums; }
-.meter span { font-size: var(--fs-xs); color: var(--on-forest-muted); text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--f-mono); }
-@media (max-width: 620px) { .meter { grid-template-columns: repeat(2, minmax(0, 1fr)); } .meter div { border-bottom: 1px solid var(--forest-2); } .meter div:last-child { grid-column: 1 / -1; } }
-
-.ph { font-family: var(--f-mono); font-size: 0.92em; background: var(--lime-wash); color: var(--lime-text); padding: 0 0.25em; border-bottom: 1.5px dashed var(--lime-text); white-space: nowrap; border-radius: 2px; }
-.legend { display: flex; gap: 10px; align-items: baseline; font-size: var(--fs-sm); color: var(--muted); max-width: 70ch; }
+/* Portada */
+.cover { display: grid; gap: 14px; padding-bottom: 28px; }
+.logo { width: 230px; max-width: 60%; height: auto; display: block; margin-bottom: 18px; }
+.kicker { font-size: 0.875rem; font-weight: 600; color: var(--olive); }
+.dates { font-size: 1.0625rem; color: var(--ink-2); font-weight: 500; }
+.lead { font-size: 1.125rem; color: var(--ink-2); max-width: 60ch; margin-top: 6px; }
+.figures { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 2px solid var(--lime); margin-top: 12px; }
+.figures div { padding: 14px 12px 14px 0; display: grid; gap: 2px; }
+.figures b { font-family: var(--f-head); font-size: 1.75rem; font-weight: 800; color: var(--olive); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.figures span { font-size: 0.875rem; color: var(--ink-2); }
+@media (max-width: 560px) { .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* Secciones */
-section { padding-block: 52px; border-top: 1px solid var(--rule); }
-.sec-head { display: grid; gap: 10px; margin-bottom: 26px; }
-section h2 { font-size: var(--fs-h2); font-weight: 850; font-stretch: 106%; line-height: 1.05; letter-spacing: -0.005em; }
-.sec-head p { color: var(--ink-soft); font-size: 1.0625rem; max-width: 66ch; }
-h3 { font-size: var(--fs-h3); font-weight: 800; font-stretch: 104%; line-height: 1.2; }
-h4 { font-size: 1rem; font-weight: 800; font-stretch: 104%; }
-.stack { display: grid; gap: 18px; }
-.stack > *, .two > *, .pod-hero > *, .eps > *, .series > *, .carr > * { min-width: 0; }
-.prose { display: grid; gap: 12px; max-width: 68ch; }
-.muted { color: var(--muted); }
-.small { font-size: var(--fs-sm); }
+section { padding-block: 28px; border-top: 1px solid var(--rule); display: grid; gap: 16px; }
+.intro { color: var(--ink-2); max-width: 66ch; }
+.promise { background: var(--lime-wash); border-radius: 4px; padding: 18px 20px; display: grid; gap: 6px; }
+.promise p.big { font-family: var(--f-head); font-weight: 800; font-size: 1.375rem; line-height: 1.25; color: var(--olive-dark); text-wrap: balance; }
+.points { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.points li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; }
+.points li::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--lime); margin-top: 7px; }
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.cols > * { min-width: 0; }
+@media (max-width: 640px) { .cols { grid-template-columns: 1fr; } }
+.card { border: 1px solid var(--rule); border-radius: 4px; padding: 16px; display: grid; gap: 8px; align-content: start; }
+.bio { background: var(--soft); border-radius: 4px; padding: 12px 14px; line-height: 1.6; font-size: 0.9375rem; }
+.ph { background: var(--lime-wash); color: var(--olive-dark); font-weight: 600; padding: 0 3px; border-radius: 2px; white-space: nowrap; }
 
 /* Tablas */
-.table-scroll { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--card); }
+.table-scroll { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
-th { background: var(--forest); color: var(--on-forest); font-family: var(--f-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; text-align: left; font-weight: 700; padding: 11px 14px; }
-td { padding: 11px 14px; border-top: 1px solid var(--rule); vertical-align: top; }
-.vs td:first-child { color: var(--muted); width: 44%; }
-.vs td:last-child { font-weight: 600; }
-.vs td:first-child s { text-decoration-color: var(--alarm); text-decoration-thickness: 1.5px; }
+th { text-align: left; font-size: 0.8125rem; font-weight: 700; color: var(--olive-dark); background: var(--lime-wash); padding: 9px 12px; }
+td { padding: 9px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+td.fmt { color: var(--olive-dark); font-weight: 700; white-space: nowrap; }
+.week-tbl td:first-child { white-space: nowrap; font-weight: 700; }
+.cal { min-width: 640px; }
+.cal td.day { white-space: nowrap; font-weight: 700; width: 92px; font-variant-numeric: tabular-nums; }
+.cal td.fmt { width: 150px; white-space: normal; }
+.cal td small { display: block; color: var(--muted); font-size: 0.8125rem; margin-top: 2px; }
+.cal tr.wk td { font-family: var(--f-head); font-weight: 800; font-size: 0.9375rem; color: var(--ink); padding-top: 18px; border-bottom: 2px solid var(--lime); }
+.cal tr.we td { background: var(--soft); color: var(--muted); }
+.cal tr.we td.fmt { color: var(--muted); }
 
-/* Por qué aburría */
-.why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 28px; }
-.why > div { border-top: 3px solid var(--alarm); padding-top: 12px; display: grid; gap: 6px; align-content: start; }
-.why h4 { color: var(--ink); }
-.why p { font-size: 0.9375rem; color: var(--ink-soft); }
-@media (max-width: 720px) { .why { grid-template-columns: 1fr; } }
-
-/* Promesa */
-.promise { background: var(--forest); color: var(--on-forest); border-radius: 6px; padding: 28px; display: grid; gap: 12px; }
-.promise .eyebrow { color: var(--lime); }
-.promise p.big { font-family: var(--f-display); font-weight: 900; font-stretch: 108%; font-size: clamp(1.6rem, 4.4vw, 2.4rem); line-height: 1.05; color: var(--on-forest); text-wrap: balance; }
-.promise p.big em { font-style: normal; color: var(--lime); }
-.promise p { color: var(--on-forest-muted); max-width: 64ch; }
-.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-@media (max-width: 720px) { .two { grid-template-columns: 1fr; } }
-.box { border: 1px solid var(--rule); background: var(--card); border-radius: 6px; padding: 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
-.bio { font-family: var(--f-mono); font-size: 0.875rem; line-height: 1.7; background: var(--paper); border: 1px dashed var(--rule); padding: 14px; border-radius: 4px; white-space: pre-line; }
-
-/* Pilares */
-.mix { display: flex; height: 46px; border-radius: 6px; overflow: hidden; border: 1px solid var(--rule); }
-.mix div { display: flex; align-items: center; padding-inline: 10px; font-family: var(--f-mono); font-size: var(--fs-xs); font-weight: 700; white-space: nowrap; overflow: hidden; }
-.m1 { width: 30%; background: var(--forest); color: var(--on-forest); }
-.m2 { width: 25%; background: var(--lime); color: #0f241d; }
-.m3 { width: 20%; background: var(--seg-3); color: #0f241d; }
-.m4 { width: 15%; background: var(--seg-4); color: var(--ink); }
-.m5 { width: 10%; background: var(--seg-5); color: var(--ink); }
-.pillars { display: grid; gap: 0; margin-top: 18px; border-top: 1px solid var(--rule); }
-.pillar { display: grid; grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1.25fr); gap: 6px 20px; padding-block: 16px; border-bottom: 1px solid var(--rule); align-items: start; }
-.pillar .pct { font-family: var(--f-mono); font-weight: 700; font-size: 1.5rem; font-variant-numeric: tabular-nums; line-height: 1.1; }
-.pillar p { font-size: 0.9375rem; color: var(--ink-soft); }
-.pillar .goal { font-family: var(--f-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--lime-text); margin-top: 4px; display: block; }
-@media (max-width: 680px) { .pillar { grid-template-columns: 56px minmax(0, 1fr); } .pillar > p { grid-column: 2; } }
-
-/* Ganchos */
-.formulas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-@media (max-width: 760px) { .formulas { grid-template-columns: 1fr; } }
-.formula { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 16px; display: grid; gap: 8px; align-content: start; }
-.formula .k { font-family: var(--f-mono); font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lime-text); }
-.formula p { font-family: var(--f-display); font-weight: 800; font-size: 1.125rem; line-height: 1.2; }
-.formula small { color: var(--muted); font-size: var(--fs-sm); }
-.rules { counter-reset: r; display: grid; gap: 10px; padding: 0; margin: 0; list-style: none; }
-.rules li { counter-increment: r; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: baseline; }
-.rules li::before { content: counter(r); font-family: var(--f-mono); font-weight: 700; background: var(--lime); color: #0f241d; border-radius: 3px; text-align: center; font-size: 0.8125rem; padding: 2px 0; }
-.hookgroups { display: grid; gap: 28px; }
-.hookgroup h3 { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; margin-bottom: 8px; }
-.hookgroup h3 span { font-family: var(--f-mono); font-size: var(--fs-xs); font-weight: 500; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
-.hooks { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.hooks li { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 8px; padding-block: 9px; border-bottom: 1px solid var(--rule); font-size: 1.0625rem; font-weight: 600; line-height: 1.35; }
-.hooks li .n { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--muted); font-weight: 500; padding-top: 3px; font-variant-numeric: tabular-nums; }
-.hooks li small { display: block; font-weight: 400; color: var(--muted); font-size: var(--fs-sm); margin-top: 2px; }
-
-/* Series */
-.series { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-@media (max-width: 720px) { .series { grid-template-columns: 1fr; } }
-.serie { border: 1px solid var(--rule); background: var(--card); border-radius: 6px; padding: 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
-.serie h3 { font-weight: 900; font-stretch: 112%; font-size: 1.25rem; letter-spacing: 0.01em; }
-.chip { display: inline-block; font-family: var(--f-mono); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 99px; background: var(--lime-wash); color: var(--lime-text); justify-self: start; }
-.serie p { font-size: 0.9375rem; color: var(--ink-soft); }
-.serie .need { font-size: var(--fs-sm); color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 8px; }
-.rituals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
-@media (max-width: 760px) { .rituals { grid-template-columns: 1fr; } }
-.ritual { background: var(--forest); color: var(--on-forest); border-radius: 6px; padding: 18px; display: grid; gap: 6px; align-content: start; }
-.ritual h4 { color: var(--lime); font-weight: 900; font-stretch: 110%; }
-.ritual p { color: var(--on-forest-muted); font-size: 0.9375rem; }
-
-/* Calendario */
-.cal { min-width: 760px; font-size: 0.875rem; }
-.cal td { padding: 9px 12px; }
-.cal td.day { font-family: var(--f-mono); white-space: nowrap; font-variant-numeric: tabular-nums; width: 92px; }
-.cal td.day b { display: block; font-size: 1rem; }
-.cal td.day span { color: var(--muted); font-size: 0.75rem; }
-.cal td.fmt { width: 150px; color: var(--ink-soft); }
-.cal td.hook { font-weight: 600; }
-.cal td.hook small { display: block; font-weight: 400; color: var(--muted); margin-top: 3px; }
-.cal td.goal { width: 130px; color: var(--muted); font-size: 0.8125rem; }
-.cal tr.week td { background: var(--forest-2); color: var(--on-forest); font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; padding: 8px 12px; }
-.cal tr.week td em { font-style: normal; color: var(--lime); }
-.cal tr.opt td { background: color-mix(in srgb, var(--paper) 70%, var(--card)); }
-.cal tr.sun td { color: var(--muted); background: var(--paper); }
-.cal tr.sun td.hook { font-weight: 400; }
-.tag { display: inline-block; font-family: var(--f-mono); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.04em; padding: 2px 7px; border-radius: 3px; margin-top: 4px; white-space: nowrap; }
-.t-ahorro { background: var(--forest); color: var(--lime); }
-.t-tirado { background: var(--alarm-wash); color: var(--alarm); }
-.t-curio { background: var(--lime-wash); color: var(--lime-text); }
-.t-pod { background: var(--ink); color: var(--paper); }
-.t-dia { background: var(--seg-5); color: var(--ink); }
-.t-reto { background: var(--lime); color: #0f241d; }
-.wild { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 22px; margin-top: 8px; }
-@media (max-width: 680px) { .wild { grid-template-columns: 1fr; } }
-.wild > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 10px; padding-block: 8px; border-bottom: 1px solid var(--rule); font-size: 0.9375rem; }
-.wild b { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--lime-text); }
+/* Noticias */
+.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; gap: 10px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; }
+.steps li::before { content: counter(s); font-family: var(--f-head); font-weight: 800; color: var(--olive-dark); background: var(--lime-wash); border-radius: 3px; text-align: center; font-size: 0.875rem; line-height: 24px; height: 24px; }
+.news { display: grid; gap: 0; border-top: 1px solid var(--rule); }
+.news > div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 14px; padding-block: 12px; border-bottom: 1px solid var(--rule); }
+.news .d { font-weight: 700; color: var(--olive-dark); }
+.news p + p { margin-top: 4px; }
 
 /* Guiones */
-.scripts { display: grid; gap: 18px; }
-.script { border: 1px solid var(--rule); border-radius: 6px; background: var(--card); overflow: hidden; }
-.script header { background: var(--forest); color: var(--on-forest); padding: 14px 18px; display: grid; gap: 6px; }
-.script header .meta { font-family: var(--f-mono); font-size: var(--fs-xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-forest-muted); }
-.script header .meta b { color: var(--lime); }
-.script header h3 { color: var(--on-forest); font-size: 1.1875rem; }
-.script dl { margin: 0; display: grid; grid-template-columns: 112px minmax(0, 1fr); }
-.script dt, .script dd { padding: 10px 18px; border-top: 1px solid var(--rule); margin: 0; }
-.script dl > dt:first-of-type, .script dl > dd:first-of-type { border-top: 0; }
-.script dt { font-family: var(--f-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--lime-text); padding-top: 13px; }
-.script dd { font-size: 0.9375rem; }
-.script dd.first { background: var(--lime-wash); }
-.script dt.first { background: var(--lime-wash); }
-.script dd .say { font-weight: 700; }
-.script dd .note { color: var(--muted); font-size: var(--fs-sm); }
-@media (max-width: 600px) { .script dl { grid-template-columns: 1fr; } .script dd { border-top: 0; padding-top: 0; } .script dt { padding-bottom: 2px; } }
+.script { border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+.script header { padding: 12px 16px; background: var(--soft); border-bottom: 1px solid var(--rule); display: grid; gap: 2px; }
+.script header span { font-size: 0.8125rem; font-weight: 700; color: var(--olive); }
+.script dl { margin: 0; display: grid; grid-template-columns: 130px minmax(0, 1fr); }
+.script dt, .script dd { margin: 0; padding: 9px 16px; border-bottom: 1px solid var(--rule); font-size: 0.9375rem; }
+.script dt { font-weight: 700; color: var(--ink-2); }
+.script dl > *:nth-last-child(-n+2) { border-bottom: 0; }
+@media (max-width: 560px) { .script dl { grid-template-columns: 1fr; } .script dt { border-bottom: 0; padding-bottom: 0; } }
 
-/* Carruseles */
-.carr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-@media (max-width: 720px) { .carr { grid-template-columns: 1fr; } }
-.carr ol { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; font-size: 0.9375rem; color: var(--ink-soft); }
-.carr ol li::marker { font-family: var(--f-mono); color: var(--muted); font-size: 0.8125rem; }
+/* Ganchos */
+.hooks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 28px; }
+.hooks > div { min-width: 0; }
+@media (max-width: 640px) { .hooks { grid-template-columns: 1fr; } }
+.hooks h3 { color: var(--olive-dark); margin-bottom: 6px; }
+.hooks ul { list-style: none; margin: 0; padding: 0; }
+.hooks li { padding-block: 7px; border-bottom: 1px solid var(--rule); font-size: 0.9375rem; }
 
-/* Podcast */
-.pod-hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 22px; align-items: stretch; }
-@media (max-width: 760px) { .pod-hero { grid-template-columns: 1fr; } }
-.pod-name { background: var(--forest); border-radius: 6px; padding: 26px; display: grid; gap: 10px; align-content: center; }
-.pod-name .eyebrow { color: var(--lime); }
-.pod-name p.name { font-family: var(--f-display); font-weight: 900; font-stretch: 118%; font-size: clamp(1.9rem, 8.4vw, 3.2rem); overflow-wrap: anywhere; line-height: 0.95; color: var(--lime); letter-spacing: 0.01em; }
-.pod-name p { color: var(--on-forest-muted); }
-.runsheet { display: grid; gap: 0; border-top: 1px solid var(--rule); }
-.runsheet > div { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; padding-block: 12px; border-bottom: 1px solid var(--rule); }
-.runsheet .t { font-family: var(--f-mono); font-weight: 700; font-size: 0.875rem; color: var(--lime-text); font-variant-numeric: tabular-nums; padding-top: 1px; }
-.runsheet p { font-size: 0.9375rem; color: var(--ink-soft); }
-.runsheet h4 { margin-bottom: 2px; }
-.eps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-@media (max-width: 720px) { .eps { grid-template-columns: 1fr; } }
-.ep { border: 1px solid var(--rule); background: var(--card); border-radius: 6px; padding: 18px; display: grid; gap: 8px; align-content: start; }
-.ep .num { font-family: var(--f-mono); font-size: var(--fs-xs); font-weight: 700; color: var(--muted); letter-spacing: 0.08em; }
-.ep p { font-size: 0.9375rem; color: var(--ink-soft); }
-.ep .clip { font-size: var(--fs-sm); border-top: 1px dashed var(--rule); padding-top: 8px; color: var(--ink); }
+/* Checklist */
+.check { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.check li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; }
+.check li::before { content: ""; width: 13px; height: 13px; border: 1.5px solid var(--ink-2); border-radius: 2px; margin-top: 4px; }
 
-/* Higgsfield */
-.prompts { display: grid; gap: 12px; }
-.prompt { border: 1px solid var(--rule); border-radius: 6px; background: var(--card); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 14px; padding: 14px 16px; align-items: start; }
-.prompt h4 { grid-column: 1; }
-.prompt h4 span { font-family: var(--f-body); font-weight: 500; color: var(--muted); font-size: var(--fs-sm); margin-left: 6px; }
-.prompt code { grid-column: 1 / -1; display: block; font-family: var(--f-mono); font-size: 0.8125rem; line-height: 1.55; background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; color: var(--ink-soft); white-space: pre-wrap; word-break: break-word; }
-.copy { grid-column: 2; grid-row: 1; font-family: var(--f-mono); font-size: 0.75rem; font-weight: 700; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); border-radius: 4px; padding: 5px 10px; cursor: pointer; }
-.copy:hover { background: var(--lime-wash); }
-.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; background: var(--card); }
-.flow li { padding: 14px; border-right: 1px solid var(--rule); display: grid; gap: 4px; align-content: start; font-size: 0.9375rem; }
-.flow li:last-child { border-right: 0; }
-.flow li b { font-family: var(--f-mono); font-size: var(--fs-xs); color: var(--lime-text); letter-spacing: 0.06em; text-transform: uppercase; }
-@media (max-width: 720px) { .flow { grid-template-columns: 1fr 1fr; } .flow li:nth-child(2) { border-right: 0; } .flow li:nth-child(-n+2) { border-bottom: 1px solid var(--rule); } }
+/* Aparte: podcast */
+.apart { border-top: 0; padding-top: 8px; }
+.apart .logo { width: 150px; margin-bottom: 4px; }
+.apart-label { font-size: 0.875rem; font-weight: 700; color: var(--olive); }
+.notice { background: var(--olive-dark); color: #ffffff; border-radius: 4px; padding: 16px 20px; font-size: 1.0625rem; line-height: 1.45; }
+.notice b { color: var(--lime); }
 
-/* Reglas */
-.red { display: grid; gap: 0; border-top: 1px solid var(--rule); }
-.red > div { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; padding-block: 12px; border-bottom: 1px solid var(--rule); }
-.red > div::before { content: ""; width: 12px; height: 12px; margin-top: 6px; border-radius: 2px; background: var(--alarm); }
-.red p { font-size: 0.9375rem; }
-.check { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 22px; }
-@media (max-width: 680px) { .check { grid-template-columns: 1fr; } }
-.check li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; font-size: 0.9375rem; padding-block: 6px; border-bottom: 1px solid var(--rule); }
-.check li::before { content: ""; width: 14px; height: 14px; border: 1.5px solid var(--ink-soft); border-radius: 3px; margin-top: 4px; }
+footer.end { border-top: 1px solid var(--rule); padding-top: 18px; color: var(--muted); font-size: 0.8125rem; }
 
-footer { border-top: 1px solid var(--rule); padding-block: 26px 40px; color: var(--muted); font-size: var(--fs-sm); display: grid; gap: 6px; }
-
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
-
-@page { size: A4; margin: 12mm 12mm 15mm; }
+@page { size: A4; margin: 15mm 16mm 17mm; }
 @media print {
-  :root { --fs-body: 10pt; --fs-lead: 11.5pt; --fs-h1: 38pt; --fs-h2: 21pt; --fs-h3: 12.5pt; }
-  :root { --paper: #ffffff; --card: #f7f9f1; }
-  body { background: var(--paper); }
-  .wrap { max-width: none; padding-inline: 0; }
-  .mast .wrap { padding-inline: 14px; }
-  .hero { padding-block: 26px 18px; }
-  section { padding-block: 22px 14px; break-before: auto; }
-  section.page { break-before: page; border-top: 0; padding-top: 0; }
-  .sec-head { break-after: avoid; }
-  .pod-name p.name { font-size: 23pt; font-stretch: 108%; overflow-wrap: normal; }
-  .hero h1 { font-size: 36pt; }
-  .copy { display: none; }
-  .script, .serie, .ep, .formula, .ritual, .prompt, .pillar, .promise, .hooks li, .runsheet > div, .red > div, .two > .box, .carr > .box, tr, .why, .meter { break-inside: avoid; }
-  .hookgroup h3 { break-after: avoid; }
-  h3 { break-after: avoid; }
-  .table-scroll { overflow: visible; }
-  .cal { min-width: 0; font-size: 8pt; line-height: 1.35; }
-  .cal td { padding: 3.5px 7px; }
-  .cal td.hook small { margin-top: 1px; }
-  .cal .tag { margin-top: 2px; padding: 1px 5px; }
-  .cal td.day b { font-size: 9pt; }
-  .hooks li { font-size: 10pt; padding-block: 5px; }
-  .hookgroups { gap: 16px; }
-  .sec-head { margin-bottom: 16px; }
+  body { font-size: 9.6pt; }
+  .doc { max-width: none; padding: 0; }
+  h1 { font-size: 30pt; }
+  h2 { font-size: 15pt; }
+  h3 { font-size: 10.5pt; }
+  .lead { font-size: 11pt; }
+  .figures b { font-size: 20pt; }
+  section { padding-block: 16px; display: block; }
+  section > * + * { margin-top: 12px; }
+  h2, .intro { break-after: avoid; }
+  .new-page { break-before: page; border-top: 0; padding-top: 0; }
+  .apart .logo { width: 120px; }
+  footer.end { padding-top: 12px; }
   table { font-size: 9pt; }
-  .script dt, .script dd { padding: 6px 12px; }
-  .script dd { font-size: 9.2pt; }
-  .script header { padding: 9px 12px; }
-  .scripts { gap: 10px; }
-  footer { break-before: avoid; }
+  .cal { min-width: 0; font-size: 8.8pt; }
+  .cal td { padding: 5px 8px; }
+  .cal tr.wk td { padding-top: 10px; }
+  th { padding: 6px 8px; }
+  td { padding: 6px 8px; }
+  .script dt, .script dd { padding: 6px 12px; font-size: 9.2pt; }
+  .script header { padding: 8px 12px; }
+  .hooks li { font-size: 9.2pt; padding-block: 5px; }
+  h2, h3, .script header { break-after: avoid; }
+  tr, .card, .script, .promise, .notice, .news > div, .points li, .steps li, .figures, .hooks > div { break-inside: avoid; }
+  .table-scroll { overflow: visible; }
 }
 </style>
 
-<header class="mast">
-  <div class="wrap">
-    <span class="wordmark">BAJATULUZ</span>
-    <span class="mast-label">Plan de contenido v2 · 30 días · 19 oct – 17 nov 2026</span>
-  </div>
-</header>
+<main class="doc">
 
-<main class="wrap">
+  <header class="cover">
+    <img class="logo" src="assets/logo-bajatuluz.png" alt="BajaTuLuz">
+    <p class="kicker">Plan de contenido para Instagram y TikTok · Negocios y empresas</p>
+    <h1>Plan de contenido: 30 días</h1>
+    <p class="dates">Del lunes 19 de octubre al martes 17 de noviembre de 2026</p>
+    <p class="lead">El plan anterior explicaba facturas. Este enseña resultados: cuánto dinero ahorramos a negocios reales, dónde lo estaban perdiendo y quién del equipo lo encuentra.</p>
+    <div class="figures">
+      <div><b>22</b><span>reels, de lunes a viernes</span></div>
+      <div><b>4</b><span>carruseles, los jueves</span></div>
+      <div><b>4</b><span>noticias, los miércoles</span></div>
+      <div><b>30</b><span>días con historias</span></div>
+    </div>
+  </header>
 
-  <div class="hero">
-    <span class="eyebrow">Plan de contenido v2 · Negocios y empresas</span>
-    <h1>Deja de explicar facturas. Enseña el <span class="hl">dinero</span>.</h1>
-    <p class="lead">A nadie le interesa entender su factura de luz. Quieren pagar menos y ver a alguien que lo consigue. Este plan cambia el centro del contenido: del papel al dinero, de la explicación al resultado y del consejo a la persona que lo hace.</p>
-    <div class="meter" role="list" aria-label="El plan en cifras">
-      <div role="listitem"><b>26</b><span>reels (8 del podcast)</span></div>
-      <div role="listitem"><b>04</b><span>episodios de podcast</span></div>
-      <div role="listitem"><b>04</b><span>carruseles</span></div>
-      <div role="listitem"><b>50</b><span>ganchos listos</span></div>
-      <div role="listitem"><b>08</b><span>series con nombre</span></div>
+  <section>
+    <h2><span class="num">1</span>Qué cambia</h2>
+    <ul class="points">
+      <li><span><b>Hablamos de dinero, no de facturas.</b> Cada vídeo enseña un ahorro conseguido o un gasto que se puede evitar. La explicación técnica va después y solo si hace falta.</span></li>
+      <li><span><b>Casos reales.</b> Cifras de clientes de verdad, con su permiso. Se acabaron las facturas inventadas.</span></li>
+      <li><span><b>El equipo da la cara.</b> El jefe, con 23 años, es la cara de la cuenta. Su edad llama la atención y se usa.</span></li>
+      <li><span><b>Noticias cada miércoles.</b> Lo que pasa con la luz y el gas, explicado para el dueño de un negocio.</span></li>
+    </ul>
+    <div class="promise">
+      <span class="small muted">La frase que resume la cuenta</span>
+      <p class="big">Encontramos el dinero que tu negocio tira en luz y gas. Gratis. Y si no hay ahorro, te lo decimos.</p>
     </div>
-    <p class="legend"><span class="ph">[X €]</span><span>Las cifras entre corchetes son huecos para datos reales de vuestros clientes. Una cifra real es el gancho más agresivo que existe. Una inventada os puede hundir.</span></p>
-  </div>
+    <p class="small muted">Las cifras marcadas así, <span class="ph">[X €]</span>, son huecos. Se rellenan con datos reales de clientes antes de grabar, nunca con cifras inventadas.</p>
+  </section>
 
-  <!-- 01 -->
-  <section id="diagnostico">
-    <div class="sec-head">
-      <span class="eyebrow">01 · Diagnóstico</span>
-      <h2>Por qué el plan anterior aburría</h2>
-      <p>El plan v1 estaba bien hecho, pero era un plan de asesor. Hablaba del producto (la factura) y no del resultado (el dinero). Además, tenía tanto cuidado de no prometer nada que no dejaba ganas de nada.</p>
-    </div>
-    <div class="why">
-      <div><h4>Hablaba de la factura</h4><p>«Tres cosas que revisaría en esta factura» es una clase. La gente hace scroll en las clases. Se para con el dinero, los cotilleos y las personas.</p></div>
-      <div><h4>Todo era ficticio</h4><p>Facturas inventadas, tarjetas y ejemplos rotulados. Sin un caso real con cifra real no hay nada que compartir ni nada que creer.</p></div>
-      <div><h4>Escondía al jefe</h4><p>El v1 usaba la edad del jefe una sola vez. Un jefe de 23 años que ahorra dinero a empresarios de 50 es el mejor gancho que tenéis. Hay que usarlo todo el mes.</p></div>
-    </div>
+  <section class="new-page">
+    <h2><span class="num">2</span>La semana tipo</h2>
+    <p class="intro">Cada día de la semana tiene su formato. Así se graba más rápido y la gente sabe qué esperar.</p>
     <div class="table-scroll">
-      <table class="vs">
-        <thead><tr><th>Antes (v1)</th><th>Ahora (v2)</th></tr></thead>
+      <table class="week-tbl">
+        <thead><tr><th>Día</th><th>Formato</th><th>Qué es</th><th>Ejemplo</th></tr></thead>
         <tbody>
-          <tr><td><s>«Tres cosas que revisaría en esta factura»</s></td><td>«Este bar tiraba <span class="ph">[2.340 €]</span> al año. Te enseño dónde.»</td></tr>
-          <tr><td><s>Te ayudamos a entender qué estás pagando</s></td><td>Encontramos el dinero que tu negocio tira. Gratis.</td></tr>
-          <tr><td>Facturas ficticias y tarjetas en una mesa</td><td>Casos reales, cifras reales, dueños reales en su local</td></tr>
-          <tr><td>Tono de asesor prudente</td><td>Tono de alguien que pilla el dinero perdido y lo enseña</td></tr>
-          <tr><td>12 reels, tres a la semana</td><td>26 reels, de lunes a sábado, con 8 clips del podcast</td></tr>
-          <tr><td>Podcast entre compañeros: «La factura sobre la mesa»</td><td>Podcast con empresarios y factura revisada en directo: «Enchufados»</td></tr>
-          <tr><td>Palabra clave: NEGOCIO</td><td>Palabra clave: FUGA, con mensaje automático</td></tr>
-          <tr><td>Sin enemigo</td><td>Enemigo: la inercia y la letra pequeña</td></tr>
-          <tr><td>Sin IA</td><td>Higgsfield para planos imposibles en el primer segundo</td></tr>
+          <tr><td>Lunes</td><td class="fmt">Ahorrómetro</td><td>Un caso real: cuánto pagaba, cuánto paga y qué cambiamos. Cada semana sube el total ahorrado.</td><td>«Este bar tiraba <span class="ph">[X €]</span> al año.»</td></tr>
+          <tr><td>Martes</td><td class="fmt">Curiosidad</td><td>Un dato que sorprende sobre energía y negocios. A veces lo medimos en un local.</td><td>«¿Qué gasta más en una peluquería: el secador o el termo?»</td></tr>
+          <tr><td>Miércoles</td><td class="fmt">Noticias</td><td>La noticia de luz o gas de la semana y lo que significa para un negocio.</td><td>«Este domingo cambia la hora. Revisa estos aparatos.»</td></tr>
+          <tr><td>Jueves</td><td class="fmt">Dinero tirado</td><td>Un gasto que los negocios pagan sin saberlo. Va con un carrusel.</td><td>«Cerraste en agosto. Tu factura no.»</td></tr>
+          <tr><td>Viernes</td><td class="fmt">Reto o día a día</td><td>Juzgamos facturas de seguidores, buscamos ahorro en 60 segundos o enseñamos el trabajo del equipo.</td><td>«Me has mandado tu factura. Vamos a juzgarla.»</td></tr>
+          <tr><td>Sáb. y dom.</td><td class="fmt">Historias</td><td>Encuestas, preguntas y lo que pasa en la oficina.</td><td>«¿Cuánto crees que paga de luz un bar?»</td></tr>
         </tbody>
       </table>
     </div>
-  </section>
-
-  <!-- 02 -->
-  <section id="promesa">
-    <div class="sec-head">
-      <span class="eyebrow">02 · Promesa, enemigo y perfil</span>
-      <h2>Una frase que se entienda en un segundo</h2>
-    </div>
-    <div class="stack">
-      <div class="promise">
-        <span class="eyebrow">La nueva promesa</span>
-        <p class="big">Encontramos el dinero que tu negocio <em>tira</em> en luz y gas. Gratis. Y si no hay, te lo decimos.</p>
-        <p>Tiene las tres cosas que mueven a un dueño de negocio: dinero perdido (dolor), gratis (cero riesgo) y honestidad (confianza). Todos los vídeos empujan hacia esta frase.</p>
+    <div class="cols">
+      <div class="card">
+        <h3>Tres costumbres que se repiten</h3>
+        <p><b>La campana.</b> Suena en la oficina cada vez que un cliente firma un ahorro. Se graba siempre.</p>
+        <p><b>El interruptor.</b> Todos los vídeos terminan con el clic de un interruptor y la pantalla en negro. Recuerda el nombre de la marca.</p>
+        <p><b>La palabra FUGA.</b> Todos los vídeos acaban igual: «Comenta FUGA». Quien la escribe recibe un mensaje automático.</p>
       </div>
-      <div class="two">
-        <div class="box">
-          <h3>El enemigo</h3>
-          <p>La inercia y la letra pequeña: el contrato que nadie ha mirado desde 2019, la potencia que sobra, los extras que nadie pidió y el «descuento» que no dice sobre qué se aplica.</p>
-          <p class="muted small">El enemigo no son las comercializadoras. Atacar a «las eléctricas» queda bien en un vídeo y fatal en la reunión con la compañía que os paga la comisión. Pegad fuerte al problema y nunca a vuestros socios.</p>
-        </div>
-        <div class="box">
-          <h3>Bio nueva</h3>
-          <div class="bio">BajaTuLuz | Ahorro para empresas
-Encontramos el dinero que tu negocio tira en luz y gas
-Ahorrómetro 2026: [X €] ahorrados a empresas
-Estudio gratis. Si no hay ahorro, te lo decimos
-Comenta o escribe FUGA</div>
-          <p class="muted small">El Ahorrómetro de la bio se actualiza cada lunes con el total real. Un número que sube es una razón para volver.</p>
-        </div>
+      <div class="card">
+        <h3>Bio nueva</h3>
+        <p class="bio">BajaTuLuz | Ahorro para empresas<br>Encontramos el dinero que tu negocio tira en luz y gas<br><span class="ph">[X €]</span> ahorrados a empresas en 2026<br>Estudio gratis. Si no hay ahorro, te lo decimos<br>Comenta o escribe FUGA</p>
+        <p class="small muted">La cifra de la bio se actualiza cada lunes con el total real.</p>
       </div>
     </div>
   </section>
 
-  <!-- 03 -->
-  <section id="pilares">
-    <div class="sec-head">
-      <span class="eyebrow">03 · Los cinco pilares</span>
-      <h2>De qué se habla y cuánto</h2>
-      <p>Cinco temas fijos. El podcast no es un pilar: es la cantera que alimenta a los cinco.</p>
-    </div>
-    <div class="mix" role="img" aria-label="Reparto: Dinero 30 %, Dinero tirado 25 %, Curiosidades 20 %, Día a día 15 %, Ahorro gratis 10 %">
-      <div class="m1">DINERO 30</div><div class="m2">TIRADO 25</div><div class="m3">CURIOSO 20</div><div class="m4">DÍA 15</div><div class="m5">GRATIS</div>
-    </div>
-    <div class="pillars">
-      <div class="pillar"><span class="pct">30 %</span><div><h3>Dinero</h3><span class="goal">Credibilidad · mensajes</span></div><p>Casos con cifra real: cuánto pagaba, cuánto paga, qué cambió. El Ahorrómetro semanal. Antes y después. Es el pilar que convierte.</p></div>
-      <div class="pillar"><span class="pct">25 %</span><div><h3>Dinero tirado</h3><span class="goal">Compartidos · mensajes</span></div><p>Lo que los negocios pagan sin saberlo: potencia que sobra, energía reactiva, excesos, servicios añadidos, contratos dormidos y consumo con la persiana bajada.</p></div>
-      <div class="pillar"><span class="pct">20 %</span><div><h3>Curiosidades</h3><span class="goal">Alcance · seguidores nuevos</span></div><p>Datos locos del mundo de la energía y los negocios. Lo medimos en directo. Es lo que ve gente que todavía no os conoce.</p></div>
-      <div class="pillar"><span class="pct">15 %</span><div><h3>Día a día</h3><span class="goal">Confianza · comunidad</span></div><p>El jefe de 23 y su equipo: visitas, llamadas, rechazos, la campana. Hace que la gente os siga a vosotros y no solo a los consejos.</p></div>
-      <div class="pillar"><span class="pct">10 %</span><div><h3>Ahorro gratis</h3><span class="goal">Guardados</span></div><p>Trucos que no cuestan nada y el porqué de que el estudio sea gratis. Es el valor añadido que se guarda y se reenvía.</p></div>
-    </div>
-  </section>
-
-  <!-- 04 -->
-  <section id="ganchos">
-    <div class="sec-head">
-      <span class="eyebrow">04 · Ganchos</span>
-      <h2>El primer segundo decide todo</h2>
-      <p>Tres fórmulas, cinco reglas y 50 ganchos listos para grabar. Los números entre corchetes se rellenan con casos reales.</p>
-    </div>
-    <div class="stack">
-      <div class="formulas">
-        <div class="formula"><span class="k">Cifra + víctima + culpable</span><p>«<span class="ph">[2.340 €]</span> · este bar · una línea que nadie mira»</p><small>La fórmula base del pilar Dinero.</small></div>
-        <div class="formula"><span class="k">Contraintuitivo</span><p>«Apagar las luces no te va a salvar.»</p><small>Choca con lo que todo el mundo cree y obliga a quedarse para saber por qué.</small></div>
-        <div class="formula"><span class="k">Pregunta con apuesta</span><p>«¿Qué gasta más: el secador o el termo?»</p><small>La gente comenta su respuesta antes de ver el final.</small></div>
-      </div>
-      <div class="box">
-        <h3>Reglas del primer segundo</h3>
-        <ol class="rules">
-          <li>Algo se mueve en el primer fotograma: se rompe una factura, cae una persiana, suena la campana o se apaga la luz.</li>
-          <li>La cifra aparece en pantalla, grande y en lima, antes de que acabe la frase.</li>
-          <li>La frase termina en tensión. La explicación viene después.</li>
-          <li>Prohibido empezar con «Hola, soy…», con el logo o con «Hoy os voy a hablar de…».</li>
-          <li>Hablar a cámara como en la barra de un bar, no como en una reunión.</li>
-        </ol>
-      </div>
-
-      <div class="hookgroups">
-        <div class="hookgroup">
-          <h3>Dinero <span>Cifras reales · 1–10</span></h3>
-          <ol class="hooks">
-            <li><span class="n">01</span><span>Este bar tiraba <span class="ph">[X €]</span> al año. Y no era por dejarse las luces encendidas.</span></li>
-            <li><span class="n">02</span><span>Tengo 23 años y este año he ahorrado <span class="ph">[X €]</span> a empresas. Te enseño la que más.</span></li>
-            <li><span class="n">03</span><span>Mismo local, misma maquinaria, <span class="ph">[X €]</span> menos al año. Solo cambiamos una cosa.</span></li>
-            <li><span class="n">04</span><span>Pagaba <span class="ph">[X €]</span> al mes. Ahora paga <span class="ph">[Y €]</span>. No ha cambiado ni una bombilla.</span></li>
-            <li><span class="n">05</span><span>Este cliente me dijo «a mí no me vais a ahorrar nada». <span class="ph">[X €]</span>.</span></li>
-            <li><span class="n">06</span><span>Lo que este restaurante pagaba de más le daba para un camarero <span class="ph">[N]</span> meses.</span></li>
-            <li><span class="n">07</span><span><span class="ph">[X €]</span>. Es lo que hemos ahorrado a empresas este mes. Esta es la que más.</span></li>
-            <li><span class="n">08</span><span>El ahorro más tonto del año: <span class="ph">[X €]</span> por una sola línea de la factura.</span></li>
-            <li><span class="n">09</span><span>A esta panadería le hemos ahorrado <span class="ph">[N]</span> barras de pan al día. Durante un año entero.<small>Ahorro anual ÷ precio de la barra ÷ 365.</small></span></li>
-            <li><span class="n">10</span><span>Una llamada de 15 minutos le ahorró a este taller <span class="ph">[X €]</span> al año.</span></li>
-          </ol>
-        </div>
-        <div class="hookgroup">
-          <h3>Dinero tirado <span>Fugas · 11–22</span></h3>
-          <ol class="hooks">
-            <li><span class="n">11</span><span>Tu negocio paga por una energía que no usa. Y es completamente legal.<small>Energía reactiva. Solo en contratos de más de 15 kW.</small></span></li>
-            <li><span class="n">12</span><span>Cerraste en agosto. Tu factura no.</span></li>
-            <li><span class="n">13</span><span>Pagas potencia de Ferrari y conduces un Panda.</span></li>
-            <li><span class="n">14</span><span>Si tu contrato de luz es más viejo que tu móvil, tenemos un problema.</span></li>
-            <li><span class="n">15</span><span>Busca esta palabra en tu factura: «servicio». Si aparece, sigue viendo.</span></li>
-            <li><span class="n">16</span><span>Apagar las luces no te va a salvar. El dinero se va por otro sitio.</span></li>
-            <li><span class="n">17</span><span>La fuga más cara de un bar no está en la cocina. Está en un papel.</span></li>
-            <li><span class="n">18</span><span>Tu comercializadora no te va a llamar para decirte que pagas de más.</span></li>
-            <li><span class="n">19</span><span>El «descuento del 30 %» que te ofrecieron. ¿30 % de qué?</span></li>
-            <li><span class="n">20</span><span>Tu gestor mira tus facturas. Esta línea no la mira.</span></li>
-            <li><span class="n">21</span><span>¿Te sale «excesos de potencia» en la factura? Es una multa. Y se puede evitar.</span></li>
-            <li><span class="n">22</span><span>La goma rota de tu cámara frigorífica también sale en la factura.</span></li>
-          </ol>
-        </div>
-        <div class="hookgroup">
-          <h3>Curiosidades <span>Alcance · 23–32</span></h3>
-          <ol class="hooks">
-            <li><span class="n">23</span><span>En España ha habido horas en las que la luz valía menos que cero.<small>Precios negativos en el mercado mayorista, desde abril de 2024.</small></span></li>
-            <li><span class="n">24</span><span>Cada vatio que nunca apagas te cuesta 1–2 € al año. Ahora cuenta los de tu bar.</span></li>
-            <li><span class="n">25</span><span>¿Cuánto cuesta dejar la puerta del congelador abierta un minuto? Lo medimos.</span></li>
-            <li><span class="n">26</span><span>¿Qué gasta más en una peluquería: el secador o el termo?</span></li>
-            <li><span class="n">27</span><span>Tu negocio sigue gastando luz con la persiana bajada. Te enseño cuánto.</span></li>
-            <li><span class="n">28</span><span>Hay actividades que pueden pagar mucho menos impuesto eléctrico. ¿Está la tuya?<small>Reducción del 85 % para ciertos usos industriales y riegos agrícolas. Confirmar caso a caso con el gestor.</small></span></li>
-            <li><span class="n">29</span><span>¿El cambio de hora ahorra algo de verdad? Te lo digo con datos.</span></li>
-            <li><span class="n">30</span><span>¿Por qué la luz es más cara a las 8 de la tarde que a las 3 de la madrugada?</span></li>
-            <li><span class="n">31</span><span>¿Cuánto cuesta encender las luces de Navidad de una ciudad?<small>Usar el dato público del contrato municipal.</small></span></li>
-            <li><span class="n">32</span><span>Lo que más gasta en tu bar no es lo que piensas.</span></li>
-          </ol>
-        </div>
-        <div class="hookgroup">
-          <h3>Polémica <span>Contraintuitivo · 33–39</span></h3>
-          <ol class="hooks">
-            <li><span class="n">33</span><span>No cambies de compañía. Todavía.</span></li>
-            <li><span class="n">34</span><span>Le dije a un cliente que no cambiara. Perdí la comisión. Lo volvería a hacer.</span></li>
-            <li><span class="n">35</span><span>Las placas solares no son para todos los negocios. Lo siento.</span></li>
-            <li><span class="n">36</span><span>El kWh más barato no siempre sale más barato.</span></li>
-            <li><span class="n">37</span><span>Te enseño cuánto me paga la compañía cuando te ahorro dinero.<small>Transparencia total. Lo decide dirección.</small></span></li>
-            <li><span class="n">38</span><span>La oferta que te dejó el comercial en la puerta. Vamos a leerla.</span></li>
-            <li><span class="n">39</span><span>Si el estudio es gratis, ¿quién paga? Te lo enseño sin rodeos.</span></li>
-          </ol>
-        </div>
-        <div class="hookgroup">
-          <h3>El jefe de 23 <span>Día a día · 40–45</span></h3>
-          <ol class="hooks">
-            <li><span class="n">40</span><span>Tengo 23 años y llevo la luz de <span class="ph">[N]</span> empresas. Mi madre aún no sabe a qué me dedico.</span></li>
-            <li><span class="n">41</span><span>Un día conmigo: 23 años, <span class="ph">[N]</span> empresas, cero corbatas.</span></li>
-            <li><span class="n">42</span><span>Así suena la oficina cuando una empresa paga menos.</span></li>
-            <li><span class="n">43</span><span>Hoy me han colgado <span class="ph">[N]</span> veces. La siguiente llamada ahorró <span class="ph">[X €]</span>.</span></li>
-            <li><span class="n">44</span><span>Lo que me dijo un empresario de 60 años al ver que tenía 23.</span></li>
-            <li><span class="n">45</span><span>Me he plantado en un polígono con una cámara y una pregunta.</span></li>
-          </ol>
-        </div>
-        <div class="hookgroup">
-          <h3>Retos <span>Participación · 46–50</span></h3>
-          <ol class="hooks">
-            <li><span class="n">46</span><span>60 segundos para encontrar ahorro en esta factura. Si no lo encuentro, invito al café.</span></li>
-            <li><span class="n">47</span><span>Me has mandado tu factura. Vamos a juzgarla.</span></li>
-            <li><span class="n">48</span><span>Adivina cuánto paga de luz este gimnasio.</span></li>
-            <li><span class="n">49</span><span>Les pregunto a dueños de bares cuánto pagan de luz. A ver quién lo sabe.</span></li>
-            <li><span class="n">50</span><span>Te reto: busca tu última factura. Tienes 10 segundos.</span></li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 05 -->
-  <section id="series">
-    <div class="sec-head">
-      <span class="eyebrow">05 · Series con nombre</span>
-      <h2>Ocho formatos que la gente reconoce</h2>
-      <p>Una serie con nombre se graba más rápido, se reconoce en el feed y crea la costumbre de volver. Cada vídeo del calendario pertenece a una.</p>
-    </div>
-    <div class="series">
-      <div class="serie"><h3>AHORRÓMETRO</h3><span class="chip">Cada lunes</span><p>Un contador con el total real ahorrado a clientes en 2026 y el caso de la semana. El número solo sube. En pantalla, con estilo de display de contador eléctrico en lima.</p><p class="need">Necesita: total del CRM y un caso con permiso del cliente.</p></div>
-      <div class="serie"><h3>DINERO TIRADO</h3><span class="chip">Cada jueves</span><p>Una fuga por vídeo: potencia que sobra, reactiva, excesos, servicios añadidos o contratos dormidos. Siempre con cuánto puede costar al año y cómo verla en tu factura.</p><p class="need">Necesita: una factura real tapada como ejemplo.</p></div>
-      <div class="serie"><h3>FACTURA AL PAREDÓN</h3><span class="chip">Viernes alternos</span><p>Los seguidores mandan su factura (con datos tapados) y el jefe la juzga. Tres cargos y un sello final: CULPABLE <span class="ph">[X €/año]</span> o INOCENTE. Cuando la factura está bien, se dice. Eso también vende.</p><p class="need">Necesita: facturas de seguidores, permiso por escrito, un mazo y dos sellos.</p></div>
-      <div class="serie"><h3>60 SEGUNDOS</h3><span class="chip">Viernes alternos</span><p>Cronómetro real en la mesa. Encontrar ahorro en una factura en un minuto. Si no hay ahorro, invitamos al dueño a un café y se graba.</p><p class="need">Necesita: un cronómetro de cocina grande y facturas reales.</p></div>
-      <div class="serie"><h3>LO MEDIMOS</h3><span class="chip">Martes, cada 2 semanas</span><p>Vamos a un negocio con un medidor y comprobamos qué aparato se come la factura. Datos reales, ranking final y comentarios asegurados.</p><p class="need">Necesita: medidor de enchufe, negocio colaborador y electricista si se toca el cuadro.</p></div>
-      <div class="serie"><h3>¿CUÁNTO PAGA?</h3><span class="chip">Podcast y carrusel</span><p>Juego: enseñamos un negocio y la gente apuesta en comentarios cuánto paga al mes. La respuesta, al final o en el siguiente vídeo.</p><p class="need">Necesita: cifras reales de clientes que acepten salir.</p></div>
-      <div class="serie"><h3>EL JEFE DE 23</h3><span class="chip">Viernes</span><p>El día a día sin filtro: visitas, llamadas, rechazos, el equipo y la campana. La edad no se esconde: es el gancho.</p><p class="need">Necesita: una cámara ligera siempre cargada en la oficina.</p></div>
-      <div class="serie"><h3>AHORRO GRATIS</h3><span class="chip">Carrusel o lista</span><p>Trucos que no cuestan un euro y el recordatorio de que el estudio es gratis (y por qué). Es el contenido que se guarda.</p><p class="need">Necesita: nada. Es la serie más barata.</p></div>
-    </div>
-    <div class="rituals">
-      <div class="ritual"><h4>La campana</h4><p>Una campana en la oficina que suena cada vez que un cliente firma un ahorro. Se graba siempre. Un plano de un segundo que sirve de transición en cualquier vídeo.</p></div>
-      <div class="ritual"><h4>«…y bajamos la luz»</h4><p>Todos los vídeos y el podcast acaban con el clic de un interruptor y fundido a negro. Es el nombre de la marca convertido en gesto.</p></div>
-      <div class="ritual"><h4>Palabra: FUGA</h4><p>Una sola palabra en todos los cierres: «Comenta FUGA». Dispara el mensaje automático con la checklist y la primera pregunta.</p></div>
-    </div>
-  </section>
-
-  <!-- 06 -->
-  <section id="calendario" class="page">
-    <div class="sec-head">
-      <span class="eyebrow">06 · Calendario</span>
-      <h2>30 días, del 19 de octubre al 17 de noviembre</h2>
-      <p>Reel de lunes a viernes, sábado opcional con clip del podcast y domingo solo historias. El podcast sale los miércoles. Las dos semanas previas son para grabar y sacar las cifras del CRM. Si arrancáis otro día, desplazad la secuencia y recolocad los comodines.</p>
-    </div>
+  <section class="new-page">
+    <h2><span class="num">3</span>Calendario</h2>
+    <p class="intro">La frase de cada fila es lo que se dice en el primer segundo del vídeo. Si se empieza otro día, se desplaza todo igual.</p>
     <div class="table-scroll">
       <table class="cal">
-        <thead><tr><th>Día</th><th>Formato</th><th>Gancho del segundo 0</th><th>Objetivo</th></tr></thead>
+        <thead><tr><th>Día</th><th>Formato</th><th>Gancho</th></tr></thead>
         <tbody>
-          <tr class="week"><td colspan="4">Semana 1 · <em>Entrada a lo grande</em></td></tr>
-          <tr><td class="day"><b>1 · L</b><span>19/10</span></td><td class="fmt">Reel a cámara<br><span class="tag t-ahorro">AHORRÓMETRO</span></td><td class="hook">«Tengo 23 años y este año he ahorrado <span class="ph">[X €]</span> a empresas. Te enseño la que más.»<small>Fijar en el perfil.</small></td><td class="goal">Presentación · mensajes</td></tr>
-          <tr><td class="day"><b>2 · M</b><span>20/10</span></td><td class="fmt">Reel + Higgsfield<br><span class="tag t-curio">CURIOSIDAD</span></td><td class="hook">«Cada vatio que nunca apagas te cuesta 1–2 € al año. Ahora cuenta los de tu bar.»</td><td class="goal">Alcance · compartidos</td></tr>
-          <tr><td class="day"><b>3 · X</b><span>21/10</span></td><td class="fmt">Podcast EP1 + clip<br><span class="tag t-pod">ENCHUFADOS</span></td><td class="hook">«Tengo 23 años y soy el jefe. ¿Soy un enchufado?»</td><td class="goal">Lanzar podcast</td></tr>
-          <tr><td class="day"><b>4 · J</b><span>22/10</span></td><td class="fmt">Reel + carrusel C1<br><span class="tag t-tirado">DINERO TIRADO</span></td><td class="hook">«Cerraste en agosto. Tu factura no.»<small>C1: «7 fugas de dinero en la factura de tu negocio».</small></td><td class="goal">Mensajes FUGA · guardados</td></tr>
-          <tr><td class="day"><b>5 · V</b><span>23/10</span></td><td class="fmt">Reel día a día<br><span class="tag t-dia">EL JEFE DE 23</span></td><td class="hook">«Así suena la oficina cuando una empresa paga menos.» (la campana)</td><td class="goal">Confianza</td></tr>
-          <tr class="opt"><td class="day"><b>6 · S</b><span>24/10</span></td><td class="fmt">Reel comodín<br><span class="tag t-curio">CURIOSIDAD</span></td><td class="hook">«Esta noche cambia la hora. ¿Tu negocio ahorra algo? Te lo digo con datos.»<small>Comodín de temporada. Si no da tiempo: clip 2 del EP1, «Si el estudio es gratis, ¿quién nos paga?».</small></td><td class="goal">Alcance</td></tr>
-          <tr class="sun"><td class="day"><b>7 · D</b><span>25/10</span></td><td class="fmt">Historias</td><td class="hook">Encuesta: «¿Cuánto crees que paga de luz un bar al mes?» + petición de facturas para el Paredón.</td><td class="goal">Conversación</td></tr>
+          <tr class="wk"><td colspan="3">Semana 1 · 19 al 25 de octubre</td></tr>
+          <tr><td class="day">Lun 19</td><td class="fmt">Ahorrómetro</td><td>«Tengo 23 años y este año he ahorrado <span class="ph">[X €]</span> a empresas. Te enseño la que más.»<small>Se fija en el perfil.</small></td></tr>
+          <tr><td class="day">Mar 20</td><td class="fmt">Curiosidad</td><td>«Cada vatio que nunca apagas te cuesta 1 o 2 € al año. Ahora cuenta los de tu bar.»</td></tr>
+          <tr><td class="day">Mié 21</td><td class="fmt">Noticias</td><td>«Este domingo cambia la hora, y es el último cambio que aparece en el BOE. Revisa estos aparatos.»</td></tr>
+          <tr><td class="day">Jue 22</td><td class="fmt">Dinero tirado + carrusel</td><td>«Cerraste en agosto. Tu factura no.»<small>Carrusel: «7 fugas de dinero en la factura de tu negocio».</small></td></tr>
+          <tr><td class="day">Vie 23</td><td class="fmt">Día a día</td><td>«Así suena la oficina cuando una empresa paga menos.» (la campana)</td></tr>
+          <tr class="we"><td class="day">Sáb 24 y dom 25</td><td class="fmt">Historias</td><td>Encuesta: «¿Cuánto crees que paga de luz un bar al mes?». Pedir facturas para el viernes 30.</td></tr>
 
-          <tr class="week"><td colspan="4">Semana 2 · <em>Fugas</em></td></tr>
-          <tr><td class="day"><b>8 · L</b><span>26/10</span></td><td class="fmt">Reel caso real<br><span class="tag t-ahorro">AHORRÓMETRO</span></td><td class="hook">«Este bar tiraba <span class="ph">[X €]</span> al año. Y no era por dejarse las luces.»</td><td class="goal">Mensajes</td></tr>
-          <tr><td class="day"><b>9 · M</b><span>27/10</span></td><td class="fmt">Reel + Higgsfield<br><span class="tag t-curio">CURIOSIDAD</span></td><td class="hook">«En España ha habido horas en las que la luz valía menos que cero.»</td><td class="goal">Alcance</td></tr>
-          <tr><td class="day"><b>10 · X</b><span>28/10</span></td><td class="fmt">Podcast EP2 + clip<br><span class="tag t-pod">ENCHUFADOS</span></td><td class="hook">«Le abrimos el sobre: <span class="ph">[X €]</span> al año que estaba tirando.»</td><td class="goal">Visualizaciones · mensajes</td></tr>
-          <tr><td class="day"><b>11 · J</b><span>29/10</span></td><td class="fmt">Reel + carrusel C2<br><span class="tag t-tirado">DINERO TIRADO</span></td><td class="hook">«Tu negocio paga por una energía que no usa. Y es legal.»<small>C2: «Ahorro gratis: 6 cosas que puedes hacer hoy sin gastar un euro».</small></td><td class="goal">Compartidos · guardados</td></tr>
-          <tr><td class="day"><b>12 · V</b><span>30/10</span></td><td class="fmt">Reel reto<br><span class="tag t-reto">PAREDÓN #1</span></td><td class="hook">«Me has mandado tu factura. Vamos a juzgarla.»<small>Edición Halloween: «la factura más terrorífica que nos habéis mandado».</small></td><td class="goal">Comentarios · mensajes</td></tr>
-          <tr class="opt"><td class="day"><b>13 · S</b><span>31/10</span></td><td class="fmt">Clip EP2 (opcional)<br><span class="tag t-pod">ENCHUFADOS</span></td><td class="hook">«Lo que de verdad cuesta abrir un bar en 2026.»</td><td class="goal">Alcance</td></tr>
-          <tr class="sun"><td class="day"><b>14 · D</b><span>01/11</span></td><td class="fmt">Historias</td><td class="hook">Caja de preguntas: «¿Qué negocio quieres que midamos?»</td><td class="goal">Material</td></tr>
+          <tr class="wk"><td colspan="3">Semana 2 · 26 de octubre al 1 de noviembre</td></tr>
+          <tr><td class="day">Lun 26</td><td class="fmt">Ahorrómetro</td><td>«Este bar tiraba <span class="ph">[X €]</span> al año. Y no era por dejarse las luces encendidas.»</td></tr>
+          <tr><td class="day">Mar 27</td><td class="fmt">Curiosidad</td><td>«En España ha habido horas en las que la luz valía menos que cero.»</td></tr>
+          <tr><td class="day">Mié 28</td><td class="fmt">Noticias</td><td>«El apagón de 2025 todavía se paga en la factura de la luz.»</td></tr>
+          <tr><td class="day">Jue 29</td><td class="fmt">Dinero tirado + carrusel</td><td>«Tu negocio paga por una energía que no usa. Y es legal.»<small>Carrusel: «6 formas de ahorrar hoy sin gastar un euro».</small></td></tr>
+          <tr><td class="day">Vie 30</td><td class="fmt">Reto: factura al paredón</td><td>«Me has mandado tu factura. Vamos a juzgarla.»<small>Edición Halloween: la factura más terrorífica que nos hayan mandado.</small></td></tr>
+          <tr class="we"><td class="day">Sáb 31 y dom 1</td><td class="fmt">Historias</td><td>Pregunta: «¿Qué negocio quieres que midamos?».</td></tr>
 
-          <tr class="week"><td colspan="4">Semana 3 · <em>A la calle</em></td></tr>
-          <tr><td class="day"><b>15 · L</b><span>02/11</span></td><td class="fmt">Reel caso real<br><span class="tag t-ahorro">AHORRÓMETRO</span></td><td class="hook">«Lo que este restaurante pagaba de más le daba para un camarero <span class="ph">[N]</span> meses.»</td><td class="goal">Mensajes</td></tr>
-          <tr><td class="day"><b>16 · M</b><span>03/11</span></td><td class="fmt">Reel exterior<br><span class="tag t-curio">LO MEDIMOS #1</span></td><td class="hook">«¿Qué gasta más en una peluquería: el secador o el termo?»</td><td class="goal">Alcance · comentarios</td></tr>
-          <tr><td class="day"><b>17 · X</b><span>04/11</span></td><td class="fmt">Podcast EP3 + clip<br><span class="tag t-pod">ENCHUFADOS</span></td><td class="hook">«Adivina cuánto paga de luz este gimnasio.»</td><td class="goal">Comentarios</td></tr>
-          <tr><td class="day"><b>18 · J</b><span>05/11</span></td><td class="fmt">Reel + carrusel C3<br><span class="tag t-tirado">DINERO TIRADO</span></td><td class="hook">«Pagas potencia de Ferrari y conduces un Panda.»<small>C3: «¿Cuánto paga de luz…? 5 negocios, adivina antes de pasar».</small></td><td class="goal">Guardados · mensajes</td></tr>
-          <tr><td class="day"><b>19 · V</b><span>06/11</span></td><td class="fmt">Reel reto<br><span class="tag t-reto">60 SEGUNDOS</span></td><td class="hook">«60 segundos para encontrar ahorro. Si no lo encuentro, invito al café.»</td><td class="goal">Retención</td></tr>
-          <tr class="opt"><td class="day"><b>20 · S</b><span>07/11</span></td><td class="fmt">Clip EP3 (opcional)<br><span class="tag t-pod">ENCHUFADOS</span></td><td class="hook">El mejor momento del episodio (la cifra o la anécdota).</td><td class="goal">Alcance</td></tr>
-          <tr class="sun"><td class="day"><b>21 · D</b><span>08/11</span></td><td class="fmt">Historias</td><td class="hook">Resultados de LO MEDIMOS + encuesta del siguiente negocio.</td><td class="goal">Conversación</td></tr>
+          <tr class="wk"><td colspan="3">Semana 3 · 2 al 8 de noviembre</td></tr>
+          <tr><td class="day">Lun 2</td><td class="fmt">Ahorrómetro</td><td>«Lo que este restaurante pagaba de más le daba para un camarero <span class="ph">[N]</span> meses.»</td></tr>
+          <tr><td class="day">Mar 3</td><td class="fmt">Curiosidad: lo medimos</td><td>«¿Qué gasta más en una peluquería: el secador o el termo?»</td></tr>
+          <tr><td class="day">Mié 4</td><td class="fmt">Noticias</td><td>«Así ha cerrado octubre el precio de la luz. ¿Lo has notado en tu factura?»</td></tr>
+          <tr><td class="day">Jue 5</td><td class="fmt">Dinero tirado + carrusel</td><td>«Pagas potencia de Ferrari y conduces un Panda.»<small>Carrusel: «¿Cuánto paga de luz? 5 negocios: adivina antes de pasar».</small></td></tr>
+          <tr><td class="day">Vie 6</td><td class="fmt">Reto: 60 segundos</td><td>«60 segundos para encontrar ahorro en esta factura. Si no lo encuentro, invito al café.»</td></tr>
+          <tr class="we"><td class="day">Sáb 7 y dom 8</td><td class="fmt">Historias</td><td>Resultado de la peluquería y encuesta para el siguiente negocio.</td></tr>
 
-          <tr class="week"><td colspan="4">Semana 4 · <em>Confianza</em></td></tr>
-          <tr><td class="day"><b>22 · L</b><span>09/11</span></td><td class="fmt">Reel a cámara<br><span class="tag t-ahorro">AHORRÓMETRO</span></td><td class="hook">«Le dije a un cliente que no cambiara. Perdí la comisión. Lo volvería a hacer.»</td><td class="goal">Confianza</td></tr>
-          <tr><td class="day"><b>23 · M</b><span>10/11</span></td><td class="fmt">Reel + Higgsfield<br><span class="tag t-curio">CURIOSIDAD</span></td><td class="hook">«¿Cuánto cuesta encender las luces de Navidad de una ciudad?»<small>Comodín de temporada con dato público.</small></td><td class="goal">Alcance</td></tr>
-          <tr><td class="day"><b>24 · X</b><span>11/11</span></td><td class="fmt">Podcast EP4 + clip<br><span class="tag t-pod">ENCHUFADOS</span></td><td class="hook">«Lo más loco que ha visto un electricista dentro de un cuadro eléctrico.»</td><td class="goal">Alcance</td></tr>
-          <tr><td class="day"><b>25 · J</b><span>12/11</span></td><td class="fmt">Reel + carrusel C4<br><span class="tag t-tirado">DINERO TIRADO</span></td><td class="hook">«Si tu contrato de luz es más viejo que tu móvil, tenemos un problema.»<small>C4: «Antes de firmar: 5 preguntas que el comercial de la puerta no quiere oír».</small></td><td class="goal">Mensajes · guardados</td></tr>
-          <tr><td class="day"><b>26 · V</b><span>13/11</span></td><td class="fmt">Reel día a día<br><span class="tag t-dia">EL JEFE DE 23</span></td><td class="hook">«Un día conmigo: 23 años, <span class="ph">[N]</span> empresas, cero corbatas.»</td><td class="goal">Seguidores</td></tr>
-          <tr class="opt"><td class="day"><b>27 · S</b><span>14/11</span></td><td class="fmt">Clip EP4 (opcional)<br><span class="tag t-pod">ENCHUFADOS</span></td><td class="hook">El mejor momento del episodio.</td><td class="goal">Alcance</td></tr>
-          <tr class="sun"><td class="day"><b>28 · D</b><span>15/11</span></td><td class="fmt">Historias</td><td class="hook">Repaso: los tres ahorros más gordos del mes.</td><td class="goal">Conversación</td></tr>
+          <tr class="wk"><td colspan="3">Semana 4 · 9 al 15 de noviembre</td></tr>
+          <tr><td class="day">Lun 9</td><td class="fmt">Ahorrómetro</td><td>«Le dije a un cliente que no cambiara. Perdí la comisión. Lo volvería a hacer.»</td></tr>
+          <tr><td class="day">Mar 10</td><td class="fmt">Curiosidad</td><td>«¿Cuánto cuesta encender las luces de Navidad de una ciudad?»<small>Con el dato público del contrato municipal.</small></td></tr>
+          <tr><td class="day">Mié 11</td><td class="fmt">Noticias</td><td>La noticia de la semana.<small>Si no hay ninguna que afecte a negocios: «Llega el frío: 3 cosas que mirar en tu contrato de gas».</small></td></tr>
+          <tr><td class="day">Jue 12</td><td class="fmt">Dinero tirado + carrusel</td><td>«Si tu contrato de luz es más viejo que tu móvil, tenemos un problema.»<small>Carrusel: «5 preguntas antes de firmar con el comercial que llama a tu puerta».</small></td></tr>
+          <tr><td class="day">Vie 13</td><td class="fmt">Día a día</td><td>«Un día conmigo: 23 años, <span class="ph">[N]</span> empresas y cero corbatas.»</td></tr>
+          <tr class="we"><td class="day">Sáb 14 y dom 15</td><td class="fmt">Historias</td><td>Los tres ahorros más grandes del mes.</td></tr>
 
-          <tr class="week"><td colspan="4">Cierre de mes</td></tr>
-          <tr><td class="day"><b>29 · L</b><span>16/11</span></td><td class="fmt">Reel a cámara<br><span class="tag t-ahorro">AHORRÓMETRO</span></td><td class="hook">«<span class="ph">[X €]</span> en 30 días. Estas son las tres empresas que más ahorraron.»<small>Fijar en el perfil en lugar del día 1.</small></td><td class="goal">Prueba · mensajes</td></tr>
-          <tr><td class="day"><b>30 · M</b><span>17/11</span></td><td class="fmt">Reel a cámara<br><span class="tag t-ahorro">PROCESO</span></td><td class="hook">«Me mandas una foto de tu factura. En <span class="ph">[plazo real]</span> sabes cuánto tiras.»<small>Si se hace el sorteo, se resuelve hoy en directo.</small></td><td class="goal">Estudios pedidos</td></tr>
+          <tr class="wk"><td colspan="3">Cierre · 16 y 17 de noviembre</td></tr>
+          <tr><td class="day">Lun 16</td><td class="fmt">Ahorrómetro del mes</td><td>«<span class="ph">[X €]</span> en 30 días. Estas son las tres empresas que más ahorraron.»<small>Sustituye al vídeo fijado del día 19.</small></td></tr>
+          <tr><td class="day">Mar 17</td><td class="fmt">Cierre</td><td>«Me mandas una foto de tu factura y en <span class="ph">[plazo]</span> sabes cuánto estás tirando.»</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="box" style="margin-top:18px">
-      <h3>Comodines de temporada</h3>
-      <p class="small muted">Para cambiar por cualquier curiosidad del calendario o empezar el mes siguiente.</p>
-      <div class="wild">
-        <div><b>24–25 oct</b><span>Cambio de hora. Ya colocado en el día 6.</span></div>
-        <div><b>30–31 oct</b><span>Halloween. Paredón edición terror, ya colocado en el día 12.</span></div>
-        <div><b>Noviembre</b><span>Primer frío: «¿Cuánto cuesta por mesa la estufa de tu terraza?» (LO MEDIMOS de gas).</span></div>
-        <div><b>Finales nov</b><span>Encendido de luces de Navidad: coste con dato público. Ya colocado en el día 23.</span></div>
-        <div><b>27 nov</b><span>Black Friday: «El único descuento que dura todo el año está en tu factura».</span></div>
-        <div><b>Diciembre</b><span>Cierre del año: el Ahorrómetro 2026 completo. Es el vídeo más fuerte del año.</span></div>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>Las noticias de los miércoles</h2>
+    <p class="intro">Un vídeo de 30 a 45 segundos con la noticia de luz o gas de la semana. Da un motivo para seguir la cuenta y demuestra que estamos al día. Siempre con la misma estructura:</p>
+    <ol class="steps">
+      <li><span><b>Qué ha pasado.</b> La noticia en una frase, con la fecha y la fuente en pantalla.</span></li>
+      <li><span><b>Qué significa para un negocio.</b> En euros o en algo práctico.</span></li>
+      <li><span><b>Qué hacer.</b> Una acción concreta, y el cierre con FUGA.</span></li>
+    </ol>
+    <p class="intro">La noticia se elige el lunes. Solo entra si afecta a negocios. Fuentes: OMIE para precios, Red Eléctrica, CNMC, BOE y prensa económica. Si esa semana no hay nada útil, se usa un tema de temporada.</p>
+    <div class="news">
+      <div><span class="d">Mié 21 oct</span><div><p><b>Cambio de hora.</b> El domingo 25 a las 3 serán las 2. Es el último cambio que aparece en el calendario del BOE, aunque la Unión Europea todavía no ha decidido si se acaba.</p><p class="muted">Para un negocio: los programadores antiguos no cambian solos. Si el contrato tiene precios por horas, el termo o el cartel pueden encenderse una hora antes, en un tramo más caro.</p></div></div>
+      <div><span class="d">Mié 28 oct</span><div><p><b>El apagón todavía se paga.</b> Desde el apagón del 28 de abril de 2025, Red Eléctrica opera la red en modo reforzado para darle más estabilidad. Ese coste extra llega a las facturas, y las asociaciones de empresas llevan todo 2026 pidiendo transparencia.</p><p class="muted">Para un negocio: mirar si su contrato le repercute ese coste aparte. Actualizar las cifras la misma semana.</p></div></div>
+      <div><span class="d">Mié 4 nov</span><div><p><b>Cómo ha cerrado octubre el precio de la luz.</b> Dato de OMIE, comparado con septiembre y con octubre de 2025.</p><p class="muted">Para un negocio: quien tiene precio indexado ya lo nota; quien tiene precio fijo lo notará al renovar.</p></div></div>
+      <div><span class="d">Mié 11 nov</span><div><p><b>La noticia de la semana.</b> Si no hay ninguna que afecte a negocios: «Llega el frío: 3 cosas que mirar en tu contrato de gas».</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>Cinco guiones de ejemplo</h2>
+    <p class="intro">Uno por cada día de la semana. Son una guía: el jefe lo dice con sus palabras. El resto de vídeos siguen la misma estructura con el gancho del calendario.</p>
+
+    <article class="script">
+      <header><span>Lunes · Ahorrómetro · 35 a 45 segundos</span><h3>«Este bar tiraba [X €] al año»</h3></header>
+      <dl>
+        <dt>Primer segundo</dt><dd>Se rompe una factura con los datos tapados. En pantalla: «<span class="ph">[X €]</span> al año». Se dice: «Este bar tiraba <span class="ph">[X €]</span> al año. Y no era por dejarse las luces encendidas.»</dd>
+        <dt>Qué se cuenta</dt><dd>«Tenía <span class="ph">[la fuga: potencia de más, un precio de hace años, un servicio que nadie pidió]</span>. Nadie lo había mirado desde <span class="ph">[año]</span>. Cambiamos <span class="ph">[qué]</span> y ahora paga <span class="ph">[Y €]</span> al mes en vez de <span class="ph">[Z €]</span>. El dueño no tocó nada del bar.»</dd>
+        <dt>Cierre</dt><dd>«Llevamos <span class="ph">[total]</span> ahorrados a empresas. ¿Sumamos el tuyo? Comenta FUGA.» Clic del interruptor.</dd>
+        <dt>Cómo se graba</dt><dd>A cámara, en plató. Si el dueño acepta salir, diez segundos suyos en el bar valen más que cualquier efecto.</dd>
+      </dl>
+    </article>
+
+    <article class="script">
+      <header><span>Martes · Curiosidad · 25 a 35 segundos</span><h3>«Cada vatio que nunca apagas te cuesta 1 o 2 € al año»</h3></header>
+      <dl>
+        <dt>Primer segundo</dt><dd>Un enchufe del que salen monedas (efecto hecho con Higgsfield). En pantalla: «1 vatio = 1 o 2 € al año».</dd>
+        <dt>Qué se cuenta</dt><dd>«Un vatio encendido todo el año son casi 9 kWh. Mira tu bar: la nevera de bebidas, la cafetera en espera, el cartel, el router. Todo lo que nunca se apaga suma.» Con un ejemplo medido de verdad.</dd>
+        <dt>Cierre</dt><dd>«Pero esto es calderilla al lado de lo que se va por el contrato. Si quieres saber cuánto, comenta FUGA.»</dd>
+        <dt>La cuenta</dt><dd>1 W × 8.760 horas = 8,76 kWh al año. A 0,15–0,20 €/kWh salen entre 1,3 y 1,8 €.</dd>
+      </dl>
+    </article>
+
+    <article class="script">
+      <header><span>Miércoles · Noticias · 30 a 45 segundos</span><h3>«Este domingo cambia la hora»</h3></header>
+      <dl>
+        <dt>Primer segundo</dt><dd>Un reloj de pared que retrocede una hora. En pantalla: «Domingo 25: el último cambio de hora del BOE».</dd>
+        <dt>Qué se cuenta</dt><dd>«El domingo a las 3 serán las 2. Es el último cambio que aparece en el calendario oficial, aunque la Unión Europea todavía no ha decidido si se acaba. Lo que le importa a tu negocio: los programadores antiguos no cambian solos. Si tu contrato tiene precios por horas, el termo o el cartel pueden encenderse una hora antes, cuando la luz es más cara.»</dd>
+        <dt>Cierre</dt><dd>«Revisa tus programadores este fin de semana. Y si quieres que miremos tu contrato, comenta FUGA.»</dd>
+        <dt>Antes de grabar</dt><dd>Fuente en pantalla: BOE. Comprobar el lunes si hay novedades de la Unión Europea.</dd>
+      </dl>
+    </article>
+
+    <article class="script">
+      <header><span>Jueves · Dinero tirado · 30 a 40 segundos</span><h3>«Cerraste en agosto. Tu factura no.»</h3></header>
+      <dl>
+        <dt>Primer segundo</dt><dd>Una persiana baja de golpe con un cartel de «Cerrado por vacaciones». Se dice la frase.</dd>
+        <dt>Qué se cuenta</dt><dd>«Hay una parte de la factura que pagas aunque no enciendas nada: la potencia contratada. Si tienes más de la que usas, la pagas los doce meses, abras o cierres.»</dd>
+        <dt>Cierre</dt><dd>«Bajarla a ojo puede salir caro, con cortes o recargos. Se mira con tu consumo real. Comenta FUGA y vemos si te sobra.»</dd>
+        <dt>Cómo se graba</dt><dd>Persiana real, de un cliente y con permiso. Cámara fija y bajada a cámara lenta.</dd>
+      </dl>
+    </article>
+
+    <article class="script">
+      <header><span>Viernes · Reto · 40 a 50 segundos</span><h3>«Factura al paredón»</h3></header>
+      <dl>
+        <dt>Primer segundo</dt><dd>Una factura clavada en la pared y un golpe de mazo. En pantalla: «Factura al paredón #1».</dd>
+        <dt>Qué se cuenta</dt><dd>Tres cargos: potencia, precio y servicios añadidos, con un veredicto para cada uno. Al final, un sello: «Culpable: <span class="ph">[X €]</span> al año» o «Inocente».</dd>
+        <dt>Cierre</dt><dd>Si sale inocente, se dice: «Esta factura está bien y no te voy a vender nada». Y siempre: «¿Quieres que juzguemos la tuya? Mándala por privado».</dd>
+        <dt>Importante</dt><dd>Permiso por escrito del dueño. Nombre, dirección, NIF y CUPS siempre tapados.</dd>
+      </dl>
+    </article>
+  </section>
+
+  <section>
+    <h2><span class="num">6</span>Ganchos de reserva</h2>
+    <p class="intro">Para sustituir cualquier vídeo del calendario o empezar el mes siguiente.</p>
+    <div class="hooks">
+      <div><h3>Ahorrómetro</h3><ul>
+        <li>«Pagaba <span class="ph">[X €]</span> al mes. Ahora paga <span class="ph">[Y €]</span>. No ha cambiado ni una bombilla.»</li>
+        <li>«Este cliente me dijo "a mí no me vais a ahorrar nada". <span class="ph">[X €]</span>.»</li>
+        <li>«A esta panadería le hemos ahorrado <span class="ph">[N]</span> barras de pan al día durante un año.»</li>
+        <li>«El ahorro más tonto del año: <span class="ph">[X €]</span> por una sola línea de la factura.»</li>
+      </ul></div>
+      <div><h3>Curiosidad</h3><ul>
+        <li>«¿Cuánto cuesta dejar la puerta del congelador abierta un minuto? Lo medimos.»</li>
+        <li>«Tu negocio sigue gastando luz con la persiana bajada. Te enseño cuánto.»</li>
+        <li>«¿Por qué la luz es más cara a las 8 de la tarde que a las 3 de la madrugada?»</li>
+        <li>«Algunas actividades pueden pagar mucho menos impuesto eléctrico. ¿Está la tuya?»</li>
+      </ul></div>
+      <div><h3>Noticias</h3><ul>
+        <li>«Esta semana ha pasado esto con la luz. A tu negocio le afecta así.»</li>
+        <li>«La noticia de la luz que ha salido hoy, explicada para un bar.»</li>
+        <li>«Todo el mundo habla de <span class="ph">[tema]</span>. Esto es lo que cambia en tu factura.»</li>
+        <li>«Ha subido <span class="ph">[qué]</span>. Te explico en 30 segundos si lo vas a notar.»</li>
+      </ul></div>
+      <div><h3>Dinero tirado</h3><ul>
+        <li>«Busca la palabra "servicio" en tu factura. Si aparece, sigue viendo.»</li>
+        <li>«Apagar las luces no te va a salvar. El dinero se va por otro sitio.»</li>
+        <li>«Tu compañía no te va a llamar para decirte que pagas de más.»</li>
+        <li>«Te ofrecieron un descuento del 30 %. ¿30 % de qué?»</li>
+      </ul></div>
+      <div><h3>Retos y día a día</h3><ul>
+        <li>«Les pregunto a dueños de bares cuánto pagan de luz. A ver quién lo sabe.»</li>
+        <li>«Adivina cuánto paga de luz este gimnasio.»</li>
+        <li>«Hoy me han colgado <span class="ph">[N]</span> veces. La siguiente llamada ahorró <span class="ph">[X €]</span>.»</li>
+        <li>«Lo que me dijo un empresario de 60 años al ver que tenía 23.»</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">7</span>Cómo se graba</h2>
+    <p class="intro">Se graba por bloques para no tener que grabar cada día. Las noticias son lo único que se graba la misma semana, porque dependen de la actualidad.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Sesión</th><th>Cuándo</th><th>Qué sale</th></tr></thead>
+        <tbody>
+          <tr><td><b>Rodaje 1</b> · plató, 4 h</td><td>Semana del 12 de octubre</td><td>Lunes, martes y jueves de las semanas 1 y 2, más planos de recurso: campana, interruptor, factura rompiéndose.</td></tr>
+          <tr><td><b>Rodaje 2</b> · exterior, 4–5 h</td><td>Semana del 19 de octubre</td><td>La peluquería, el reto de 60 segundos, la persiana y planos de calle.</td></tr>
+          <tr><td><b>Rodaje 3</b> · plató, 3 h</td><td>Semana del 26 de octubre</td><td>Factura al paredón, lunes, martes y jueves de las semanas 3 y 4, y el cierre.</td></tr>
+          <tr><td><b>Noticias</b> · 20 min</td><td>Cada lunes o martes</td><td>El vídeo del miércoles.</td></tr>
+          <tr><td><b>Día a día</b></td><td>Todo el mes</td><td>Con una cámara ligera en la oficina, en días normales de trabajo.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cols">
+      <div class="card">
+        <h3>Cámaras y edición</h3>
+        <p>4K a 25 fotogramas para hablar a cámara; 50 o 100 para cámara lenta. Sonido siempre con micrófono de solapa. Luz suave de frente y un fondo con el verde de la marca. Subtítulos grandes, de dos líneas como máximo.</p>
+      </div>
+      <div class="card">
+        <h3>Higgsfield</h3>
+        <p>Solo para lo que no se puede grabar, en el primer segundo o en una transición: un enchufe que suelta monedas (mar 20), una energía fantasma que sale del cuadro eléctrico (jue 29), un panel con la luz a precio negativo (mar 27) o un contrato que envejece y se deshace (jue 12).</p>
+        <p class="small muted">Nunca para clientes, testimonios, facturas ni cifras. Lo que parezca real y esté hecho con IA se marca como IA al publicarlo.</p>
       </div>
     </div>
   </section>
 
-  <!-- 07 -->
-  <section id="guiones">
-    <div class="sec-head">
-      <span class="eyebrow">07 · Guiones</span>
-      <h2>Once reels listos para grabar</h2>
-      <p>La franja verde es el primer segundo: lo que se ve, lo que se lee y lo que se dice. Las frases en negrita se dicen tal cual. El resto se adapta a cómo habla el jefe. Los demás días siguen la misma estructura con el gancho del calendario: gancho, prueba, giro y cierre con FUGA.</p>
-    </div>
-    <div class="scripts">
-
-      <article class="script">
-        <header><span class="meta"><b>Día 1</b> · Ahorrómetro · a cámara · 30–40 s</span><h3>«Tengo 23 años y este año he ahorrado [X €] a empresas»</h3></header>
-        <dl>
-          <dt class="first">0–2 s</dt><dd class="first"><b>Imagen:</b> el jefe deja caer una carpeta gorda sobre la mesa, con un golpe seco. <b>Texto:</b> «23 AÑOS · <span class="ph">[X €]</span> AHORRADOS». <b>Voz:</b> <span class="say">«Tengo 23 años y este año he ahorrado <span class="ph">[X €]</span> a empresas.»</span></dd>
-          <dt>Desarrollo</dt><dd>«No vendo placas ni bombillas. Miro lo que paga tu negocio de luz y gas, encuentro lo que sobra y lo quito. El que más ahorró fue <span class="ph">[actividad]</span> de <span class="ph">[ciudad]</span>: <span class="ph">[X €]</span> al año. Sin tocar una sola máquina.»</dd>
-          <dt>Giro</dt><dd><span class="say">«¿Lo mejor? A ti no te cuesta nada. Me paga la compañía, no tú. Y si no hay ahorro, te lo digo a la cara.»</span></dd>
-          <dt>Cierre</dt><dd><span class="say">«Comenta FUGA y busco la de tu negocio.»</span> Clic de interruptor y negro.</dd>
-          <dt>Rodaje</dt><dd>Dos cámaras: frontal a 50 mm y lateral a 85 mm. Fondo verde oscuro con un neón lima. Se fija en el perfil.</dd>
-        </dl>
-      </article>
-
-      <article class="script">
-        <header><span class="meta"><b>Día 2</b> · Curiosidad · Higgsfield + cámara · 25–35 s</span><h3>«Cada vatio que nunca apagas te cuesta 1–2 € al año»</h3></header>
-        <dl>
-          <dt class="first">0–2 s</dt><dd class="first"><b>Imagen (Higgsfield):</b> un enchufe de un bar escupe monedas de euro sin parar. <b>Texto:</b> «1 VATIO = 1–2 € AL AÑO». <b>Voz:</b> <span class="say">«Cada vatio que tienes encendido todo el año te cuesta entre uno y dos euros.»</span></dd>
-          <dt>Desarrollo</dt><dd>«Un vatio, 24 horas, 365 días: casi 9 kWh. Ahora mira tu bar: la nevera de bebidas, la cafetera en espera, el cartel luminoso, el router, la tele. Todo lo que nunca se apaga suma cada hora.» Con un ejemplo medido: «la cafetera en espera gasta <span class="ph">[N] W</span>, que son <span class="ph">[X €]</span> al año».</dd>
-          <dt>Giro</dt><dd><span class="say">«Pero esto es calderilla al lado de lo que se va por el contrato.»</span></dd>
-          <dt>Cierre</dt><dd><span class="say">«Si quieres saber cuánto se va por ahí, comenta FUGA.»</span></dd>
-          <dt>Cuenta</dt><dd class="note">1 W × 8.760 h = 8,76 kWh al año. A 0,15–0,20 €/kWh salen 1,3–1,8 €. Usad el precio medio real de vuestros clientes.</dd>
-        </dl>
-      </article>
-
-      <article class="script">
-        <header><span class="meta"><b>Día 4</b> · Dinero tirado · exterior + cámara · 30–40 s</span><h3>«Cerraste en agosto. Tu factura no.»</h3></header>
-        <dl>
-          <dt class="first">0–2 s</dt><dd class="first"><b>Imagen:</b> una persiana baja de golpe con un cartel de «CERRADO POR VACACIONES». <b>Texto:</b> «CERRASTE EN AGOSTO. TU FACTURA NO.» <b>Voz:</b> <span class="say">la misma frase.</span></dd>
-          <dt>Desarrollo</dt><dd>«En tu factura hay una parte que pagas aunque no enciendas ni una bombilla: la potencia contratada. Es como pagar una plaza de parking para un camión cuando vas en bici. Si tu negocio tiene más potencia de la que usa, la pagas los doce meses. Abras o cierres.»</dd>
-          <dt>Giro</dt><dd>«Ojo: bajarla a ojo puede salir caro, con cortes o con multas por excesos. Se mira con tu histórico de consumo. Eso es justo lo que hacemos.»</dd>
-          <dt>Cierre</dt><dd><span class="say">«Comenta FUGA y miramos si te sobra potencia.»</span></dd>
-          <dt>Rodaje</dt><dd>Persiana real: el local de un cliente con permiso o una del barrio. Trípode, plano fijo, 50p para ralentizar la bajada.</dd>
-        </dl>
-      </article>
-
-      <article class="script">
-        <header><span class="meta"><b>Día 5</b> · El jefe de 23 · día a día · 20–30 s</span><h3>«Así suena la oficina cuando una empresa paga menos»</h3></header>
-        <dl>
-          <dt class="first">0–2 s</dt><dd class="first"><b>Imagen:</b> plano macro de la campana sonando, a cámara lenta. <b>Texto:</b> «ESTO SUENA CADA VEZ QUE UNA EMPRESA PAGA MENOS». <b>Sonido:</b> la campana, fuerte y limpia.</dd>
-          <dt>Desarrollo</dt><dd>Montaje rápido de la semana real: una llamada, un estudio en pantalla (sin datos), un compañero que levanta los brazos, el jefe tocando la campana. Voz en off: «Esta semana ha sonado <span class="ph">[N]</span> veces. La más gorda: <span class="ph">[actividad]</span>, <span class="ph">[X €]</span> al año.»</dd>
-          <dt>Cierre</dt><dd><span class="say">«¿Quieres que suene por tu negocio? Comenta FUGA.»</span></dd>
-          <dt>Rodaje</dt><dd>Se graba durante días reales de trabajo, con cámara ligera o gimbal. No se prepara nada: si esta semana suena una vez, se dice una vez.</dd>
-        </dl>
-      </article>
-
-      <article class="script">
-        <header><span class="meta"><b>Día 8</b> · Ahorrómetro · caso real · 35–45 s</span><h3>«Este bar tiraba [X €] al año»</h3></header>
-        <dl>
-          <dt class="first">0–2 s</dt><dd class="first"><b>Imagen:</b> el contador del Ahorrómetro sube hasta el total y corta a una factura tapada que se rompe por la mitad. <b>Texto:</b> «<span class="ph">[X €]</span> AL AÑO, TIRADOS». <b>Voz:</b> <span class="say">«Este bar tiraba <span class="ph">[X €]</span> al año. Y no era por dejarse las luces encendidas.»</span></dd>
-          <dt>Desarrollo</dt><dd>«Tenía <span class="ph">[la fuga real: potencia de más, un precio de hace años, un servicio que nadie pidió]</span>. Nadie lo había mirado desde <span class="ph">[año]</span>. Cambiamos <span class="ph">[lo que se cambió]</span> y ahora paga <span class="ph">[Y €]</span> al mes en vez de <span class="ph">[Z €]</span>.»</dd>
-          <dt>Giro</dt><dd><span class="say">«El dueño no tocó nada de su bar. Ni una bombilla.»</span></dd>
-          <dt>Cierre</dt><dd><span class="say">«El Ahorrómetro va por <span class="ph">[total]</span>. ¿Sumamos el tuyo? Comenta FUGA.»</span></dd>
-          <dt>Rodaje</dt><dd>Si el dueño acepta salir, diez segundos suyos en el local («¿Cuánto pagabas?») valen más que cualquier efecto. Permiso por escrito.</dd>
-        </dl>
-      </article>
-
-      <article class="script">
-        <header><span class="meta"><b>Día 11</b> · Dinero tirado · Higgsfield + cámara · 35–45 s</span><h3>«Tu negocio paga por una energía que no usa»</h3></header>
-        <dl>
-          <dt class="first">0–2 s</dt><dd class="first"><b>Imagen (Higgsfield):</b> una energía fantasmal sale del cuadro eléctrico y se lleva billetes. <b>Texto:</b> «PAGAS UNA ENERGÍA QUE NO USAS». <b>Voz:</b> <span class="say">«Hay empresas pagando cada mes por una energía que no usan. Y es completamente legal.»</span></dd>
-          <dt>Desarrollo</dt><dd>«Se llama energía reactiva. La generan los motores, los compresores, las cámaras de frío y los fluorescentes viejos. Si pasas de cierto límite, te la cobran como penalización. Sale en la factura con un nombre que nadie lee: "energía reactiva". Búscala.»</dd>
-          <dt>Giro</dt><dd>«Muchas veces se corrige con una batería de condensadores que se amortiza rápido. Pero primero hay que ver cuánto te cuesta al año.»</dd>
-          <dt>Cierre</dt><dd><span class="say">«¿Te sale esa línea? Comenta FUGA y te decimos cuánto es al año.»</span></dd>
-          <dt>Comprueba</dt><dd class="note">Solo aplica a contratos de más de 15 kW (3.0TD y 6.XTD). Ponerlo en pantalla para no confundir a los negocios pequeños.</dd>
-        </dl>
-      </article>
-
-      <article class="script">
-        <header><span class="meta"><b>Día 12</b> · Factura al paredón #1 · edición Halloween · 40–50 s</span><h3>«Me has mandado tu factura. Vamos a juzgarla.»</h3></header>
-        <dl>
-          <dt class="first">0–2 s</dt><dd class="first"><b>Imagen:</b> una factura clavada en la pared con una chincheta; el jefe golpea la mesa con un mazo de juez. <b>Texto:</b> «FACTURA AL PAREDÓN #1». <b>Voz:</b> <span class="say">«Me la ha mandado <span class="ph">[nombre o tipo de negocio]</span>. Vamos a juzgarla.»</span></dd>
-          <dt>Desarrollo</dt><dd>Tres cargos, a ritmo rápido: «Cargo uno: potencia. <span class="ph">[veredicto]</span>. Cargo dos: precio de la energía. <span class="ph">[veredicto]</span>. Cargo tres: extras. <span class="ph">[veredicto]</span>.»</dd>
-          <dt>Giro</dt><dd>Sello sobre la factura: «CULPABLE: <span class="ph">[X €]</span> al año» o «INOCENTE». Si es inocente: <span class="say">«Esta factura está bien. Enhorabuena. Y no te voy a vender nada.»</span></dd>
-          <dt>Cierre</dt><dd><span class="say">«¿Quieres juzgar la tuya? Mándamela por privado con la palabra PAREDÓN.»</span></dd>
-          <dt>Halloween</dt><dd>Luz de vela, música de terror y el título «La factura más terrorífica que nos habéis mandado».</dd>
-          <dt>Permisos</dt><dd class="note">Consentimiento por escrito del dueño. Tapar nombre, dirección, NIF y CUPS siempre.</dd>
-        </dl>
-      </article>
-
-      <article class="script">
-        <header><span class="meta"><b>Día 16</b> · Lo medimos #1 · exterior · 40–60 s</span><h3>«¿Qué gasta más en una peluquería: el secador o el termo?»</h3></header>
-        <dl>
-          <dt class="first">0–2 s</dt><dd class="first"><b>Imagen:</b> plano macro del medidor con los números subiendo. <b>Texto:</b> «¿SECADOR O TERMO?». <b>Voz:</b> <span class="say">«He venido a una peluquería a medir qué aparato se come la factura.»</span></dd>
-          <dt>Desarrollo</dt><dd>Medir tres aparatos: secador, termo y climatización o plancha. Enseñar los vatios y traducirlos a euros al mes con las horas de uso que diga la dueña. Ranking final en pantalla.</dd>
-          <dt>Giro</dt><dd>Lo que salga. El resultado real es el contenido; no se escribe antes.</dd>
-          <dt>Cierre</dt><dd><span class="say">«¿Qué negocio quieres que midamos la semana que viene? Te leo.»</span></dd>
-          <dt>Rodaje</dt><dd>Dos cámaras: una macro al medidor y otra a las reacciones. Medidor de enchufe para lo que va enchufado. Para lo que va al cuadro, siempre con un electricista: nadie abre un cuadro en cámara sin un profesional.</dd>
-        </dl>
-      </article>
-
-      <article class="script">
-        <header><span class="meta"><b>Día 19</b> · 60 segundos · reto · 60–75 s</span><h3>«60 segundos. Ahorro o café.»</h3></header>
-        <dl>
-          <dt class="first">0–2 s</dt><dd class="first"><b>Imagen:</b> un cronómetro de cocina gigante arranca con un pitido. <b>Texto:</b> «60 SEGUNDOS · AHORRO O CAFÉ». <b>Voz:</b> <span class="say">«Tengo 60 segundos para encontrar ahorro en esta factura. Si no lo encuentro, invito al dueño a un café.»</span></dd>
-          <dt>Desarrollo</dt><dd>Barrido rápido por la factura (con datos tapados), flechas y círculos en pantalla y el jefe pensando en voz alta, deprisa.</dd>
-          <dt>Giro</dt><dd>«<span class="ph">[X €]</span> al año en <span class="ph">[N]</span> segundos.» O bien: «Café pagado. Esta factura está bien hecha.» Y se graba el café.</dd>
-          <dt>Cierre</dt><dd><span class="say">«¿Te atreves con la tuya? Escríbeme FUGA.»</span></dd>
-          <dt>Rodaje</dt><dd>Cenital de la factura y frontal del jefe. El cronómetro tiene que ser real y estar en la mesa, no solo un gráfico.</dd>
-        </dl>
-      </article>
-
-      <article class="script">
-        <header><span class="meta"><b>Día 22</b> · Ahorrómetro · a cámara · 30–40 s</span><h3>«Le dije a un cliente que no cambiara»</h3></header>
-        <dl>
-          <dt class="first">0–2 s</dt><dd class="first"><b>Imagen:</b> el jefe a cámara, serio, en un plano muy cerrado. <b>Texto:</b> «LE DIJE QUE NO CAMBIARA». <b>Voz:</b> <span class="say">«Le dije a un cliente que no cambiara de compañía. Perdí la comisión. Lo volvería a hacer.»</span></dd>
-          <dt>Desarrollo</dt><dd>«Tenía un precio bueno y bien ajustado. Cambiar le ahorraba <span class="ph">[poco]</span> y le metía una permanencia. Mi trabajo no es moverte de compañía: es que pagues lo justo.»</dd>
-          <dt>Cierre</dt><dd><span class="say">«Si quieres que alguien te diga la verdad sobre tu factura, aunque sea que está bien: FUGA.»</span></dd>
-          <dt>Ojo</dt><dd class="note">Solo si el caso es real. Si ya aplicáis el «si no compensa, te lo decimos» del plan anterior, seguro que tenéis alguno.</dd>
-        </dl>
-      </article>
-
-      <article class="script">
-        <header><span class="meta"><b>Día 25</b> · Dinero tirado · cámara + Higgsfield · 30–40 s</span><h3>«Si tu contrato es más viejo que tu móvil, tenemos un problema»</h3></header>
-        <dl>
-          <dt class="first">0–2 s</dt><dd class="first"><b>Imagen:</b> el jefe levanta un móvil antiguo de teclas junto a un contrato amarillento. <b>Texto:</b> «¿TU CONTRATO ES MÁS VIEJO QUE TU MÓVIL?». <b>Voz:</b> <span class="say">«Si tu contrato de luz es más viejo que tu móvil, tenemos un problema.»</span></dd>
-          <dt>Desarrollo</dt><dd>«Desde 2021 ha cambiado todo: tarifas nuevas, precios que se dispararon en 2022 y bajaron después, ofertas nuevas cada año. Si tu negocio sigue con lo que firmó hace años, nadie ha comprobado si sigue siendo bueno. Y tu compañía no tiene ningún motivo para llamarte.»</dd>
-          <dt>Cierre</dt><dd><span class="say">«Mira la fecha de tu contrato. Si no la sabes, peor. Comenta FUGA.»</span></dd>
-          <dt>Higgsfield</dt><dd>Transición: el contrato envejece, amarillea y se deshace en polvo.</dd>
-        </dl>
-      </article>
-
+  <section>
+    <h2><span class="num">8</span>Cómo llegan los clientes</h2>
+    <ol class="steps">
+      <li><span>El vídeo termina con «Comenta FUGA».</span></li>
+      <li><span>Un mensaje automático le envía la lista de las 7 fugas y le pregunta qué negocio tiene y cuánto paga de luz al mes.</span></li>
+      <li><span>Alguien del equipo sigue la conversación y le pide una foto de la última factura.</span></li>
+      <li><span>Hacemos el estudio gratis y se lo enviamos en <span class="ph">[plazo]</span>.</span></li>
+      <li><span>Si hay ahorro, tramitamos el cambio. Si no lo hay, se lo decimos.</span></li>
+    </ol>
+    <div class="card">
+      <h3>Respuesta del equipo</h3>
+      <p class="bio">«¡Buenas! Soy <span class="ph">[nombre]</span>, de BajaTuLuz. Para buscar tu fuga necesito saber a qué se dedica tu negocio, en qué provincia está y una foto de tu última factura. En <span class="ph">[plazo]</span> te digo lo que encontramos, gratis. Si no hay ahorro, también te lo digo.»</p>
     </div>
   </section>
 
-  <!-- 08 -->
-  <section id="carruseles">
-    <div class="sec-head">
-      <span class="eyebrow">08 · Carruseles</span>
-      <h2>Cuatro piezas para guardar y reenviar</h2>
-      <p>Una idea por diapositiva y la cifra siempre más grande que el texto. El C1 es también el PDF que se manda por mensaje a quien comenta FUGA.</p>
-    </div>
-    <div class="carr">
-      <div class="box"><span class="chip">Día 4 · gancho para mensajes</span><h3>C1 · 7 fugas de dinero en la factura de tu negocio</h3>
-        <ol><li>Portada: «Tu negocio tiene una fuga. Estas son las 7 más comunes.»</li><li>Potencia que te sobra: la pagas los 12 meses.</li><li>Energía reactiva: solo en más de 15 kW. Busca la línea.</li><li>Un precio firmado hace años que nadie ha revisado.</li><li>Servicios añadidos que nadie pidió.</li><li>Excesos de potencia: una multa que se puede evitar.</li><li>Alquiler de equipos de medida: mira cuánto pagas al año.</li><li>Consumo con la persiana bajada.</li><li>«¿Cuántas tiene la tuya? Comenta FUGA y te mando la checklist.»</li></ol></div>
-      <div class="box"><span class="chip">Día 11 · ahorro gratis</span><h3>C2 · 6 cosas que puedes hacer hoy sin gastar un euro</h3>
-        <ol><li>Portada: «Ahorro gratis. Hoy. Sin llamar a nadie.»</li><li>Busca líneas de «servicio» en la factura y pregunta qué son.</li><li>Mira la fecha de tu contrato y si tiene permanencia.</li><li>Si tu contrato tiene precios por horas, mueve a la noche lo que puedas (termos, lavavajillas).</li><li>Revisa temperatura y gomas de cámaras y neveras.</li><li>Haz la lista de lo que se apaga al cerrar (cartel, cafetera, pantallas).</li><li>Pide un estudio gratis: nos paga la comercializadora, no tú.</li><li>«Guárdalo y comenta FUGA.»</li></ol></div>
-      <div class="box"><span class="chip">Día 18 · ¿cuánto paga?</span><h3>C3 · ¿Cuánto paga de luz…? Adivina antes de pasar</h3>
-        <ol><li>Portada: «5 negocios, 5 facturas. Adivina antes de pasar.»</li><li>Un bar: ¿A, B o C?</li><li>Respuesta y lo que le ahorramos.</li><li>Una peluquería, un gimnasio, una panadería y una oficina, con el mismo formato.</li><li>Cierre: «¿Cuántas has acertado? Te leo. Y si quieres saber la tuya: FUGA.»</li></ol>
-        <p class="small muted">Solo cifras reales de clientes que acepten (se puede anonimizar: «un bar de Valencia»).</p></div>
-      <div class="box"><span class="chip">Día 25 · antes de firmar</span><h3>C4 · 5 preguntas que el comercial de la puerta no quiere oír</h3>
-        <ol><li>Portada: «Antes de firmar, haz estas 5 preguntas.»</li><li>¿Ese descuento es sobre qué: energía, potencia o total?</li><li>¿Cuánto dura el precio y qué pasa después?</li><li>¿Hay permanencia? ¿Cuánto cuesta irse?</li><li>¿Me cobráis algún servicio añadido?</li><li>¿Con qué consumo habéis calculado el ahorro?</li><li>«Si no te lo da por escrito, no firmes. Te lo revisamos gratis: FUGA.»</li></ol></div>
-    </div>
-  </section>
-
-  <!-- 09 -->
-  <section id="podcast" class="page">
-    <div class="sec-head">
-      <span class="eyebrow">09 · Podcast</span>
-      <h2>Empresarios, dinero y una factura abierta en directo</h2>
-      <p>El v1 proponía un podcast entre compañeros. El v2 sienta a un empresario real en la mesa: trae su propia audiencia, es un cliente potencial (y sus amigos también) y regala el mejor momento posible, que es abrir el sobre con su ahorro delante de cámara.</p>
-    </div>
-    <div class="stack">
-      <div class="pod-hero">
-        <div class="pod-name">
-          <span class="eyebrow">Nombre propuesto</span>
-          <p class="name">ENCHUFADOS</p>
-          <p>Doble sentido: conectados a la luz y «el enchufado» que entra por contactos. El primer episodio juega con eso: un jefe de 23 años, ¿es un enchufado?</p>
-          <p class="small">Alternativas: «Dinero Tirado» o «Alto Voltaje».</p>
-        </div>
-        <div class="box">
-          <h3>Formato</h3>
-          <p>35–45 minutos en vídeo para YouTube y Spotify. De cada episodio salen 6–8 clips verticales, 1 carrusel de frases y 3–5 historias.</p>
-          <p><b>Presenta:</b> el jefe. <b>Copresenta:</b> un compañero que hace las preguntas incómodas. <b>Invitado:</b> dueño de un negocio o emprendedor local.</p>
-          <p><b>Título en YouTube:</b> «<span class="ph">[cifra o frase fuerte]</span> | <span class="ph">[invitado]</span> | Enchufados #N». Ejemplo: «Pagaba <span class="ph">[X €]</span> de luz y no lo sabía | <span class="ph">[Bar]</span> | Enchufados #2».</p>
-        </div>
+  <section>
+    <h2><span class="num">9</span>Reglas y seguimiento</h2>
+    <div class="cols">
+      <div class="card">
+        <h3>Reglas</h3>
+        <ul class="points">
+          <li><span>Toda cifra es real y de un cliente concreto. Si es una estimación, se dice.</span></li>
+          <li><span>Clientes y facturas, solo con permiso por escrito y con nombre, dirección, NIF y CUPS tapados.</span></li>
+          <li><span>Criticamos la letra pequeña y los contratos sin revisar, nunca a una compañía concreta. Las comercializadoras son nuestros socios.</span></li>
+          <li><span>Las noticias llevan fecha y fuente en pantalla.</span></li>
+          <li><span>Nunca recomendamos en un vídeo bajar la potencia o instalar equipos sin estudio previo.</span></li>
+        </ul>
       </div>
-
-      <div class="box">
-        <h3>Escaleta de cada episodio</h3>
-        <div class="runsheet">
-          <div><span class="t">00:00</span><div><h4>Cold open</h4><p>Los mejores 20–30 segundos del episodio: casi siempre, la apertura del sobre.</p></div></div>
-          <div><span class="t">00:30</span><div><h4>Sintonía y presentación</h4><p>Intro de 5 s hecha con Higgsfield (neón que se enciende) y quién es el invitado en una frase.</p></div></div>
-          <div><span class="t">02:00</span><div><h4>Cómo empezó</h4><p>La historia del negocio, el primer gran error con el dinero y lo que nadie le contó.</p></div></div>
-          <div><span class="t">12:00</span><div><h4>Lo que nadie te cuenta de tu sector</h4><p>Costes ocultos, anécdotas y cifras. Aquí salen los clips de curiosidades.</p></div></div>
-          <div><span class="t">22:00</span><div><h4>La factura sobre la mesa</h4><p>El nombre del podcast del v1 se queda como sección. El estudio de su factura ya está hecho y va en un sobre verde cerrado. «¿Cuánto crees que te vamos a ahorrar?» Lo apunta, se abre el sobre y se revela la cifra real. Esa reacción es el clip principal.</p></div></div>
-          <div><span class="t">32:00</span><div><h4>Ronda de enchufe</h4><p>Cinco preguntas rápidas. La última siempre es «¿A quién enchufarías?»: el invitado nomina al siguiente invitado. Así se crea una cadena de empresarios.</p></div></div>
-          <div><span class="t">38:00</span><div><h4>…y bajamos la luz</h4><p>El jefe gira el regulador de la mesa y el plató se queda a oscuras. Fin.</p></div></div>
-        </div>
-      </div>
-
-      <div class="eps">
-        <div class="ep"><span class="num">EP1 · DÍA 3</span><h3>«¿Soy un enchufado?»</h3><p>Sin invitado: jefe y compañero. Cómo llega alguien de 23 años a dirigir esto, cómo gana dinero BajaTuLuz (la comisión, sin rodeos) y la fuga más gorda que han visto.</p><p class="clip"><b>Clips:</b> «¿Soy un enchufado?» · «Si es gratis, ¿quién nos paga?» · «La factura más absurda que he visto».</p></div>
-        <div class="ep"><span class="num">EP2 · DÍA 10</span><h3>«Lo que cuesta de verdad abrir un bar»</h3><p>Dueño o dueña de un bar o restaurante, a ser posible cliente. Alquiler, personal, proveedores y, al final, la factura sobre la mesa.</p><p class="clip"><b>Clips:</b> la apertura del sobre · «lo que cuesta abrir un bar en 2026» · su peor error con el dinero.</p></div>
-        <div class="ep"><span class="num">EP3 · DÍA 17</span><h3>«El negocio que nunca apaga la luz»</h3><p>Dueño de un gimnasio (mejor si abre 24 h) o de un comercio con mucho horario. Juego «¿Cuánto paga?» con el público antes de abrir el sobre.</p><p class="clip"><b>Clips:</b> «Adivina cuánto paga» · cuánto cuesta tener las máquinas encendidas · la cifra.</p></div>
-        <div class="ep"><span class="num">EP4 · DÍA 24</span><h3>«Lo que ha visto un electricista»</h3><p>Un electricista o instalador con años de oficio: cuadros imposibles, el apagón de abril de 2025, reactiva y placas mal dimensionadas. Lleno de curiosidades.</p><p class="clip"><b>Clips:</b> «lo más loco que he visto en un cuadro» · qué pasó en los negocios el día del apagón · placas sí o no.</p></div>
-      </div>
-      <p class="small muted">EP5 (mes siguiente): un administrador de fincas, para alimentar la ruta de comunidades que ya tenéis.</p>
-    </div>
-  </section>
-
-  <!-- 10 -->
-  <section id="produccion">
-    <div class="sec-head">
-      <span class="eyebrow">10 · Producción</span>
-      <h2>Cámaras profesionales, rodaje por lotes</h2>
-      <p>Con cámaras buenas el riesgo es que todo parezca un anuncio. La regla: imagen de cine y tono de bar. Se graba por lotes para no estar grabando todos los días.</p>
-    </div>
-    <div class="stack">
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Sesión</th><th>Cuándo</th><th>Duración</th><th>Qué sale</th></tr></thead>
-          <tbody>
-            <tr><td><b>Rodaje A</b> · plató</td><td>Semana del 5/10</td><td>4 h</td><td>Días 1, 2, 4, 8, 9 y 11 + portadas + banco de recursos: factura rompiéndose, campana, interruptor, persiana, contador.</td></tr>
-            <tr><td><b>Podcast 1</b></td><td>Semana del 12/10</td><td>3 h</td><td>EP1 y EP2. El montaje se hace una vez y se graban los dos.</td></tr>
-            <tr><td><b>Rodaje B</b> · exterior</td><td>Semana 1 del plan</td><td>4–5 h</td><td>LO MEDIMOS (día 16), 60 SEGUNDOS (día 19), polígono y planos de calle.</td></tr>
-            <tr><td><b>Rodaje C</b> · plató</td><td>Semana 2 del plan</td><td>3 h</td><td>Paredón (día 12, con las facturas recibidas), días 15, 18, 22, 23, 25, 29 (plantilla) y 30.</td></tr>
-            <tr><td><b>Podcast 2</b></td><td>Semana 2 del plan</td><td>3 h</td><td>EP3 y EP4.</td></tr>
-            <tr><td><b>Día a día</b></td><td>Todo el mes</td><td>—</td><td>Días 5 y 26 con cámara ligera durante días normales de trabajo.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="two">
-        <div class="box">
-          <h3>Ajustes de cámara</h3>
-          <p><b>Reels a cámara:</b> 4K a 25p, obturador a 1/50, 35–50 mm, f/2–2.8. Plano medio corto, ojos en el tercio superior y aire abajo para subtítulos.</p>
-          <p><b>Recursos y ganchos físicos:</b> 4K a 50p o 100p para ralentizar la campana, la factura, la persiana o el interruptor.</p>
-          <p><b>Podcast:</b> tres cámaras en 4K horizontal (general y dos primeros planos). Los primeros planos van centrados para recortar a 9:16 sin perder la cara.</p>
-          <p><b>Color:</b> perfil log y una LUT de marca: verdes profundos, piel natural y el lima saturado en los neones.</p>
-        </div>
-        <div class="box">
-          <h3>Sonido, luz y edición</h3>
-          <p><b>Sonido:</b> micrófonos de solapa inalámbricos en los reels; dinámicos de estudio y grabación multipista en el podcast. El audio de cámara solo sirve de respaldo.</p>
-          <p><b>Luz:</b> principal suave a 45°, contraluz y un práctico lima en el fondo (neón o tira LED) sobre pared verde oscura. En la mesa del podcast, un regulador de luz de verdad.</p>
-          <p><b>Edición:</b> un corte cada 1,5–2,5 s en los primeros 5 s, subtítulos grandes de dos líneas como máximo con la palabra clave en lima, zoom al 110 % en el gancho y un sonido en cada cifra (caja registradora o clic).</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 11 -->
-  <section id="higgsfield">
-    <div class="sec-head">
-      <span class="eyebrow">11 · Higgsfield</span>
-      <h2>IA para el espectáculo, personas para la verdad</h2>
-      <p>Higgsfield sirve para lo que no se puede grabar: un enchufe que escupe billetes, una factura que arde, una cámara frigorífica que expulsa dinero en vez de frío. Se usa en el primer segundo y en las transiciones. La cara de la marca sigue siendo el jefe, nunca un avatar.</p>
-    </div>
-    <div class="stack">
-      <ol class="flow">
-        <li><b>1 · Graba</b>Tu plano real: el jefe con la factura, el enchufe del bar, la puerta de la cámara.</li>
-        <li><b>2 · Sube</b>Un fotograma de ese plano a Higgsfield como imagen de partida.</li>
-        <li><b>3 · Genera</b>Imagen a vídeo con el efecto (billetes, fuego, desintegración, zoom brusco), de 3 a 5 s.</li>
-        <li><b>4 · Monta</b>El clip de IA dura 1–2 s como gancho y corta a tu plano real. Mezcla: 80 % real, 20 % IA.</li>
-      </ol>
-      <div class="two">
-        <div class="box"><h3>Para qué sí</h3><p>Ganchos imposibles del primer segundo. Transiciones sobre vuestro propio metraje. Recursos para curiosidades (mercado eléctrico, precios negativos, luces de Navidad). La intro y las miniaturas del podcast. Explicaciones animadas, como el camino de la luz hasta un bar.</p></div>
-        <div class="box"><h3>Para qué no</h3><p>Nunca para inventar clientes, testimonios, facturas «reales» o cifras de ahorro. El contenido realista hecho con IA se marca como tal al publicar (Instagram y TikTok tienen la etiqueta). Si un texto sale mal en la imagen generada, se añade luego en edición.</p></div>
-      </div>
-      <h3>Prompts listos para pegar</h3>
-      <p class="small muted">En inglés porque los modelos responden mejor. Cambiad el formato a 16:9 para el podcast.</p>
-      <div class="prompts">
-        <div class="prompt"><h4>Enchufe que escupe billetes <span>Día 2</span></h4><button class="copy" type="button">Copiar</button><code>Extreme close-up of a white wall power outlet in a dimly lit Spanish café at night, euro banknotes and coins violently shooting out of the socket like a fountain, cinematic lighting, deep green shadows and lime green neon rim light, shallow depth of field, slow motion, photorealistic, vertical 9:16</code></div>
-        <div class="prompt"><h4>Factura en llamas que se vuelve billetes <span>Días 1 y 8</span></h4><button class="copy" type="button">Copiar</button><code>A young man's hand holds a paper electricity bill that suddenly catches fire, the flames turn into dozens of euro banknotes swirling toward the camera, dark green background, lime green rim light, cinematic, slow motion, photorealistic, vertical 9:16</code></div>
-        <div class="prompt"><h4>Energía fantasma en el cuadro eléctrico <span>Día 11</span></h4><button class="copy" type="button">Copiar</button><code>An industrial electrical panel in a dark workshop, a translucent ghostly glowing energy slowly escapes through the panel door and drifts away carrying euro banknotes, eerie lime green glow, dust particles in the light, cinematic, photorealistic, vertical 9:16</code></div>
-        <div class="prompt"><h4>Cámara frigorífica que expulsa dinero <span>Ganchos 22 y 25</span></h4><button class="copy" type="button">Copiar</button><code>Inside a restaurant walk-in cold room, the heavy steel door swings open and a blizzard of euro banknotes blows out instead of cold air, frost on the shelves, cold blue light mixed with lime green accents, cinematic, photorealistic, vertical 9:16</code></div>
-        <div class="prompt"><h4>Precio de la luz bajo cero <span>Día 9</span></h4><button class="copy" type="button">Copiar</button><code>Giant LED stock exchange style board at night showing an electricity price of "-0,01 €/MWh" in glowing lime green digits, a Spanish city skyline behind it with wind turbines and solar farms on the horizon, cinematic wide shot, slow push-in, photorealistic, vertical 9:16</code></div>
-        <div class="prompt"><h4>Contrato que envejece y se deshace <span>Día 25</span></h4><button class="copy" type="button">Copiar</button><code>Close-up of a printed contract on a wooden desk, in a fast time-lapse the paper ages, turns yellow, curls at the edges and finally disintegrates into dust that blows away, warm desk lamp light, dark green background, cinematic, photorealistic, vertical 9:16</code></div>
-        <div class="prompt"><h4>Intro del podcast <span>5 s · 16:9</span></h4><button class="copy" type="button">Copiar</button><code>A neon sign flickers on in a dark podcast studio with deep green walls, sparks fly, the room fills with a lime green glow, then a hand turns a dimmer knob on the table and all the lights fade smoothly to black, cinematic, photorealistic, 16:9, 5 seconds</code></div>
-        <div class="prompt"><h4>El camino de la luz hasta un bar <span>Explicación animada</span></h4><button class="copy" type="button">Copiar</button><code>Stylized 3D isometric animation: glowing lime green energy travels from a wind farm through power lines and a city substation into a small Spanish bar at night, the bar's sign lights up, playful clean style, deep green background, smooth camera move, vertical 9:16</code></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 12 -->
-  <section id="captacion">
-    <div class="sec-head">
-      <span class="eyebrow">12 · Captación</span>
-      <h2>De comentario a estudio pedido</h2>
-      <p>Cada vídeo termina en FUGA. Lo que pasa después es lo que convierte las visualizaciones en clientes.</p>
-    </div>
-    <div class="stack">
-      <div class="two">
-        <div class="box">
-          <h3>Mensaje automático</h3>
-          <p>Quien comenta FUGA recibe un mensaje directo automático (con ManyChat o la herramienta de respuestas de Instagram) con:</p>
-          <ol class="rules">
-            <li>La checklist «7 fugas» en PDF (el carrusel C1).</li>
-            <li>Una pregunta: «¿Qué negocio tienes y cuánto pagas de luz al mes, más o menos?»</li>
-            <li>El paso a una persona del equipo en cuanto contesta.</li>
-          </ol>
-        </div>
-        <div class="box">
-          <h3>Respuesta del equipo</h3>
-          <p class="bio">¡Buenas! Soy [nombre], de BajaTuLuz. Para buscar tu fuga necesito tres cosas: a qué se dedica tu negocio, en qué provincia está y una foto de tu última factura. En [plazo real] te digo lo que encontramos, gratis. Si no hay ahorro, también te lo digo.</p>
-        </div>
-      </div>
-      <div class="promise">
-        <span class="eyebrow">Gancho loco del mes · decide dirección</span>
-        <p class="big">«Te <em>pagamos</em> un mes de luz.»</p>
-        <p>Entre los negocios que pidan su estudio durante el mes se sortea el importe de una factura mensual (hasta <span class="ph">[importe máximo]</span>). Se anuncia el día 1 en historias y en el reel del día 4, y se resuelve en directo el día 30 con la campana. Convierte el mes entero en una cuenta atrás. Necesita bases legales publicadas y revisadas por vuestro gestor, incluida la fiscalidad del premio.</p>
-      </div>
-      <div class="two">
-        <div class="box">
-          <h3>Historias</h3>
-          <p>De lunes a viernes, 3–5 historias con este orden: una pregunta o encuesta, algo de detrás de cámaras y un recordatorio de FUGA. El fin de semana, compartir los mejores comentarios y reposts.</p>
-          <p><b>Destacadas:</b> Ahorrómetro · Casos · Podcast · ¿Gratis? · Paredón · Equipo · Comunidades.</p>
-        </div>
-        <div class="box">
-          <h3>Dónde se publica</h3>
-          <p><b>Instagram:</b> la base. <b>TikTok:</b> los mismos reels, donde el tono agresivo funciona todavía mejor. <b>YouTube:</b> el podcast completo y los Shorts. <b>LinkedIn:</b> el jefe en primera persona, un caso con cifra a la semana. Ahí están los gerentes que deciden.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 13 -->
-  <section id="reglas">
-    <div class="sec-head">
-      <span class="eyebrow">13 · Reglas, métricas y preparación</span>
-      <h2>Agresivo sí. Falso nunca.</h2>
-      <p>Siete reglas que permiten ir a tope sin que un vídeo os cueste una reclamación o un socio.</p>
-    </div>
-    <div class="stack">
-      <div class="red">
-        <div><p><b>Toda cifra de ahorro es real</b>, de un cliente concreto, y se puede enseñar con el antes y el después. Si es una estimación, se dice «estimado».</p></div>
-        <div><p><b>Nada de «ahorra hasta un 40 %» genérico</b> sin un caso detrás. La publicidad engañosa se denuncia, y el sector de la energía está muy vigilado.</p></div>
-        <div><p><b>Clientes y facturas solo con permiso por escrito</b> y con nombre, dirección, NIF y CUPS tapados.</p></div>
-        <div><p><b>El villano es la letra pequeña</b>, no una compañía con nombre y apellidos.</p></div>
-        <div><p><b>La IA, para el espectáculo</b>: nunca para inventar clientes ni resultados, y siempre etiquetada.</p></div>
-        <div><p><b>«Gratis» va siempre con el porqué</b>: nos paga la comercializadora cuando cambias.</p></div>
-        <div><p><b>Bajar potencia o instalar condensadores, siempre con estudio.</b> Nunca se recomienda a ojo en un vídeo.</p></div>
-      </div>
-
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Qué medir cada viernes</th><th>Dónde se ve</th><th>Qué decide</th></tr></thead>
-          <tbody>
-            <tr><td><b>Retención a 3 s</b></td><td>Estadísticas de cada reel</td><td>Qué ganchos funcionan. Los dos mejores se repiten la semana siguiente con otro caso.</td></tr>
-            <tr><td><b>Compartidos y guardados</b></td><td>Estadísticas de cada reel</td><td>Qué temas merecen carrusel o episodio.</td></tr>
-            <tr><td><b>Comentarios FUGA y mensajes</b></td><td>Herramienta de mensajes automáticos</td><td>Qué series traen negocios de verdad.</td></tr>
-            <tr><td><b>Estudios pedidos, entregados y firmados</b></td><td>CRM, con la pieza de origen</td><td>Qué contenido trae dinero, no solo visualizaciones.</td></tr>
-            <tr><td><b>Ahorrómetro</b></td><td>CRM</td><td>Es indicador y contenido a la vez. Si no sube, no hay vídeo del lunes.</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="box">
-        <h3>Antes de grabar, del 5 al 16 de octubre</h3>
-        <ul class="check">
-          <li>Sacar del CRM 10 casos con ahorro real: actividad, ciudad, antes, después y qué se cambió.</li>
-          <li>Pedir permiso por escrito a esos clientes (y a 2 que quieran salir en cámara).</li>
-          <li>Calcular el total ahorrado en 2026 para el Ahorrómetro.</li>
-          <li>Cerrar 3 invitados para el podcast (bar, gimnasio y electricista).</li>
-          <li>Hacer el estudio de la factura de cada invitado antes de grabar (el sobre).</li>
-          <li>Conseguir una peluquería o un bar para LO MEDIMOS.</li>
-          <li>Comprar: campana, medidor de enchufe, cronómetro grande, mazo, sellos y sobres verdes.</li>
-          <li>Preparar un neón o tira LED lima para el fondo y un regulador de luz para la mesa.</li>
-          <li>Configurar el mensaje automático de FUGA y maquetar el PDF «7 fugas».</li>
-          <li>Decidir con dirección: el sorteo y el gancho 37 (enseñar la comisión).</li>
+      <div class="card">
+        <h3>Qué miramos cada viernes</h3>
+        <ul class="points">
+          <li><span><b>Cuánta gente pasa del segundo 3:</b> qué ganchos funcionan.</span></li>
+          <li><span><b>Compartidos y guardados:</b> qué temas repetir.</span></li>
+          <li><span><b>Comentarios FUGA y mensajes:</b> qué formatos traen negocios.</span></li>
+          <li><span><b>Estudios pedidos y firmados:</b> qué contenido trae clientes.</span></li>
+          <li><span><b>Total ahorrado:</b> la cifra de la bio y del lunes.</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <footer>
-    <span>BajaTuLuz · Plan de contenido v2 · Versión del 5 de octubre de 2026. Sustituye al plan v1 del 30 de septiembre.</span>
-    <span>Los datos generales del sector (precios negativos desde 2024, tarifas de 2021, reactiva en más de 15 kW, reducción del impuesto eléctrico) conviene confirmarlos con la fuente oficial antes de cada vídeo. Las cifras de clientes son huecos y solo se rellenan con datos reales.</span>
-  </footer>
-</main>
+  <section>
+    <h2><span class="num">10</span>Antes de empezar</h2>
+    <div class="cols">
+      <div class="card">
+        <h3>Del 5 al 16 de octubre</h3>
+        <ul class="check">
+          <li><span>Sacar del CRM 10 casos con ahorro real: actividad, ciudad, antes, después y qué se cambió.</span></li>
+          <li><span>Pedir permiso por escrito a esos clientes, y a dos que quieran salir en cámara.</span></li>
+          <li><span>Calcular el total ahorrado en 2026.</span></li>
+          <li><span>Conseguir una peluquería o un bar para medir.</span></li>
+          <li><span>Comprar campana, medidor de enchufe, cronómetro, mazo y sellos.</span></li>
+          <li><span>Configurar el mensaje automático de FUGA y preparar la lista de las 7 fugas.</span></li>
+          <li><span>Cambiar la bio y hacer el rodaje 1.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Lo que tiene que decidir dirección</h3>
+        <p><b>¿Hacemos un sorteo?</b> «Te pagamos un mes de luz», entre los negocios que pidan su estudio durante el mes. Se anunciaría el día 19 y se resolvería el 17 de noviembre. Necesita bases legales revisadas por el gestor.</p>
+        <p><b>¿Enseñamos cuánto nos paga la compañía?</b> Un vídeo explicando la comisión genera mucha confianza, pero es una decisión de empresa.</p>
+      </div>
+    </div>
+  </section>
 
-<script>
-document.querySelectorAll('.copy').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var code = btn.parentElement.querySelector('code');
-    var done = function () { btn.textContent = 'Copiado'; setTimeout(function () { btn.textContent = 'Copiar'; }, 1600); };
-    var fallback = function () {
-      var r = document.createRange(); r.selectNodeContents(code);
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      btn.textContent = 'Seleccionado';
-    };
-    try {
-      navigator.clipboard.writeText(code.textContent).then(done, fallback);
-    } catch (e) { fallback(); }
-  });
-});
-</script>
+  <footer class="end">
+    <p>BajaTuLuz · Plan de contenido de 30 días · Versión final del 5 de octubre de 2026. Sustituye al plan del 30 de septiembre. El podcast va aparte, a continuación.</p>
+  </footer>
+
+  <section class="apart new-page">
+    <img class="logo" src="assets/logo-bajatuluz.png" alt="BajaTuLuz">
+    <p class="apart-label">Aparte del plan de 30 días</p>
+    <h2>El podcast</h2>
+    <p class="notice"><b>El podcast empieza cuando el estudio esté completo y montado.</b> No forma parte de estos 30 días y ningún vídeo del calendario depende de él.</p>
+    <p class="intro">Un empresario invitado cuenta cómo levantó su negocio. Al final abrimos en directo un sobre con el estudio de su factura y se ve cuánto puede ahorrar: ese es el mejor clip del episodio. Además, el invitado trae a su propia audiencia, es un posible cliente y cada episodio nos deja un caso real grabado.</p>
+    <div class="cols">
+      <div class="card">
+        <h3>Nombre y formato</h3>
+        <p><b>Nombre propuesto: Enchufados.</b> Juega con estar enchufado a la luz y con ser «el enchufado», que encaja con un jefe de 23 años. Otras opciones: Dinero Tirado o Alto Voltaje.</p>
+        <p>Episodios de 35 a 45 minutos en vídeo para YouTube y Spotify. De cada uno salen 6 a 8 clips cortos para Instagram y TikTok. Presenta el jefe y un compañero hace las preguntas incómodas.</p>
+      </div>
+      <div class="card">
+        <h3>Cómo va cada episodio</h3>
+        <ol class="steps">
+          <li><span>Avance con los mejores 30 segundos.</span></li>
+          <li><span>Cómo empezó el negocio y su primer error con el dinero.</span></li>
+          <li><span>Lo que nadie cuenta de su sector.</span></li>
+          <li><span>La factura sobre la mesa: se abre el sobre.</span></li>
+          <li><span>Ronda rápida. La última pregunta es «¿A quién enchufarías?» y el invitado propone al siguiente.</span></li>
+          <li><span>Cierre: «…y bajamos la luz».</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="card">
+        <h3>Primeros episodios</h3>
+        <ul class="points">
+          <li><span><b>«¿Soy un enchufado?»</b> El jefe y un compañero: cómo funciona BajaTuLuz y quién nos paga.</span></li>
+          <li><span><b>Hostelería.</b> El dueño de un bar o restaurante: lo que cuesta de verdad abrir un bar.</span></li>
+          <li><span><b>Gimnasio o comercio</b> con muchas horas abierto.</span></li>
+          <li><span><b>Un electricista.</b> Lo más raro que ha visto en un cuadro eléctrico y qué pasó en los negocios el día del apagón.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Qué necesita el estudio para arrancar</h3>
+        <ul class="check">
+          <li><span>Tres cámaras: plano general y dos primeros planos. Ya las tenemos.</span></li>
+          <li><span>Un micrófono de estudio por persona y grabación en pistas separadas.</span></li>
+          <li><span>Luz principal, contraluz y luz de fondo con el verde de la marca.</span></li>
+          <li><span>Fondo con el logo, mesa y sillas cómodas.</span></li>
+          <li><span>Paneles para quitar el eco de la sala.</span></li>
+          <li><span>Un regulador de luz en la mesa para el cierre.</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="intro">Cuando arranque, sus clips entran en el calendario como un formato más (por ejemplo, los sábados) sin quitar ninguno de la semana tipo. Mientras se monta el estudio, se pueden ir cerrando invitados.</p>
+  </section>
+
+</main>
