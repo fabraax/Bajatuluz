@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <link rel="stylesheet" href="assets/historias.css" />
+      <style>
+        #root { position: absolute; inset: 0; }
+        #ofi-frame .ofi-scrim {
+          background: linear-gradient(180deg,
+            #e9eedb 0%, rgba(233, 238, 219, 0.97) 33%, rgba(233, 238, 219, 0.3) 44%,
+            rgba(233, 238, 219, 0.1) 56%, rgba(233, 238, 219, 0.86) 67%, #e9eedb 75%, #e9eedb 100%);
+        }
+        #ofi-frame .ofi-glow { left: -420px; top: 900px; width: 1200px; height: 1200px;
+          background: radial-gradient(circle, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 62%); }
+        #ofi-frame .ofi-card { position: absolute; left: 84px; top: 806px; width: 912px; height: 452px; border-radius: 44px;
+          box-shadow: 0 50px 90px -46px rgba(22, 61, 50, 0.5); overflow: hidden; }
+        #ofi-frame .ofi-lbl { position: absolute; left: 48px; top: 58px; font: 500 20px/1 "JetBrains Mono", monospace; letter-spacing: 0.16em; color: #55695e; }
+        #ofi-frame .ofi-tt { position: absolute; left: 46px; top: 100px; font: 800 66px/1 "Inter Tight", sans-serif; letter-spacing: -0.035em; color: #163d32; white-space: nowrap; }
+        #ofi-frame .ofi-tag { position: absolute; left: 48px; display: flex; align-items: center; gap: 14px; padding: 14px 24px 14px 16px;
+          border-radius: 999px; background: #163d32; color: #fafbf3; font: 600 28px/1 "Inter Tight", sans-serif; white-space: nowrap; }
+        #ofi-frame .ofi-tag svg { width: 28px; height: 28px; display: block; flex: none; }
+        #ofi-frame .ofi-t1 { top: 214px; }
+        #ofi-frame .ofi-t2 { top: 296px; }
+        #ofi-frame .ofi-bld { position: absolute; right: 52px; top: 52px; width: 250px; height: 350px; display: block; overflow: visible; }
+      </style>
+
+      <div id="root" data-composition-id="oficinas" data-width="1080" data-height="1920" data-duration="7">
+        <div class="hn-frame sage" id="ofi-frame">
+          <div data-layout-allow-overflow class="hn-cam ofi-cam"><img src="assets/fondos/oficinas.jpg" alt="" /></div>
+          <div class="hn-scrim ofi-scrim"></div>
+          <div class="hn-glow ofi-glow"></div>
+          <div class="hn-grain"></div>
+
+          <div class="hn-hdr">
+            <img class="hn-logo" src="assets/logos/logo-color.png" alt="BajaTuLuz" />
+            <div class="hn-pill"><i class="pd"></i>NEGOCIOS<span class="cnt">03/04</span></div>
+          </div>
+          <div class="hn-eyebrow"><i class="ln"></i><span class="tx">OFICINAS</span></div>
+          <h1 class="hn-h"><span class="l1">¿Gestionas</span><span class="l2wrap"><span class="l2"><i class="hn-hlbar"></i><span class="t" data-layout-allow-overflow>una oficina?</span></span></span></h1>
+
+          <div class="ofi-card hn-glass">
+            <span class="ofi-lbl">LA IDEA ES SENCILLA</span>
+            <span class="ofi-tt">TU ACTIVIDAD</span>
+            <span class="ofi-tag ofi-t1"><svg viewBox="0 0 24 24" fill="none" stroke="#C4EC43" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>Cuándo trabajáis</span>
+            <span class="ofi-tag ofi-t2"><svg viewBox="0 0 24 24" fill="none" stroke="#C4EC43" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.2 2 5 13.6h5.6L9.4 22 18 10.2h-5.7z" /></svg>Qué equipos utilizáis</span>
+            <svg class="ofi-bld" viewBox="0 0 140 196" fill="none" stroke="#163D32" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+              <path class="ofi-draw" d="M24 188V14h92v174" />
+              <path class="ofi-draw" d="M6 188h128" />
+              <path class="ofi-draw" d="M58 188v-34h24v34" />
+              <g class="ofi-wins" stroke-width="3"></g>
+            </svg>
+          </div>
+
+          <p class="hn-body" data-layout-allow-occlusion data-layout-allow-overflow>
+            <span class="hn-bl"><span class="hn-bi">Cuéntanos cuándo trabajáis y qué equipos</span></span>
+            <span class="hn-bl"><span class="hn-bi">utilizáis. Esa información ayuda a poner</span></span>
+            <span class="hn-bl"><span class="hn-bi"><strong>la factura en contexto.</strong></span></span>
+          </p>
+          <div class="hn-ftr"><i class="hn-rule"></i><div class="row"><span class="hn-handle fi">@bajatuluz</span><span class="hn-next fi">SIGUE LEYENDO<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6" /></svg></span></div></div>
+          <div class="hn-prog"><div class="hn-seg done"><i></i></div><div class="hn-seg done"><i></i></div><div class="hn-seg cur"><i></i></div><div class="hn-seg"><i></i></div></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const DUR = 7;
+          const R = document.querySelector('[data-composition-id="oficinas"] #ofi-frame');
+          const q = (s) => R.querySelector(s);
+          const qa = (s) => R.querySelectorAll(s);
+          const tl = gsap.timeline({ paused: true });
+          HN.grain(R);
+
+          // ventanas del edificio: rejilla 3 x 4, posiciones fijas
+          const NS = "http://www.w3.org/2000/svg";
+          const wins = q(".ofi-wins");
+          const W = [];
+          [34, 62, 90].forEach((x, c) => [30, 60, 90, 120].forEach((y, r) => {
+            const w = document.createElementNS(NS, "rect");
+            w.setAttribute("x", x); w.setAttribute("y", y); w.setAttribute("width", 16); w.setAttribute("height", 20); w.setAttribute("rx", 3);
+            w.setAttribute("fill", "#C4EC43"); w.setAttribute("fill-opacity", "0");
+            wins.append(w); W.push({ el: w, c, r });
+          }));
+
+          HN.intro(tl, R, 0.15, DUR);
+          HN.kenBurns(tl, q(".ofi-cam"), DUR, { s: 1.12, x: 20, y: 30 }, { s: 1.02, x: -20, y: -20 });
+
+          tl.fromTo(q(".ofi-card"), { y: 90, scale: 0.955, opacity: 0, transformOrigin: "50% 100%" },
+            { y: 0, scale: 1, opacity: 1, duration: 1.1, ease: "expo.out" }, 0.55);
+          tl.fromTo(q(".ofi-lbl"), { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, 0.9);
+          tl.fromTo(q(".ofi-tt"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }, 1.0);
+          tl.fromTo(qa(".ofi-tag"), { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.8, ease: "expo.out", stagger: 0.16 }, 1.3);
+          qa(".ofi-draw").forEach((p, i) => {
+            const L = p.getTotalLength();
+            p.style.strokeDasharray = `${L} ${L}`;
+            tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 0.85 + i * 0.12);
+          });
+          tl.fromTo(W.map((w) => w.el), { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.03 }, 1.2);
+
+          // las ventanas se encienden por turnos: la oficina "trabaja"
+          const hash = (n) => { const x = Math.sin(n * 127.1) * 43758.5453; return x - Math.floor(x); };
+          const footer = HN.footerNudge(R);
+          HN.ambient(tl, DUR, (t) => {
+            W.forEach((w, i) => {
+              const k = Math.max(0, Math.min(1, (t - 1.5 - (w.r * 3 + w.c) * 0.08) / 0.25));
+              const step = Math.floor(t * 1.6);
+              const lit = hash(i * 13 + step) > 0.32 ? 1 : 0.15;
+              w.el.setAttribute("fill-opacity", (k * (t < 3 ? 1 : lit)).toFixed(3));
+            });
+            q(".ofi-glow").style.transform = `translate(${26 * Math.sin(t * 0.35)}px, ${20 * Math.cos(t * 0.3)}px)`;
+            footer(t);
+          });
+
+          window.__timelines["oficinas"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

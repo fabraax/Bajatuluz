@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <link rel="stylesheet" href="assets/historias.css" />
+      <style>
+        #root { position: absolute; inset: 0; }
+        #var-frame .var-scrim {
+          background: linear-gradient(180deg,
+            #c4ec43 0%, rgba(196, 236, 67, 0.97) 36%, rgba(196, 236, 67, 0.28) 44%,
+            rgba(196, 236, 67, 0.14) 55%, rgba(196, 236, 67, 0.92) 60.5%, #c4ec43 63%, #c4ec43 100%);
+        }
+        #var-frame .var-glow { left: -360px; top: -360px; width: 1200px; height: 1200px;
+          background: radial-gradient(circle, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0) 62%); }
+        #var-frame .var-net { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; pointer-events: none; }
+        #var-frame .hn-body { top: 1158px; }
+        #var-frame .var-cta { position: absolute; left: 84px; top: 1352px; width: 912px; height: 158px; border-radius: 40px; background: #163d32; overflow: hidden;
+          box-shadow: 0 40px 70px -36px rgba(13, 39, 32, 0.75); }
+        #var-frame .var-a { position: absolute; left: 46px; top: 28px; font: 500 26px/1 "Inter", sans-serif; color: rgba(214, 225, 209, 0.92); }
+        #var-frame .var-b { position: absolute; left: 42px; top: 62px; font: 800 80px/1 "Inter Tight", sans-serif; letter-spacing: 0.015em; color: #c4ec43; white-space: nowrap; }
+        #var-frame .var-b span { display: inline-block; }
+        #var-frame .var-go { position: absolute; right: 30px; top: 27px; width: 104px; height: 104px; border-radius: 50%; background: #c4ec43;
+          display: flex; align-items: center; justify-content: center; }
+        #var-frame .var-go svg { width: 46px; height: 46px; display: block; }
+        #var-frame .var-shine { position: absolute; top: -40px; left: 0; width: 160px; height: 240px; display: block;
+          background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0)); }
+      </style>
+
+      <div id="root" data-composition-id="varios-locales" data-width="1080" data-height="1920" data-duration="9">
+        <div class="hn-frame lime" id="var-frame">
+          <div data-layout-allow-overflow class="hn-cam var-cam"><img src="assets/fondos/varios-locales.jpg" alt="" /></div>
+          <div class="hn-scrim var-scrim"></div>
+          <div class="hn-glow var-glow"></div>
+          <div class="hn-grain"></div>
+
+          <div class="hn-hdr">
+            <img class="hn-logo" src="assets/logos/logo-onlime.png" alt="BajaTuLuz" />
+            <div class="hn-pill"><i class="pd"></i>NEGOCIOS<span class="cnt">04/04</span></div>
+          </div>
+          <div class="hn-eyebrow"><i class="ln"></i><span class="tx">HABLEMOS DE TU EMPRESA</span></div>
+          <h1 class="hn-h"><span class="l1">¿Varios</span><span class="l2wrap"><span class="l2"><i class="hn-hlbar"></i><span class="t" data-layout-allow-overflow>locales?</span></span></span></h1>
+
+          <svg class="var-net" viewBox="0 0 1080 1920">
+            <g class="var-lines" fill="none" stroke="#FAFBF3" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 14"></g>
+            <g class="var-pulses"></g>
+            <g class="var-pins"></g>
+          </svg>
+
+          <p class="hn-body" data-layout-allow-occlusion data-layout-allow-overflow>
+            <span class="hn-bl"><span class="hn-bi">Cada suministro puede tener necesidades</span></span>
+            <span class="hn-bl"><span class="hn-bi">distintas. Dinos cuántos quieres revisar</span></span>
+            <span class="hn-bl"><span class="hn-bi"><strong>y empezamos por ahí.</strong></span></span>
+          </p>
+
+          <div class="var-cta">
+            <i class="var-shine"></i>
+            <span class="var-a">Escríbenos</span>
+            <span class="var-b">NEGOCIO</span>
+            <span class="var-go"><svg viewBox="0 0 24 24" fill="none" stroke="#163D32" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6" /></svg></span>
+          </div>
+          <div class="hn-ftr"><i class="hn-rule"></i><div class="row"><span class="hn-handle fi">@bajatuluz</span><span class="hn-next fi">POR MENSAJE DIRECTO<svg class="arr down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M6 13l6 6 6-6" /></svg></span></div></div>
+          <div class="hn-prog"><div class="hn-seg done"><i></i></div><div class="hn-seg done"><i></i></div><div class="hn-seg done"><i></i></div><div class="hn-seg cur"><i></i></div></div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const DUR = 9;
+          const R = document.querySelector('[data-composition-id="varios-locales"] #var-frame');
+          const q = (s) => R.querySelector(s);
+          const qa = (s) => R.querySelectorAll(s);
+          const tl = gsap.timeline({ paused: true });
+          HN.grain(R);
+
+          // cuatro locales sobre la franja de foto, unidos como una red eléctrica
+          const NS = "http://www.w3.org/2000/svg";
+          const P = [[214, 930], [452, 1052], [690, 904], [890, 1036]];
+          const lines = q(".var-lines"), pulses = q(".var-pulses"), pins = q(".var-pins");
+          const segs = [];
+          for (let i = 0; i < P.length - 1; i++) {
+            const [x1, y1] = P[i], [x2, y2] = P[i + 1];
+            const l = document.createElementNS(NS, "line");
+            l.setAttribute("x1", x1); l.setAttribute("y1", y1); l.setAttribute("x2", x2); l.setAttribute("y2", y2);
+            lines.append(l);
+            const d = document.createElementNS(NS, "circle");
+            d.setAttribute("r", 9); d.setAttribute("fill", "#FAFBF3"); d.setAttribute("opacity", "0");
+            pulses.append(d);
+            segs.push({ l, d, x1, y1, x2, y2 });
+          }
+          const pinEls = P.map(([x, y], i) => {
+            const g = document.createElementNS(NS, "g");
+            g.setAttribute("transform", `translate(${x} ${y})`);
+            g.innerHTML = `<g class="var-pin"><circle r="34" fill="#163D32" stroke="#FAFBF3" stroke-width="5"/>
+              <text y="13" text-anchor="middle" font-family="Inter Tight" font-weight="800" font-size="36" fill="#C4EC43">${i + 1}</text></g>
+              <circle class="var-ring" r="34" fill="none" stroke="#163D32" stroke-width="3" opacity="0"/>`;
+            pins.append(g);
+            return g;
+          });
+
+          HN.intro(tl, R, 0.15, DUR);
+          HN.kenBurns(tl, q(".var-cam"), DUR, { s: 1.03, x: 0, y: -20 }, { s: 1.13, x: -30, y: 20 });
+
+          pinEls.forEach((g, i) => {
+            const t0 = 1.0 + i * 0.3;
+            tl.fromTo(g.querySelector(".var-pin"), { scale: 0, svgOrigin: "0 0" }, { scale: 1, svgOrigin: "0 0", duration: 0.6, ease: "back.out(2)" }, t0);
+            if (i > 0) {
+              const L = Math.hypot(segs[i - 1].x2 - segs[i - 1].x1, segs[i - 1].y2 - segs[i - 1].y1);
+              tl.fromTo(segs[i - 1].l, { opacity: 0, strokeDashoffset: L }, { opacity: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, t0 - 0.2);
+            }
+          });
+
+          const cta = q(".var-cta");
+          tl.fromTo(cta, { y: 70, opacity: 0, scale: 0.96 }, { y: 0, opacity: 1, scale: 1, duration: 1.0, ease: "expo.out" }, 2.4);
+          tl.fromTo(q(".var-a"), { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, 2.6);
+          const b = q(".var-b"); const word = b.textContent; b.textContent = "";
+          [...word].forEach((ch) => { const sp = document.createElement("span"); sp.textContent = ch; b.append(sp); });
+          tl.fromTo(b.querySelectorAll("span"), { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.8, ease: "expo.out", stagger: 0.035 }, 2.55);
+          tl.fromTo(q(".var-go"), { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.7, ease: "back.out(1.6)" }, 2.85);
+
+          const shine = q(".var-shine"), go = q(".var-go svg");
+          const rings = R.querySelectorAll(".var-ring");
+          const footer = HN.footerNudge(R);
+          HN.ambient(tl, DUR, (t) => {
+            segs.forEach((s, i) => {
+              const ph = (((t - 2.4) * 0.7 + i * 0.27) % 1 + 1) % 1;
+              const on = t > 2.4 ? 1 : 0;
+              s.d.setAttribute("cx", s.x1 + (s.x2 - s.x1) * ph);
+              s.d.setAttribute("cy", s.y1 + (s.y2 - s.y1) * ph);
+              s.d.setAttribute("opacity", (on * Math.sin(Math.PI * ph)).toFixed(3));
+            });
+            rings.forEach((r, i) => {
+              const ph = (((t - 2.2) / 1.6 - i * 0.25) % 1 + 1) % 1;
+              const on = t > 2.2 ? 1 : 0;
+              r.setAttribute("r", 34 + 30 * ph);
+              r.setAttribute("opacity", (on * 0.6 * (1 - ph)).toFixed(3));
+            });
+            const T0 = 3.6, ph = (((t - T0) % 2.8) + 2.8) % 2.8;
+            const e = t < T0 ? 0 : ph <= 1 ? (ph < 0.5 ? 2 * ph * ph : 1 - Math.pow(-2 * ph + 2, 2) / 2) : 1;
+            shine.style.transform = `translateX(${-300 + 1400 * e}px) skewX(-18deg)`;
+            go.style.transform = `translateX(${HN.nudge(t - 3.6) * 1.1}px)`;
+            q(".var-glow").style.transform = `translate(${26 * Math.sin(t * 0.35)}px, ${20 * Math.cos(t * 0.3)}px)`;
+            footer(t);
+          });
+
+          window.__timelines["varios-locales"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
