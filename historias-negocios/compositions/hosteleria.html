@@ -18,13 +18,13 @@
         #hos-frame .hos-glow { left: 140px; top: 600px; width: 800px; height: 800px;
           background: radial-gradient(circle, rgba(196, 236, 67, 0.22) 0%, rgba(196, 236, 67, 0.07) 40%, rgba(196, 236, 67, 0) 66%); }
         #hos-frame .hos-orbit { position: absolute; left: 260px; top: 720px; width: 560px; height: 560px; overflow: visible; }
-        #hos-frame .hos-disc { position: absolute; left: 380px; top: 840px; width: 320px; height: 320px; border-radius: 50%;
+        #hos-frame .hos-disc { position: absolute; left: 390px; top: 850px; width: 300px; height: 300px; border-radius: 50%;
           display: flex; align-items: center; justify-content: center;
           box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08); }
-        #hos-frame .hos-cup { width: 190px; height: 190px; display: block; overflow: visible; }
-        #hos-frame .hos-c1 { left: 84px; top: 866px; }
-        #hos-frame .hos-c2 { right: 84px; top: 968px; }
-        #hos-frame .hos-c3 { left: 84px; top: 1104px; }
+        #hos-frame .hos-cup { width: 180px; height: 180px; display: block; overflow: visible; }
+        #hos-frame .hos-c1 { left: 84px; top: 968px; }
+        #hos-frame .hos-c2 { right: 84px; top: 866px; }
+        #hos-frame .hos-c3 { right: 84px; top: 1104px; }
       </style>
 
       <div id="root" data-composition-id="hosteleria" data-width="1080" data-height="1920" data-duration="7">
@@ -87,8 +87,8 @@
           tl.fromTo(q(".hos-ring"), { opacity: 0, rotation: -50, svgOrigin: "0 0" }, { opacity: 1, rotation: 0, svgOrigin: "0 0", duration: 1.4, ease: "expo.out" }, 0.5);
           qa(".hos-draw").forEach((p, i) => {
             const L = p.getTotalLength();
-            p.style.strokeDasharray = `${L} ${L}`;
-            tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.85, ease: "power2.inOut" }, 0.8 + i * 0.12);
+            p.style.strokeDasharray = `${L} ${L + 10}`; // el hueco tapa el remate redondo antes de empezar
+            tl.fromTo(p, { strokeDashoffset: L + 5 }, { strokeDashoffset: 0, duration: 0.85, ease: "power2.inOut" }, 0.8 + i * 0.12);
           });
           tl.fromTo(qa(".hos-dot, .hos-dot-glow"), { opacity: 0 }, { opacity: 1, duration: 0.6 }, 1.4);
           tl.fromTo(qa(".hn-chip"), { scale: 0, opacity: 0, transformOrigin: "50% 50%" },
@@ -104,7 +104,7 @@
               s.style.transform = `translateY(${-16 * ph}px)`;
               s.style.opacity = (on * Math.sin(Math.PI * ph)).toFixed(3);
             });
-            const a = (200 + t * 30) * Math.PI / 180;
+            const a = (200 + t * 26) * Math.PI / 180;
             for (const c of [dot, dotGlow]) { c.setAttribute("cx", 232 * Math.sin(a)); c.setAttribute("cy", -232 * Math.cos(a)); }
             q(".hos-glow").style.transform = `scale(${1 + 0.04 * Math.sin(t * 1.6)})`;
             footer(t);

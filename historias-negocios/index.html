@@ -38,8 +38,8 @@
       <div id="edge"></div>
       <div id="el-cierre" data-composition-id="cierre" data-composition-src="compositions/cierre.html"
         data-start="27.8" data-duration="2.2" data-track-index="6" data-width="1080" data-height="1920"></div>
-      <div id="black" class="clip" data-start="28.84" data-duration="1.16" data-track-index="7"></div>
-      <audio id="cama" src="assets/audio/cama-completo.mp3" data-start="0" data-duration="30" data-track-index="10" data-volume="0.55"></audio>
+      <div id="black" class="clip" data-start="28.92" data-duration="1.08" data-track-index="7"></div>
+      <audio id="cama" src="assets/audio/cama-completo.mp3" data-start="0" data-duration="30" data-track-index="10" data-volume="0.85"></audio>
       <audio id="sfx-1" src="assets/sfx/whoosh-short.mp3" data-start="0.2" data-duration="0.575" data-track-index="20" data-volume="0.45"></audio>
       <audio id="sfx-2" src="assets/sfx/pop.mp3" data-start="1.25" data-duration="0.72" data-track-index="20" data-volume="0.5"></audio>
       <audio id="sfx-3" src="assets/sfx/pop.mp3" data-start="1.39" data-duration="0.72" data-track-index="21" data-volume="0.5"></audio>
@@ -59,7 +59,7 @@
       <audio id="sfx-17" src="assets/sfx/pop.mp3" data-start="20.5" data-duration="0.72" data-track-index="21" data-volume="0.5"></audio>
       <audio id="sfx-18" src="assets/sfx/pop.mp3" data-start="20.8" data-duration="0.72" data-track-index="22" data-volume="0.5"></audio>
       <audio id="sfx-19" src="assets/sfx/pop.mp3" data-start="21.1" data-duration="0.72" data-track-index="20" data-volume="0.5"></audio>
-      <audio id="sfx-20" src="assets/sfx/impact-bass-1.mp3" data-start="21.62" data-duration="2.116" data-track-index="21" data-volume="0.3"></audio>
+      <audio id="sfx-20" src="assets/sfx/impact-bass-1.mp3" data-start="21.62" data-duration="2.116" data-track-index="21" data-volume="0.12"></audio>
       <audio id="sfx-21" src="assets/sfx/click-soft.mp3" data-start="22.1" data-duration="0.366" data-track-index="20" data-volume="0.6"></audio>
       <audio id="sfx-22" src="assets/sfx/whoosh-short.mp3" data-start="27.8" data-duration="0.575" data-track-index="20" data-volume="0.4"></audio>
       <audio id="sfx-23" src="assets/sfx/click.mp3" data-start="28.8" data-duration="0.366" data-track-index="20" data-volume="0.9"></audio>
@@ -69,7 +69,7 @@
       const WIPE = 0.9;
       [["#w1", "#w2", 6.4], ["#w2", "#w3", 12.8], ["#w3", "#w4", 19.2]].forEach(([out, inc, t], i) => {
         tl.fromTo(inc, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: WIPE, ease: "expo.inOut" }, t);
-        tl.fromTo("#edge", { y: 1920, opacity: 1 }, { y: -6, duration: WIPE, ease: "expo.inOut", immediateRender: i === 0 }, t);
+        tl.fromTo("#edge", { y: 1920, opacity: 1 }, { y: -6, duration: WIPE, ease: "expo.inOut", immediateRender: false }, t);
         tl.set("#edge", { opacity: 0 }, t + WIPE);
         tl.fromTo(out, { y: 0 }, { y: -220, duration: WIPE, ease: "expo.inOut", immediateRender: false }, t);
       });

@@ -93,9 +93,9 @@
           const pinEls = P.map(([x, y], i) => {
             const g = document.createElementNS(NS, "g");
             g.setAttribute("transform", `translate(${x} ${y})`);
-            g.innerHTML = `<g class="var-pin"><circle r="34" fill="#163D32" stroke="#FAFBF3" stroke-width="5"/>
-              <text y="13" text-anchor="middle" font-family="Inter Tight" font-weight="800" font-size="36" fill="#C4EC43">${i + 1}</text></g>
-              <circle class="var-ring" r="34" fill="none" stroke="#163D32" stroke-width="3" opacity="0"/>`;
+            g.innerHTML = `<circle class="var-ring" r="34" fill="none" stroke="#163D32" stroke-width="3" opacity="0"/>
+              <g class="var-pin"><circle r="34" fill="#163D32" stroke="#FAFBF3" stroke-width="5"/>
+              <text y="13" text-anchor="middle" font-family="Inter Tight" font-weight="800" font-size="36" fill="#C4EC43">${i + 1}</text></g>`;
             pins.append(g);
             return g;
           });
@@ -107,8 +107,9 @@
             const t0 = 1.0 + i * 0.3;
             tl.fromTo(g.querySelector(".var-pin"), { scale: 0, svgOrigin: "0 0" }, { scale: 1, svgOrigin: "0 0", duration: 0.6, ease: "back.out(2)" }, t0);
             if (i > 0) {
-              const L = Math.hypot(segs[i - 1].x2 - segs[i - 1].x1, segs[i - 1].y2 - segs[i - 1].y1);
-              tl.fromTo(segs[i - 1].l, { opacity: 0, strokeDashoffset: L }, { opacity: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, t0 - 0.2);
+              // la línea sale del local anterior y llega justo cuando aparece este
+              const sg = segs[i - 1];
+              tl.fromTo(sg.l, { attr: { x2: sg.x1, y2: sg.y1 } }, { attr: { x2: sg.x2, y2: sg.y2 }, duration: 0.3, ease: "power2.inOut" }, t0 - 0.3);
             }
           });
 
@@ -125,15 +126,17 @@
           const footer = HN.footerNudge(R);
           HN.ambient(tl, DUR, (t) => {
             segs.forEach((s, i) => {
-              const ph = (((t - 2.4) * 0.7 + i * 0.27) % 1 + 1) % 1;
-              const on = t > 2.4 ? 1 : 0;
+              const lt = t - 2.4 - i * 0.38;
+              const ph = lt < 0 ? 0 : (lt * 0.7) % 1;
+              const on = lt < 0 ? 0 : 1;
               s.d.setAttribute("cx", s.x1 + (s.x2 - s.x1) * ph);
               s.d.setAttribute("cy", s.y1 + (s.y2 - s.y1) * ph);
               s.d.setAttribute("opacity", (on * Math.sin(Math.PI * ph)).toFixed(3));
             });
             rings.forEach((r, i) => {
-              const ph = (((t - 2.2) / 1.6 - i * 0.25) % 1 + 1) % 1;
-              const on = t > 2.2 ? 1 : 0;
+              const lt = t - 2.2 - i * 0.4;
+              const ph = lt < 0 ? 0 : (lt / 1.6) % 1;
+              const on = lt < 0 ? 0 : 1;
               r.setAttribute("r", 34 + 30 * ph);
               r.setAttribute("opacity", (on * 0.6 * (1 - ph)).toFixed(3));
             });

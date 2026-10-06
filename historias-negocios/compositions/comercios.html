@@ -24,7 +24,7 @@
         #com-frame .com-row { display: flex; align-items: center; gap: 22px; height: 112px; border-bottom: 2px solid rgba(22, 61, 50, 0.12); }
         #com-frame .com-row:last-child { border-bottom: 0; }
         #com-frame .com-row b { font: 500 22px/1 "JetBrains Mono", monospace; letter-spacing: 0.12em; color: #55695e; width: 40px; }
-        #com-frame .com-row span { font: 700 40px/1 "Inter Tight", sans-serif; letter-spacing: -0.025em; color: #163d32; flex: 1; }
+        #com-frame .com-row span { font: 700 40px/1 "Inter Tight", sans-serif; letter-spacing: -0.02em; word-spacing: 0.08em; color: #163d32; flex: 1; }
         #com-frame .com-ic { width: 64px; height: 64px; border-radius: 20px; background: #163d32; display: flex; align-items: center; justify-content: center; flex: none; }
         #com-frame .com-ic svg { width: 34px; height: 34px; display: block; overflow: visible; }
       </style>
@@ -94,8 +94,8 @@
             { y: 0, scale: 1, opacity: 1, duration: 1.1, ease: "expo.out" }, 0.55);
           qa(".com-draw").forEach((p, i) => {
             const L = p.getTotalLength();
-            p.style.strokeDasharray = `${L} ${L}`;
-            tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 0.85 + i * 0.1);
+            p.style.strokeDasharray = `${L} ${L + 10}`; // el hueco tapa el remate redondo antes de empezar
+            tl.fromTo(p, { strokeDashoffset: L + 5 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 0.85 + i * 0.1);
           });
           tl.fromTo(qa(".com-awn path"), { scaleY: 0, transformOrigin: "50% 0%" },
             { scaleY: 1, duration: 0.55, ease: "back.out(2.2)", stagger: 0.07 }, 1.35);

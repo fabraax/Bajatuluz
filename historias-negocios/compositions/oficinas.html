@@ -94,8 +94,8 @@
           tl.fromTo(qa(".ofi-tag"), { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.8, ease: "expo.out", stagger: 0.16 }, 1.3);
           qa(".ofi-draw").forEach((p, i) => {
             const L = p.getTotalLength();
-            p.style.strokeDasharray = `${L} ${L}`;
-            tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 0.85 + i * 0.12);
+            p.style.strokeDasharray = `${L} ${L + 10}`; // el hueco tapa el remate redondo antes de empezar
+            tl.fromTo(p, { strokeDashoffset: L + 5 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 0.85 + i * 0.12);
           });
           tl.fromTo(W.map((w) => w.el), { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.03 }, 1.2);
 

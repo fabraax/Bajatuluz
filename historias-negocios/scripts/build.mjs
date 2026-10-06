@@ -88,7 +88,7 @@ ${slots}
       <div id="edge"></div>
       <div id="el-cierre" data-composition-id="cierre" data-composition-src="compositions/cierre.html"
         data-start="${OUTRO}" data-duration="${r3(TOTAL - OUTRO)}" data-track-index="6" data-width="${W}" data-height="${H}"></div>
-      <div id="black" class="clip" data-start="${r3(CLICK + 0.04)}" data-duration="${r3(TOTAL - CLICK - 0.04)}" data-track-index="7"></div>
+      <div id="black" class="clip" data-start="${r3(CLICK + 0.12)}" data-duration="${r3(TOTAL - CLICK - 0.12)}" data-track-index="7"></div>
       <audio id="cama" src="assets/audio/cama-completo.mp3" data-start="0" data-duration="${TOTAL}" data-track-index="10" data-volume="0.85"></audio>
 ${audioTags(cues, 1)}
     </div>
@@ -97,7 +97,7 @@ ${audioTags(cues, 1)}
       const WIPE = ${WIPE};
       [["#w1", "#w2", ${STARTS[1]}], ["#w2", "#w3", ${STARTS[2]}], ["#w3", "#w4", ${STARTS[3]}]].forEach(([out, inc, t], i) => {
         tl.fromTo(inc, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: WIPE, ease: "expo.inOut" }, t);
-        tl.fromTo("#edge", { y: ${H}, opacity: 1 }, { y: -6, duration: WIPE, ease: "expo.inOut", immediateRender: i === 0 }, t);
+        tl.fromTo("#edge", { y: ${H}, opacity: 1 }, { y: -6, duration: WIPE, ease: "expo.inOut", immediateRender: false }, t);
         tl.set("#edge", { opacity: 0 }, t + WIPE);
         tl.fromTo(out, { y: 0 }, { y: -220, duration: WIPE, ease: "expo.inOut", immediateRender: false }, t);
       });
