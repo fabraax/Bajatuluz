@@ -1,0 +1,481 @@
+<title>BajaTuLuz YouTube y Podcast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Figtree:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: documento de estrategia en una columna, blanco, con los dos verdes del logo.
+   Mismo sistema que el plan de contenido. Un solo tema claro a propósito: es para imprimir. */
+:root {
+  --paper: #ffffff; --ink: #1f2a17; --ink-2: #3a4630; --muted: #637058; --rule: #dde5d2;
+  --olive: #5c762e; --olive-dark: #435a21; --lime: #bede5d; --lime-wash: #f1f7dd; --soft: #f7f9f2;
+  --f-head: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.doc { max-width: 820px; margin: 0 auto; padding-inline: 20px; padding-block: 32px 48px; }
+h1, h2, h3 { font-family: var(--f-head); color: var(--ink); margin: 0; text-wrap: balance; line-height: 1.15; }
+h1 { font-size: clamp(2rem, 6vw, 2.7rem); font-weight: 800; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; font-weight: 800; display: flex; gap: 12px; align-items: baseline; }
+h2 .num { color: var(--olive); }
+h3 { font-size: 1.0625rem; font-weight: 700; }
+p { margin: 0; }
+.muted { color: var(--muted); }
+.small { font-size: 0.875rem; }
+.ph { background: var(--lime-wash); color: var(--olive-dark); font-weight: 600; padding: 0 3px; border-radius: 2px; white-space: nowrap; }
+
+.cover { display: grid; gap: 14px; padding-bottom: 26px; }
+.logo { width: 230px; max-width: 60%; height: auto; display: block; margin-bottom: 16px; }
+.kicker { font-size: 0.875rem; font-weight: 600; color: var(--olive); }
+.lead { font-size: 1.125rem; color: var(--ink-2); max-width: 62ch; }
+.summary { background: var(--lime-wash); border-radius: 4px; padding: 18px 20px; display: grid; gap: 10px; margin-top: 6px; }
+.summary h3 { color: var(--olive-dark); }
+.summary ol { margin: 0; padding-left: 1.3em; display: grid; gap: 8px; }
+.summary li::marker { font-weight: 800; color: var(--olive-dark); }
+
+section { padding-block: 28px; border-top: 1px solid var(--rule); display: grid; gap: 16px; }
+.intro { color: var(--ink-2); max-width: 66ch; }
+.points { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.points li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; }
+.points li::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--lime); margin-top: 7px; }
+.check { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.check li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; }
+.check li::before { content: ""; width: 13px; height: 13px; border: 1.5px solid var(--ink-2); border-radius: 2px; margin-top: 4px; }
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.cols > * { min-width: 0; }
+@media (max-width: 640px) { .cols { grid-template-columns: 1fr; } }
+.card { border: 1px solid var(--rule); border-radius: 4px; padding: 16px; display: grid; gap: 8px; align-content: start; }
+.callout { background: var(--soft); border-radius: 4px; padding: 14px 16px; display: grid; gap: 6px; }
+
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+th { text-align: left; font-size: 0.8125rem; font-weight: 700; color: var(--olive-dark); background: var(--lime-wash); padding: 9px 12px; vertical-align: bottom; }
+td { padding: 9px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+td.k { font-weight: 700; color: var(--olive-dark); }
+td.nowrap { white-space: nowrap; }
+.wide { min-width: 640px; }
+.t { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--olive-dark); white-space: nowrap; }
+
+/* Esquema: un día de rodaje */
+.flow { display: grid; grid-template-columns: minmax(0, 0.9fr) auto minmax(0, 1.6fr); gap: 14px; align-items: center; }
+.flow .src { background: var(--olive-dark); color: #ffffff; border-radius: 4px; padding: 18px; display: grid; gap: 4px; }
+.flow .src b { font-family: var(--f-head); font-size: 1.25rem; color: var(--lime); }
+.flow .arrow { font-family: var(--f-head); font-size: 1.75rem; color: var(--olive); font-weight: 800; }
+.flow .outs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.flow .outs div { border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; display: grid; gap: 2px; font-size: 0.875rem; }
+.flow .outs b { font-size: 0.9375rem; color: var(--ink); }
+@media (max-width: 640px) { .flow { grid-template-columns: 1fr; } .flow .arrow { transform: rotate(90deg); justify-self: center; } }
+
+.verdict { background: var(--olive-dark); color: #ffffff; border-radius: 4px; padding: 18px 20px; display: grid; gap: 8px; }
+.verdict .label { font-size: 0.8125rem; font-weight: 700; color: var(--lime); }
+.verdict p.big { font-family: var(--f-head); font-weight: 800; font-size: 1.375rem; line-height: 1.25; }
+.verdict ul { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; color: #eef3e6; }
+.cmp td:first-child { font-weight: 700; white-space: nowrap; }
+.cmp td.best { background: var(--lime-wash); }
+
+footer.end { border-top: 1px solid var(--rule); padding-top: 16px; color: var(--muted); font-size: 0.8125rem; }
+
+@page { size: A4; margin: 15mm 16mm 17mm; }
+@media print {
+  body { font-size: 9.6pt; }
+  .doc { max-width: none; padding: 0; }
+  h1 { font-size: 28pt; }
+  h2 { font-size: 15pt; }
+  h3 { font-size: 10.5pt; }
+  .lead { font-size: 11pt; }
+  section { padding-block: 16px; display: block; }
+  section > * + * { margin-top: 12px; }
+  h2, .intro, h3 { break-after: avoid; }
+  .new-page { break-before: page; border-top: 0; padding-top: 0; }
+  table { font-size: 9pt; }
+  th, td { padding: 6px 8px; }
+  .wide { min-width: 0; }
+  .table-scroll { overflow: visible; }
+  tr, .card, .callout, .verdict, .summary, .flow, .points li, .check li { break-inside: avoid; }
+  .verdict p.big { font-size: 14pt; }
+}
+</style>
+
+<main class="doc">
+
+  <header class="cover">
+    <img class="logo" src="assets/logo-bajatuluz.png" alt="BajaTuLuz">
+    <p class="kicker">Vídeo largo · YouTube y podcast</p>
+    <h1>YouTube y podcast: cómo lo enfocamos</h1>
+    <p class="lead">Queremos grabar vídeos largos en empresas, sacar clips de ahí y lanzar un podcast. Este documento ordena las tres cosas y responde a la pregunta de con qué marca hacer el podcast.</p>
+    <div class="summary">
+      <h3>Resumen en cinco puntos</h3>
+      <ol>
+        <li><b>Un solo canal de YouTube:</b> el de BajaTuLuz, con el jefe como cara. Dos canales a la vez es demasiado para empezar.</li>
+        <li><b>La serie principal son visitas a negocios reales,</b> con el nombre «Fugas». Se graba en la empresa y de cada visita salen un vídeo largo y 8 a 10 clips.</li>
+        <li><b>Podcast sí, pero como programa con nombre propio:</b> «Enchufados», presentado por el jefe y dentro de BajaTuLuz. No hace falta una marca nueva de energía.</li>
+        <li><b>Del podcast también salen clips.</b> Son lo que más gente verá. El episodio completo se publica igual, porque es donde se quedan los que ya están interesados.</li>
+        <li><b>Se empieza con 2 visitas al mes</b> y se revisa en seis meses, con datos de qué trae clientes.</li>
+      </ol>
+    </div>
+  </header>
+
+  <section class="new-page">
+    <h2><span class="num">1</span>Cómo encaja todo</h2>
+    <p class="intro">La regla es grabar primero en largo y cortar después en corto. El vídeo largo da confianza a quien ya está interesado; los clips traen a gente nueva. Un solo día de rodaje en una empresa da material para dos semanas.</p>
+    <div class="flow" role="img" aria-label="Un día de rodaje en una empresa da un vídeo largo, un episodio de podcast, 8 a 10 clips, carruseles, un post de LinkedIn e historias">
+      <div class="src"><b>1 día de rodaje</b><span>en una empresa</span></div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="outs">
+        <div><b>1 vídeo largo</b><span class="muted">YouTube · 15–20 min</span></div>
+        <div><b>1 episodio de podcast</b><span class="muted">si se graba la conversación · 40–60 min</span></div>
+        <div><b>8–10 clips</b><span class="muted">Reels, TikTok y Shorts</span></div>
+        <div><b>1–2 carruseles</b><span class="muted">con las cifras del caso</span></div>
+        <div><b>1 post en LinkedIn</b><span class="muted">en el perfil del jefe</span></div>
+        <div><b>Historias del día</b><span class="muted">detrás de cámaras</span></div>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Plataforma</th><th>Para qué sirve</th><th>Qué publicamos</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Instagram y TikTok</td><td>Que nos conozca gente nueva.</td><td>Clips y el plan de 30 días.</td></tr>
+          <tr><td class="k">YouTube (largo)</td><td>Que confíen en nosotros y que nos encuentren al buscar.</td><td>Visitas, guías y podcast.</td></tr>
+          <tr><td class="k">YouTube Shorts</td><td>Alcance dentro de YouTube que lleva al vídeo largo.</td><td>Los mismos clips.</td></tr>
+          <tr><td class="k">LinkedIn del jefe</td><td>Llegar a gerentes y dueños de empresa.</td><td>Un caso o un clip a la semana, con texto.</td></tr>
+          <tr><td class="k">Spotify, Apple e iVoox</td><td>Escuchar el podcast.</td><td>Episodios completos.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">Los clips de las visitas encajan en el plan de 30 días que ya tenemos: el Ahorrómetro de los lunes y el día a día de los viernes pueden salir de ahí. El plan no cambia; mejora el material.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>El canal de YouTube</h2>
+    <div class="cols">
+      <div class="card">
+        <h3>Qué promete el canal</h3>
+        <p>Entramos en negocios reales y buscamos el dinero que tiran en luz y gas.</p>
+        <p class="small muted">Nombre: BajaTuLuz, el mismo que en Instagram. Descripción: «Visitamos negocios y buscamos el dinero que tiran en luz y gas. Con <span class="ph">[nombre]</span>, 23 años. Estudio gratis: <span class="ph">[enlace]</span>».</p>
+      </div>
+      <div class="card">
+        <h3>Para quién</h3>
+        <p>Dueños y gerentes de pymes: hostelería, comercio, gimnasios, hoteles, talleres, pequeña industria y campo. Gente que paga la factura y decide si cambia.</p>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Tipo de vídeo</th><th>Qué es</th><th>Duración</th><th>Cada cuánto</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Fugas<br><span class="small muted">serie principal</span></td><td>Visita a un negocio: el dueño, un recorrido, mediciones, la factura y la revelación del ahorro.</td><td class="nowrap">15–20 min</td><td>2 al mes</td></tr>
+          <tr><td class="k">Guías</td><td>Responde a una pregunta que la gente busca en YouTube.</td><td class="nowrap">8–12 min</td><td>1 al mes</td></tr>
+          <tr><td class="k">Enchufados<br><span class="small muted">podcast</span></td><td>Conversación larga con un empresario o un experto.</td><td class="nowrap">40–60 min</td><td>2 al mes, cuando arranque</td></tr>
+          <tr><td class="k">Shorts</td><td>Clips de los tres anteriores.</td><td class="nowrap">menos de 60 s</td><td>3 a 5 por semana</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <h3>Por qué hacer guías si las facturas aburren</h3>
+      <p>En Instagram la factura aburre porque nadie la está buscando. En YouTube es distinto: quien escribe «qué es la energía reactiva» tiene el problema delante y está a un paso de pedir ayuda. Las guías llevan títulos de búsqueda y siguen trayendo visitas durante años.</p>
+    </div>
+    <div class="cols">
+      <div class="card">
+        <h3>Ideas para «Fugas»</h3>
+        <ul class="points">
+          <li><span>Una panadería que enciende los hornos a las 4 de la mañana. ¿Cuánto paga de luz?</span></li>
+          <li><span>Un gimnasio que nunca cierra: <span class="ph">[X €]</span> de luz al mes.</span></li>
+          <li><span>El restaurante con tres cámaras frigoríficas: dónde se le iba el dinero.</span></li>
+          <li><span>Un taller que pagaba por una energía que no usaba.</span></li>
+          <li><span>Un hotel de <span class="ph">[N]</span> habitaciones: le encontramos <span class="ph">[X €]</span> al año.</span></li>
+          <li><span>Una comunidad de vecinos: lo que cuesta de verdad el ascensor.</span></li>
+          <li><span>Un regadío que podía pagar menos impuesto eléctrico.</span></li>
+          <li><span>Un supermercado de barrio con las neveras abiertas.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Ideas para guías</h3>
+        <ul class="points">
+          <li><span>Cómo leer la factura de luz de tu negocio, paso a paso.</span></li>
+          <li><span>Energía reactiva: qué es y cómo dejar de pagarla.</span></li>
+          <li><span>Cuánta potencia necesita tu negocio y cómo comprobarlo.</span></li>
+          <li><span>Precio fijo o indexado: cuál le conviene a una empresa.</span></li>
+          <li><span>La tarifa 3.0TD explicada para dueños de negocio.</span></li>
+          <li><span>Qué mirar antes de firmar un contrato de luz para tu empresa.</span></li>
+          <li><span>Cómo bajar la factura de luz de un bar o un restaurante.</span></li>
+          <li><span>Placas solares en un negocio: cuándo compensan y cuándo no.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="card">
+        <h3>Títulos y miniaturas</h3>
+        <ul class="points">
+          <li><span><b>Título:</b> cifra, negocio y giro. «Este gimnasio pagaba <span class="ph">[X €]</span> de luz. Le encontramos <span class="ph">[Y €]</span>».</span></li>
+          <li><span><b>Miniatura:</b> la cara del dueño y la del jefe, el negocio de fondo y una cifra grande. Cuatro palabras como máximo.</span></li>
+          <li><span>La cifra del título es la real. Si el vídeo no la cumple, se pierde la confianza que buscamos.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Antes de abrir el canal</h3>
+        <ul class="check">
+          <li><span>Banner y foto con el logo.</span></li>
+          <li><span>Tráiler de 60 segundos con el jefe.</span></li>
+          <li><span>Listas: Fugas, Guías, Enchufados.</span></li>
+          <li><span>Enlace a WhatsApp o al formulario de estudio.</span></li>
+          <li><span>En cada vídeo: capítulos en la descripción y un comentario fijado con el enlace.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>Cómo se graba una visita</h2>
+    <p class="intro">Cada episodio de «Fugas» sigue la misma estructura. El estudio de la factura se hace antes del rodaje, así que el día de la visita ya sabemos la cifra: va en un sobre cerrado.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Minuto</th><th>Bloque</th><th>Qué pasa</th></tr></thead>
+        <tbody>
+          <tr><td class="t">0:00</td><td class="k">Avance</td><td>El mejor momento del vídeo, casi siempre la reacción al abrir el sobre.</td></tr>
+          <tr><td class="t">0:30</td><td class="k">El negocio</td><td>Quién es el dueño, cómo empezó y cuánto cree que paga de luz. Que apueste una cifra.</td></tr>
+          <tr><td class="t">2:00</td><td class="k">El recorrido</td><td>El dueño enseña el local y las máquinas. El jefe pregunta qué está encendido y cuándo.</td></tr>
+          <tr><td class="t">6:00</td><td class="k">Lo medimos</td><td>Dos o tres aparatos con el medidor. Las cifras aparecen en pantalla.</td></tr>
+          <tr><td class="t">9:00</td><td class="k">La factura</td><td>En la mesa, dos o tres hallazgos explicados de forma sencilla.</td></tr>
+          <tr><td class="t">13:00</td><td class="k">El sobre</td><td>Se abre el sobre: el ahorro al año. La reacción del dueño.</td></tr>
+          <tr><td class="t">15:00</td><td class="k">Qué cambia</td><td>Lo que se va a hacer, sin exagerar. Si no hay ahorro, se dice. Cierre y enlace al estudio gratis.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cols">
+      <div class="card">
+        <h3>Antes del rodaje</h3>
+        <ul class="check">
+          <li><span>Elegir bien el negocio: que sea visual, que el dueño hable con soltura, que haya ahorro posible y que acepte grabar.</span></li>
+          <li><span>Pedir 12 facturas o los datos de consumo y hacer el estudio antes.</span></li>
+          <li><span>Firmar la cesión de derechos de imagen del dueño y de los empleados que salgan.</span></li>
+          <li><span>Grabar sin clientes, o sin que se les vea la cara.</span></li>
+          <li><span>Pactar qué datos se pueden enseñar y cuáles van tapados.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Equipo y material</h3>
+        <p><b>Tres personas:</b> el jefe presenta, una persona lleva la cámara principal y otra la segunda cámara y el sonido.</p>
+        <p><b>Material:</b> dos cámaras, micrófonos inalámbricos para el jefe y el dueño, gimbal, luz LED portátil, medidor de enchufe y el sobre. Si hay que medir en el cuadro, un electricista.</p>
+        <p><b>Encuadre:</b> las personas en el centro del plano, para poder recortar en vertical sin perder la cara.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <h3>Momentos que no pueden faltar</h3>
+      <p>La apuesta del dueño («¿cuánto crees que pagas?»), la medición que más sorprende, su historia, la apertura del sobre con su reacción y un consejo que sirva a cualquier negocio. Si alguno no sale bien, se repite antes de irse.</p>
+    </div>
+    <div class="callout">
+      <h3>Tres meses después</h3>
+      <p>Se vuelve al negocio con la factura nueva y se graba un vídeo corto: «Hace tres meses le dijimos que ahorraría <span class="ph">[X €]</span>. Esta es su factura». Es la mejor prueba que podemos enseñar.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>De un vídeo largo a 10 clips</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Clip</th><th>Qué momento</th><th>Dónde se publica</th></tr></thead>
+        <tbody>
+          <tr><td class="k">El sobre</td><td>El dueño abre el sobre y ve la cifra. Es el clip principal.</td><td>Reels, TikTok y Shorts</td></tr>
+          <tr><td class="k">La apuesta</td><td>«¿Cuánto crees que pagas?» y la cifra real.</td><td>Reels y TikTok</td></tr>
+          <tr><td class="k">Lo medimos</td><td>El aparato que más sorprende.</td><td>Reels y Shorts</td></tr>
+          <tr><td class="k">La historia</td><td>Cómo empezó el negocio.</td><td>Reels y LinkedIn</td></tr>
+          <tr><td class="k">La fuga</td><td>El fallo de la factura, explicado en 30 segundos.</td><td>Reels, TikTok y carrusel</td></tr>
+          <tr><td class="k">Consejo gratis</td><td>Algo que cualquier negocio puede hacer hoy.</td><td>Reels y carrusel</td></tr>
+          <tr><td class="k">La opinión</td><td>Lo que piensa el dueño de su sector.</td><td>LinkedIn y TikTok</td></tr>
+          <tr><td class="k">Tres meses después</td><td>La factura nueva.</td><td>Reels y Shorts</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Reglas de un buen clip</h3>
+      <ul class="points">
+        <li><span>Se entiende solo, sin haber visto el vídeo largo.</span></li>
+        <li><span>Empieza por la mejor frase, no por el contexto. El contexto va después, si hace falta.</span></li>
+        <li><span>Subtítulos grandes y un título arriba que diga de qué va.</span></li>
+        <li><span>Dura entre 20 y 60 segundos y acaba con «Comenta FUGA».</span></li>
+        <li><span>Se etiqueta al negocio. Lo compartirán, y su público es como el nuestro.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>El podcast</h2>
+    <p class="intro">Merece la pena si se tiene claro para qué sirve. Para nosotros sirve para tres cosas:</p>
+    <div class="cols">
+      <div class="card">
+        <ul class="points">
+          <li><span><b>Relaciones.</b> Cada invitado es un dueño de negocio que pasa una hora con nosotros. Es la mejor reunión comercial posible sin vender nada.</span></li>
+          <li><span><b>Clips.</b> Una hora de conversación da 6 a 8 clips con personas reales opinando.</span></li>
+          <li><span><b>Confianza.</b> Quien ve un episodio entero ya nos conoce antes de llamarnos.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Lo que no hay que esperar</h3>
+        <p>Muchas escuchas al principio. Un podcast tarda meses en tener público propio, y al principio casi todo llega por los clips.</p>
+        <p>Por eso se mide por cómo funcionan los clips y por cuántos invitados acaban pidiendo su estudio, no por las descargas.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <h3>¿Sacamos clips o qué?</h3>
+      <p>Clips sí, siempre: son lo que más gente verá. Pero el episodio completo también se publica en YouTube y Spotify, en vídeo. Es lo que da sentido a los clips y donde se quedan los que ya están interesados.</p>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Dónde se graba</th><th>A favor</th><th>En contra</th></tr></thead>
+        <tbody>
+          <tr><td class="k">En el negocio del invitado</td><td>Se puede empezar ya. Un mismo día da el vídeo de la visita y el episodio. Cada episodio se ve distinto.</td><td>Más trabajo de sonido: eco y ruido.</td></tr>
+          <tr><td class="k">En el estudio</td><td>Mejor sonido, más cómodo, siempre igual.</td><td>Hay que esperar a que esté montado y el invitado tiene que venir.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="intro"><b>Recomendación:</b> empezar en el negocio del invitado, justo después de la visita, con los mismos micrófonos inalámbricos, y pasar al estudio cuando esté listo. Si preferís esperar al estudio, el resto del plan no cambia.</p>
+    <div class="cols">
+      <div class="card">
+        <h3>Formato</h3>
+        <p><b>Nombre:</b> Enchufados. <b>Presenta:</b> el jefe, con un compañero que hace las preguntas incómodas. <b>Invitados:</b> dueños de negocio la mayoría de las veces y, de vez en cuando, un experto.</p>
+        <p><b>Cómo va:</b> avance, cómo empezó el negocio, lo que nadie cuenta de su sector, la factura sobre la mesa con el sobre, ronda rápida («¿A quién enchufarías?», y el invitado propone al siguiente) y cierre: «…y bajamos la luz».</p>
+      </div>
+      <div class="card">
+        <h3>Primeros seis invitados</h3>
+        <ul class="points">
+          <li><span>El dueño de un bar o restaurante.</span></li>
+          <li><span>El dueño de un gimnasio.</span></li>
+          <li><span>Una panadería o un obrador.</span></li>
+          <li><span>Un electricista con años de oficio.</span></li>
+          <li><span>Un administrador de fincas.</span></li>
+          <li><span>Un gestor: lo que pagan los negocios sin saberlo, más allá de la luz.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="new-page">
+    <h2><span class="num">6</span>¿Con qué marca hacemos el podcast?</h2>
+    <p class="intro">Hay tres opciones. Esta es la comparación; el fondo verde marca la mejor en cada punto.</p>
+    <div class="table-scroll">
+      <table class="cmp wide">
+        <thead><tr><th></th><th>Marca nueva de energía</th><th>Dentro de BajaTuLuz</th><th>Marca personal del jefe</th></tr></thead>
+        <tbody>
+          <tr><td>Alcance</td><td>Bajo: la energía sola interesa a poca gente.</td><td>Medio.</td><td class="best">Alto: la gente sigue a personas.</td></tr>
+          <tr><td>Confianza</td><td>Problema: si se presenta como independiente y cobramos comisión, hay que explicarlo.</td><td>Buena, pero si el programa se llama como la empresa suena a anuncio.</td><td class="best">Alta.</td></tr>
+          <tr><td>Invitados</td><td>Difícil al principio.</td><td>Normal.</td><td class="best">Más fácil: dicen que sí a una persona.</td></tr>
+          <tr><td>Clientes para BajaTuLuz</td><td>Indirectos.</td><td class="best">Directos.</td><td>Directos, si se nombra la empresa.</td></tr>
+          <tr><td>Trabajo</td><td>Alto: otra marca y otras cuentas desde cero.</td><td class="best">Bajo: lo que ya tenemos.</td><td>Medio: perfiles personales.</td></tr>
+          <tr><td>Riesgo</td><td>Dividir el esfuerzo.</td><td class="best">Bajo.</td><td>Depende de una sola persona.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="verdict">
+      <span class="label">Recomendación</span>
+      <p class="big">Un programa con nombre propio, presentado por el jefe, dentro de BajaTuLuz.</p>
+      <ul>
+        <li>Se llama Enchufados, no BajaTuLuz, para que no suene a anuncio.</li>
+        <li>Lo presenta el jefe con su nombre y su cara. Eso ya es marca personal.</li>
+        <li>Se publica en el canal de YouTube de BajaTuLuz y en Spotify, con «Un programa de BajaTuLuz» en la intro y en la descripción.</li>
+        <li>Los perfiles personales del jefe en Instagram, TikTok y LinkedIn comparten los clips. Crecen sin producir nada extra.</li>
+      </ul>
+    </div>
+    <div class="cols">
+      <div class="card">
+        <h3>Por qué no una marca nueva</h3>
+        <p>Habría que empezar otra vez de cero. La energía sola atrae poco público. Y un medio «independiente» de energía hecho por un intermediario que cobra comisión tiene un problema de credibilidad si no se explica.</p>
+      </div>
+      <div class="card">
+        <h3>Por qué no solo marca personal, por ahora</h3>
+        <p>Con un equipo pequeño, mantener dos canales a la vez es demasiado. Y al principio todo lo que construyamos tiene que traer clientes a BajaTuLuz.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <h3>Cuándo reconsiderarlo</h3>
+      <p>A los seis meses. Si el podcast empieza a interesar a gente que no tiene un negocio (por ejemplo, jóvenes que quieren emprender) o si el jefe quiere hablar de temas que van más allá de la energía, se puede pasar a un canal propio. Como el programa tiene nombre propio desde el principio, el cambio es sencillo.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">7</span>Los primeros seis meses</h2>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Fase</th><th>Cuándo</th><th>Qué se hace</th><th>Para qué</th></tr></thead>
+        <tbody>
+          <tr><td class="k">1 · Arranque</td><td class="nowrap">Nov.–dic. 2026</td><td>Abrir el canal. Dos visitas de «Fugas» al mes y una guía. Shorts de cada visita. Grabar dos episodios piloto del podcast en negocios.</td><td>Aprender a grabar y montar rápido. Primeros casos en vídeo.</td></tr>
+          <tr><td class="k">2 · Ritmo</td><td class="nowrap">Ene.–feb. 2027</td><td>Podcast dos veces al mes. Primeros vídeos de «tres meses después».</td><td>Tener material propio para todos los formatos.</td></tr>
+          <tr><td class="k">3 · Revisión</td><td class="nowrap">Mar.–abr. 2027</td><td>Mirar los datos y decidir: más visitas, más podcast o un canal propio para el podcast.</td><td>Quedarnos con lo que trae clientes.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <h3>Un mes normal desde la fase 2</h3>
+      <p>Dos episodios de «Fugas», una guía, dos episodios de Enchufados y entre 12 y 20 clips para Reels, TikTok y Shorts, además del plan de 30 días de Instagram.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">8</span>Equipo, tiempos y material</h2>
+    <div class="cols">
+      <div class="card">
+        <h3>Quién hace qué</h3>
+        <ul class="points">
+          <li><span><b>Presentador:</b> el jefe.</span></li>
+          <li><span><b>Producción:</b> busca negocios e invitados, gestiona permisos y prepara los estudios antes de grabar.</span></li>
+          <li><span><b>Cámara y montaje:</b> una o dos personas. El montaje puede hacerlo un editor externo si no da tiempo.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Tiempo por visita (orientativo)</h3>
+        <ul class="points">
+          <li><span>Preparación: 3–4 horas.</span></li>
+          <li><span>Rodaje: 3–4 horas.</span></li>
+          <li><span>Montaje del vídeo largo: 8–12 horas.</span></li>
+          <li><span>Clips: 4–6 horas.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Lo que falta comprar (las cámaras ya las tenemos)</h3>
+      <ul class="check">
+        <li><span>Tres micrófonos inalámbricos de solapa y una grabadora de sonido de respaldo.</span></li>
+        <li><span>Una luz LED portátil y un gimbal.</span></li>
+        <li><span>Un medidor de enchufe.</span></li>
+        <li><span>Discos para guardar el material en bruto.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">9</span>Qué medimos y qué hay que decidir</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Dónde</th><th>Qué miramos</th></tr></thead>
+        <tbody>
+          <tr><td class="k">YouTube</td><td>Cuánta gente pulsa en la miniatura, cuánto tiempo se ve cada vídeo y cuántos suscriptores trae cada uno.</td></tr>
+          <tr><td class="k">Clips</td><td>Cuánta gente pasa del segundo 3 y cuántos los comparten.</td></tr>
+          <tr><td class="k">Negocio</td><td>Estudios pedidos que vienen de YouTube o del podcast, e invitados que acaban siendo clientes. A cada cliente nuevo se le pregunta siempre cómo nos ha conocido.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cols">
+      <div class="card">
+        <h3>Lo que tiene que decidir dirección</h3>
+        <ul class="check">
+          <li><span>Aprobar la marca del podcast: Enchufados, dentro de BajaTuLuz.</span></li>
+          <li><span>Empezar el podcast ya en los negocios o esperar al estudio.</span></li>
+          <li><span>Montaje propio o con un editor externo.</span></li>
+          <li><span>Ritmo de la fase 1: dos visitas al mes.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Siempre</h3>
+        <ul class="points">
+          <li><span>Cesión de derechos de imagen por escrito de todo el que salga.</span></li>
+          <li><span>Datos de las facturas tapados.</span></li>
+          <li><span>Cifras reales; si son estimadas, se dice.</span></li>
+          <li><span>El contenido hecho con IA se etiqueta como tal.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="end">
+    <p>BajaTuLuz · YouTube y podcast · 6 de octubre de 2026. Complementa al plan de contenido de 30 días.</p>
+  </footer>
+</main>
