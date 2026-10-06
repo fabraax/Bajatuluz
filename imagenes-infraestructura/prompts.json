@@ -1,0 +1,33 @@
+{
+  "model": "nano-banana-pro",
+  "aspect_ratio": "9:16",
+  "resolution": "2k",
+  "style": "Photorealistic editorial photograph, vertical 9:16 composition, natural light, crisp fine detail, subtle cinematic colour grade with deep forest-green shadows and fresh lime-green accents, calm premium mood, uncluttered upper third with soft negative space for a headline. No text, no lettering, no logos, no watermark.",
+  "images": [
+    {
+      "slug": "01_alta-tension",
+      "tema": "Torres de alta tensión sobre un trigal de Castilla al atardecer",
+      "subject": "Lattice steel high-voltage transmission towers marching in a line across golden wheat fields on the Castilian plain in Spain at golden hour, power lines glowing in the low sun, low-angle shot with a wide lens, long soft shadows, a few thin clouds in a clear sky."
+    },
+    {
+      "slug": "02_subestacion",
+      "tema": "Subestación eléctrica a la hora azul, con un técnico de espaldas",
+      "subject": "An electrical substation in Spain at blue hour: large power transformers, porcelain insulators, busbars and galvanised steel gantries in sharp detail, one technician in a high-visibility vest and white hard hat seen from behind walking between the equipment, small in the frame, warm lights beginning to glow against a deep blue sky."
+    },
+    {
+      "slug": "03_fotovoltaica",
+      "tema": "Planta fotovoltaica en Andalucía vista desde un dron",
+      "subject": "Aerial top-down drone photograph of a vast photovoltaic solar farm in Andalusia, Spain: long parallel rows of dark blue solar panels forming bold graphic lines over warm reddish earth, a gravel service track cutting diagonally across, olive groves at the edges, bright midday light with crisp shadows."
+    },
+    {
+      "slug": "04_eolica",
+      "tema": "Parque eólico en Aragón al amanecer, con niebla en el valle",
+      "subject": "Modern white wind turbines along a ridge in Aragon, Spain at dawn, morning mist filling the valley below, soft pastel sunrise light, telephoto lens compressing the line of turbines, blades slightly motion-blurred, quiet and expansive atmosphere."
+    },
+    {
+      "slug": "05_gas",
+      "tema": "Estación de regulación y medida de gas, tuberías amarillas",
+      "subject": "A natural gas pressure regulating and metering station in Spain: yellow-painted steel gas pipes, large valves, flanges and pressure gauges inside a tidy fenced industrial compound, eye-level medium shot, clean concrete ground, soft overcast daylight, precise engineering detail."
+    }
+  ]
+}
