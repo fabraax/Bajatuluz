@@ -23,7 +23,7 @@ hechas con [HyperFrames](https://hyperframes.heygen.com) y con las fotos de Canv
 
 > **Ahora mismo los fondos son provisionales**: son las miniaturas que devuelve Canva (112 × 199 px) ampliadas, por eso se ven borrosas. Hay que sustituirlas por las imágenes a tamaño completo (944 × 1680) y volver a renderizar.
 
-Para cambiar una foto, sustituye el archivo con el mismo nombre (vertical, mínimo 1080 × 1920) y vuelve a renderizar.
+Para cambiar una foto, sustituye el archivo con el mismo nombre (vertical 9:16; las de Canva, de 944 × 1680, sirven) y vuelve a renderizar.
 Las fotos no se retocan: encima llevan un velo con los colores de la marca para que el texto se lea, y un movimiento de cámara lento.
 
 ## Cómo está hecho
